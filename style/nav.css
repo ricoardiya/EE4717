@@ -1,0 +1,24 @@
+.header-center {
+  height: 40px;
+  background-color: #eee;
+  padding: 14px;
+}
+
+ul {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 14px;
+}
+
+li {
+  display: inline;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}

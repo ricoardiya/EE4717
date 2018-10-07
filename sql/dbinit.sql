@@ -9,6 +9,7 @@ Run this file to intialize database
 
 DROP TABLE IF EXISTS inventory;
 DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS pictures;
 
 -- Initialize products table
 
@@ -28,6 +29,16 @@ CREATE TABLE inventory (
   `productID` int(10) NOT NULL,
   `size` int(10) NOT NULL,
   `stock` int(10) NOT NULL,
-  FOREIGN KEY (id) REFERENCES products(id),
+  FOREIGN KEY (productID) REFERENCES products(id),
   PRIMARY KEY (id)
 );
+
+-- Initialize pictures table
+
+CREATE TABLE pictures (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `productID` int(10) NOT NULL,
+  `pictureURL` varchar(80) NOT NULL,
+  FOREIGN KEY (productID) REFERENCES products(id),
+  PRIMARY KEY (id)
+)

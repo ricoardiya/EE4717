@@ -1,19 +1,25 @@
 ## Database structure
 
 **products**
-| id | int(10) |
-| name | varchar(50) |
-| color | char(10) |
-| desc | char(40) |
-| gender | char(4) |
+| Column | Data types | PK / FK |
+| --- | --- | --- |
+| id | int(10) | PK |
+| name | varchar(50) | |
+| color | char(10) | |
+| desc | text | |
+| gender | char(4) | |
 
 **inventory**
-| id | int(10) |
-| productID | int(10) |
-| size | int(10) |
-| stock | int(10) |
+| Column | Data types | PK / FK |
+| --- | --- | --- |
+| id | int(10) | PK |
+| productID | int(10) | FK (`products.id`) |
+| size | int(10) | |
+| stock | int(10) | |
 
 **pictures**
-| id | int(10) |
-| productID | int(10) |
-| pictureURL | varchar(80) |
+| Column | Data types | PK / FK |
+| --- | --- | --- |
+| id | int(10) | PK |
+| productID | int(10) | FK (`products.id`) |
+| pictureURL | varchar(80) | |

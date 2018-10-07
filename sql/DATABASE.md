@@ -1,15 +1,15 @@
 ## Database structure
 
-**products**
+### products
 | Column | Data types | PK / FK |
-| --- | --- | --- |
+| ------ | ---------- | ------- |
 | id | int(10) | PK |
 | name | varchar(50) | |
 | color | char(10) | |
 | desc | text | |
 | gender | char(4) | |
 
-**inventory**
+### inventory
 | Column | Data types | PK / FK |
 | --- | --- | --- |
 | id | int(10) | PK |
@@ -17,7 +17,7 @@
 | size | int(10) | |
 | stock | int(10) | |
 
-**pictures**
+### pictures
 | Column | Data types | PK / FK |
 | --- | --- | --- |
 | id | int(10) | PK |

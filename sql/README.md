@@ -11,7 +11,7 @@
 
 ### inventory
 | Column | Data types | PK / FK |
-| --- | --- | --- |
+| ------ | ---------- | ------- |
 | id | int(10) | PK |
 | productID | int(10) | FK (`products.id`) |
 | size | int(10) | |
@@ -19,7 +19,7 @@
 
 ### pictures
 | Column | Data types | PK / FK |
-| --- | --- | --- |
+| ------ | ---------- | ------- |
 | id | int(10) | PK |
 | productID | int(10) | FK (`products.id`) |
 | pictureURL | varchar(80) | |

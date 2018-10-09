@@ -1,5 +1,10 @@
 ## Database structure
 
+To initialized database
+```
+dbinit.sql
+```
+
 ### products
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |

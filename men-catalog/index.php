@@ -5,7 +5,33 @@
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/ee4717/common/nav.php";
-    include $path; ?>
-  This is men catalog page
+    include $path;
+  ?>
+  <div class="content-wrapper">
+    <div class="content">
+      this is men catalog page
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+    </div>
+    <?php include  '../common/footer.php'?>
+  </div>
 </body>
 </html>

@@ -8,6 +8,8 @@
   height: 50px;
   background-color: #eee;
   padding: 14px;
+  width: 100%;
+  position: fixed;
 }
 
 ul {

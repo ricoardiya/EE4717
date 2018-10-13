@@ -47,7 +47,6 @@ CREATE TABLE pictures (
   PRIMARY KEY (id)
 );
 
-
 -- Initialize customers table
 
 CREATE TABLE customers (

@@ -80,6 +80,7 @@ CREATE TABLE review (
   `id` int(10) NOT NULL,
   `customerID` INT(10) NOT NULL,
   `productID` int(10) NOT NULL,
+  `review` text NOT NULL,
   PRIMARY KEY (id) ,
   FOREIGN KEY (productID) REFERENCES products(id),
   FOREIGN KEY (customerID) REFERENCES customers(id)

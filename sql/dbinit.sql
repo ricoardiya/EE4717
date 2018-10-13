@@ -76,7 +76,8 @@ CREATE TABLE reviews (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `customerID` INT(10) NOT NULL,
   `productID` int(10) NOT NULL,
-  PRIMARY KEY (id),
+  `review` text NOT NULL,
+  PRIMARY KEY (id) ,
   FOREIGN KEY (productID) REFERENCES products(id),
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );

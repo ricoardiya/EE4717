@@ -5,7 +5,7 @@ To initialized database
 dbinit.sql
 ```
 
-### products
+### products table
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |
 | id | int(10) | PK |

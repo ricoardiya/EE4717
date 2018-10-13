@@ -6,8 +6,11 @@
 
 .header-center {
   height: 50px;
-  background-color: #eee;
-  padding: 14px;
+  background-color: #f4f4f4;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  width: 100%;
+  position: fixed;
 }
 
 ul {

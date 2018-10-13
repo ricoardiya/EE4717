@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS picture;
-
-CREATE TABLE picture (
-  id INT NOT NULL AUTO_INCREMENT,
-  pictureURL varchar(80) NOT NULL,
-  PRIMARY KEY (id)
-);

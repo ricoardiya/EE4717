@@ -56,7 +56,7 @@ CREATE TABLE customers (
   `zipCode` int(6) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` int(8) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id) AUTO_INCREMENT
 );
 -- Initialize orders table
 
@@ -67,7 +67,7 @@ CREATE TABLE orders (
   `productID` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
   `size` int(2) NOT NULL,
-  PRIMARY KEY (id) ,
+  PRIMARY KEY (id) AUTO_INCREMENT,
   FOREIGN KEY (productID) REFERENCES products(id),
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );
@@ -75,11 +75,11 @@ CREATE TABLE orders (
 -- 1 customer punya banyak order, 1 order punya 1 customer
 -- 1 order punya 1 product , tapi sebaliknya tidak
 
-CREATE TABLE review (
+CREATE TABLE reviews (
   `id` int(10) NOT NULL,
   `customerID` INT(10) NOT NULL,
   `productID` int(10) NOT NULL,
-  PRIMARY KEY (id) ,
+  PRIMARY KEY (id) AUTO_INCREMENT,
   FOREIGN KEY (productID) REFERENCES products(id),
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );

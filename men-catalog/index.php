@@ -10,28 +10,8 @@
   <div class="content-wrapper">
     <div class="content">
       this is men catalog page
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br>
     </div>
-    <?php include  '../common/footer.php'?>
   </div>
+  <?php include  '../common/footer.php'?>
 </body>
 </html>

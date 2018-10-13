@@ -11,7 +11,7 @@
     <div class="content">
       this is women catalog page
     </div>
-    <?php include  '../common/footer.php'?>
   </div>
+  <?php include  '../common/footer.php'?>
 </body>
 </html>

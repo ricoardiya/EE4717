@@ -49,7 +49,7 @@ dbinit.sql
 | quantity | int(10) | |
 | size | int(2) | |
 
-### review
+### reviews
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |
 | id | int(10) | PK |

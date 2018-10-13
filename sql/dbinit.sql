@@ -72,9 +72,6 @@ CREATE TABLE orders (
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );
 
--- 1 customer punya banyak order, 1 order punya 1 customer
--- 1 order punya 1 product , tapi sebaliknya tidak
-
 CREATE TABLE reviews (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `customerID` INT(10) NOT NULL,

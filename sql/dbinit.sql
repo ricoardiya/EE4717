@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS orders;
 -- Initialize products table
 
 CREATE TABLE products (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `color` char(10) NOT NULL,
   `desc` text NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE products (
 -- Initialize inventory table
 
 CREATE TABLE inventory (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
   `productID` int(10) NOT NULL,
   `size` int(10) NOT NULL,
   `stock` int(10) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE inventory (
 -- Initialize pictures table
 
 CREATE TABLE pictures (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
   `productID` int(10) NOT NULL,
   `pictureURL` varchar(80) NOT NULL,
   FOREIGN KEY (productID) REFERENCES products(id),
@@ -50,24 +50,24 @@ CREATE TABLE pictures (
 -- Initialize customers table
 
 CREATE TABLE customers (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `zipCode` int(6) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` int(8) NOT NULL,
-  PRIMARY KEY (id) AUTO_INCREMENT
+  PRIMARY KEY (id)
 );
 -- Initialize orders table
 
 CREATE TABLE orders (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `customerID` INT(10) NOT NULL,
   `dateOrder` DATE NOT NULL,
   `productID` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
   `size` int(2) NOT NULL,
-  PRIMARY KEY (id) AUTO_INCREMENT,
+  PRIMARY KEY (id),
   FOREIGN KEY (productID) REFERENCES products(id),
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );
@@ -76,10 +76,10 @@ CREATE TABLE orders (
 -- 1 order punya 1 product , tapi sebaliknya tidak
 
 CREATE TABLE reviews (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `customerID` INT(10) NOT NULL,
   `productID` int(10) NOT NULL,
-  PRIMARY KEY (id) AUTO_INCREMENT,
+  PRIMARY KEY (id),
   FOREIGN KEY (productID) REFERENCES products(id),
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );

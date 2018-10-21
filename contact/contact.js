@@ -1,8 +1,18 @@
 
 function chkName(event) {
     var myName = event.currentTarget;
-    var pos = myName.value.search(/^[A-Za-z\s]+$/);
+    var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
 
+    if (!myName.value. replace(/\s/g, '').length) {
+      alert("The field cannot contain only whitespace (" + myName.value +
+            ")! \n");
+        document.getElementById("fname").value = '';
+        document.getElementById("lname").value = '';
+
+        myName.focus();
+        myName.select();
+        return false;
+    }
     if (pos == -1) {
     alert("The name you entered (" + myName.value +
             ") is not in the correct form. \n");

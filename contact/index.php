@@ -31,19 +31,19 @@
         </div>
         <div class="right-col">
           <form action="/ee4717/contact/submit_contact_form.php" class="contact-form">
-            <label for="fname">First Name: </label><br>
+            <label for="fname">*First Name: </label><br>
             <input type="text" required id="fname" name="firstname" placeholder="First Name">
             <br><br>
             <label for="lname">Last Name: </label><br>
-            <input type="text" required id="lname" name="lastname" placeholder="Last Name">
+            <input type="text" id="lname" name="lastname" placeholder="Last Name">
             <br><br>
-            <label for="email">Email: </label><br>
+            <label for="email">*Email: </label><br>
             <input type="email" required id="email" name="email" placeholder="Email">
             <br><br>
-            <label for="message">Message: </label><br>
+            <label for="message">*Message: </label><br>
             <textarea rows="4" required id="message" cols="30" name="message" placeholder="Insert your message here ..."></textarea>
             <br><br>
-            <input type="submit" value="Send">
+            <input type="submit" value="Send" class="sendButton">
           </form>
           <?php
             $contact_js_handler = "/ee4717/contact/contact-handler.js";

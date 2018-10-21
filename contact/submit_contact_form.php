@@ -1,17 +1,10 @@
 <?php
   echo 'contact us';
-  var_dump($_GET);
-  $firstname = $_GET["firstname"];
-  $lastname = $_GET["lastname"];
-  $email = $_GET["email"];
-  $message = $_GET["message"];
 
-  echo '<br><br>';
-
-  echo 'firstname: ' .$firstname. '<br>';
-  echo 'lastname: ' .$lastname. '<br>';
-  echo 'email: ' .$email. '<br>';
-  echo 'message: ' .$message. '<br>';
+  $firstname = trim($_GET["firstname"]);
+  $lastname = trim($_GET["lastname"]);
+  $email = trim($_GET["email"]);
+  $message = trim($_GET["message"]);
 
   $servername = "localhost";
   $username = "root";

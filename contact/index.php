@@ -7,7 +7,6 @@
       echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $contact_css . '  />';
       echo '<script type="text/javascript" src="'. $contact_js .'"></script>';
     ?>
-  </head>
 <body>
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];

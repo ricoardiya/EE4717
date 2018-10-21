@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <?php include './head.php' ?>
+  </head>
   <body>
     <section>
       <header class="header-center">
@@ -36,7 +37,8 @@
               &copy; Sepatu Project 2018
             </div>
             <div class="index-footer-right">
-              <a href="">Contact Us</a> &nbsp;&nbsp;&nbsp;
+              <a href="./cart">Your Cart</a> &nbsp;&nbsp;&nbsp;
+              <a href="./contact">Contact Us</a> &nbsp;&nbsp;&nbsp;
               <a href="">Facebook</a> &nbsp;&nbsp;&nbsp;
               <a href="">Instagram</a>
             </div>

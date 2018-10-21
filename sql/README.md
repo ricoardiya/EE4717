@@ -9,7 +9,7 @@ Please execute in sequence
 4. seed_customer.sql
 5. seed_inventory.sql
 6. seed_order.sql
-7. seed_review.sql
+7. seed_reviews.sql
 ```
 
 ### products table

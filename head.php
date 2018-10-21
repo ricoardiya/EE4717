@@ -12,5 +12,3 @@
     echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $nav_path . '  />';
     echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $footer_path . '  />';
   ?>
-
-</head>

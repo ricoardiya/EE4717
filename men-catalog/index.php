@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<?php include '../head.php' ?>
+    <?php include '../head.php' ?>
+  </head>
 <body>
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];

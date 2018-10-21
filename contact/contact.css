@@ -1,0 +1,32 @@
+
+@media only screen and (min-width: 600px) {
+  .left-col {
+    text-align: right;
+    width: 50%;
+    min-height: 300px;
+    border-right: 2px solid black;
+    float: left;
+    box-sizing: border-box;
+    padding-right: 40px;
+  }
+
+  .right-col {
+    padding-left: 40px;
+    width: 50%;
+    min-height: 300px;
+    float: right;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .store{
+    /* margin: auto; */
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    height: auto;
+    width: auto;
+  }
+}

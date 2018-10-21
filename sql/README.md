@@ -1,8 +1,15 @@
 ## Database structure
 
 To initialized database
+Please execute in sequence
 ```
-dbinit.sql
+1. dbinit.sql
+2. seed_product.sql
+3. seed_pictures.sql
+4. seed_customer.sql
+5. seed_inventory.sql
+6. seed_order.sql
+7. seed_review.sql
 ```
 
 ### products table

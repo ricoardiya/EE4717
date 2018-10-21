@@ -1,12 +1,17 @@
 .filter {
   font-family: "OpenSans", sans-serif;
   position: fixed;
+  margin-top: 100px;
+  padding-left: 20px;
   width: 280px;
-  height: 500px;
   border-right: 1px solid #d6d6d6;
 }
 
+.filter li {
+  display: block;
+}
+
 .catalog {
-  margin-left: 280px;
-  padding-left: 20px;
+  padding-top: 100px;
+  margin-left: 320px;
 }

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <?php include '../head.php' ?>
+  <?php
+    include '../head.php'
+    include '.dbconn.php'
+  ?>
   <link rel="stylesheet" type="text/css" href="men-catalog.css">
   <body>
     <?php
@@ -9,16 +12,22 @@
       include $path;
     ?>
     <div class="content-wrapper">
-      <div class="content">
+      <div class="content-catalog">
         <div class="filter">
           filter
           <br>
-          type
-          <br>
-
+          Type
+          <ul>
+            <li>Captoe</li>
+            <li>Boots</li>
+            <li>Longwing</li>
+            <li>Loafers</li>
+            <li>Derby</li>
+            <li>Oxford</li>
+          </ul>
         </div>
         <div class="catalog">
-          this is men catalog page
+
         </div>
       </div>
     </div>

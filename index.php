@@ -14,7 +14,7 @@
     </section>
     <div class="index-content-wrapper">
       <div class="index-content">
-        <div class="row">
+        <div class="landing-row">
           <a href="/ee4717/men-catalog/">
             <div class="column">
               <img src="/ee4717/assets/pictures/men/men.png" alt="men" height="460" width="460">

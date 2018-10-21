@@ -6,16 +6,7 @@
   $email = trim($_GET["email"]);
   $message = trim($_GET["message"]);
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "sepatu";
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-  // Check connection
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
+  include('../dbconn.php');
 
   $query = 'INSERT INTO `contact`(`id`, `firstname`, `lastname`, `email`, `message`) VALUES (NULL,"'.$firstname.'","'.$lastname.'","'.$email.'","'.$message.'")';
 

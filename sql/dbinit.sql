@@ -7,7 +7,6 @@ Run this file to intialize database
 
 -- Drop tables if exists
 use sepatu;
-
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS inventory;
 DROP TABLE IF EXISTS products;
@@ -51,6 +50,7 @@ CREATE TABLE pictures (
 
 CREATE TABLE customers (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `salutation` varchar(5) NOT NULL,
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `zipCode` int(6) NOT NULL,
@@ -74,10 +74,8 @@ CREATE TABLE orders (
 
 CREATE TABLE reviews (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `customerID` INT(10) NOT NULL,
-  `productID` int(10) NOT NULL,
+  `orderID` int(10) NOT NULL,
   `review` text NOT NULL,
   PRIMARY KEY (id) ,
-  FOREIGN KEY (productID) REFERENCES products(id),
-  FOREIGN KEY (customerID) REFERENCES customers(id)
+  FOREIGN KEY (orderID) REFERENCES orders(id)
 );

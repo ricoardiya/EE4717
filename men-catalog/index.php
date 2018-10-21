@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+    <?php
+      include ('../head.php');
+      include ('../dbconn.php');
+      $men_catalog_css = "/ee4717/men-catalog/men-catalog.css";
+      echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $men_catalog_css . '  />';
+    ?>
+<body>
   <?php
     include '../head.php'
     include '.dbconn.php'

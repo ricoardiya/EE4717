@@ -13,8 +13,13 @@
 .container {
   padding: 2px 16px;
 }
-/*
-Add rounded corners to the top left and the top right corner of the image
+
+/* Add rounded corners to the top left and the top right corner of the image */
 img {
   border-radius: 5px 5px 0 0;
-} */
+  height: 20%;
+  width: 20%;
+  grid-gap: 20px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+}

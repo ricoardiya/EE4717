@@ -12,6 +12,12 @@
   src: url('/assets/fonts/OpenSans-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  src: url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
 body {
   margin: 0px;
 }
@@ -24,14 +30,14 @@ body {
   background-color: #ffffff;
 }
 
-/* .row {
+.row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-} */
+}
 
 .col {
   -ms-flex-preferred-size: 0;

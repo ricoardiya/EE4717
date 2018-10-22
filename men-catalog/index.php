@@ -28,7 +28,34 @@
           </ul>
         </div>
         <div class="catalog">
-
+          <div class="row">
+            <?php
+              $products_query = "SELECT * FROM products WHERE gender = 'M'";
+              $products_result = mysqli_query($conn, $products_query);
+              if (mysqli_num_rows($products_result) > 0) {
+                while($products_row = mysqli_fetch_assoc($products_result)){
+                  $picture_query = "SELECT * FROM pictures WHERE productID = ". $products_row['id'] . "";
+                  $picture_result = mysqli_query($conn, $picture_query);
+                  if (mysqli_num_rows($picture_result)) {
+                    $picture_row = mysqli_fetch_assoc($picture_result);
+                    echo '
+                      <div class="col-3">
+                        <div class="card">
+                          <img src="../'. $picture_row['pictureURL'] .'" alt="shoes" style="width:100%">
+                          <div>
+                            <div id="shoe-name">'.ucwords($products_row['name']).'</div>
+                            <div id="price">$ '.$products_row['price'].'</div>
+                            <form action="">
+                              <button type="submit" class="btn-addcart">ADD TO CART</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>';
+                  }
+                }
+              }
+            ?>
+          </div>
         </div>
       </div>
     </div>

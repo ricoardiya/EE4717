@@ -62,4 +62,4 @@ Please execute in sequence
 | id | int(10) | PK |
 | customerID | int(10) | FK (`customers.id`) |
 | productID | int(10) | FK(`products.id`) |
-| productID | text | |
+| reviews | text | |

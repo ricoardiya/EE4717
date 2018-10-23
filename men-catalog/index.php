@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<body>
   <?php
     include '../head.php';
     include '../dbconn.php';

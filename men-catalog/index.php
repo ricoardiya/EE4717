@@ -53,15 +53,19 @@
           $types_php_array = $types;
           $types_js_array = json_encode($types_php_array);
           echo 'var types_js_array = '. $types_js_array . ';
-                for(i = 0; i < types_js_array.length; i++ ) {
-                  document.getElementById(types_js_array[i]).checked = true;
+                if (types_js_array[0] != "") {
+                  for(i = 0; i < types_js_array.length; i++ ) {
+                    document.getElementById(types_js_array[i]).checked = true;
+                  }
                 };';
 
           $colors_php_array = $colors;
           $colors_js_array = json_encode($colors_php_array);
           echo 'var colors_js_array = '. $colors_js_array . ';
-                for(i = 0; i < colors_js_array.length; i++ ) {
-                  document.getElementById(colors_js_array[i]).checked = true;
+                if (colors_js_array[0] != "") {
+                  for(i = 0; i < colors_js_array.length; i++ ) {
+                    document.getElementById(colors_js_array[i]).checked = true;
+                  }
                 };';
           ?>
         </script>

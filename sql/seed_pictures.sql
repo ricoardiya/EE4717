@@ -243,4 +243,4 @@ INSERT INTO `pictures` (`id`, `productID`, `pictureURL`) VALUES
 (NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan-2.jpg'),
 (NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan-3.jpg'),
 (NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan-4.jpg'),
-(NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica.jpg');
+(NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan.jpg');

@@ -43,7 +43,10 @@
                         <div class="card">
                           <img src="../'. $picture_row['pictureURL'] .'" alt="shoes" style="width:100%">
                           <div>
-                            <div id="shoe-name">'.ucwords($products_row['name']).'</div>
+                            <form method="get" action="../men-shoe">
+                              <input type="hidden" id="productId" name="productID" value=' . $products_row['id'] . '>
+                              <button type="submit" class="btn-shoename">' . ucwords($products_row['name']) . '</button>
+                            </form>
                             <div id="price">$ '.$products_row['price'].'</div>
                             <form action="">
                               <button type="submit" class="btn-addcart">ADD TO CART</button>

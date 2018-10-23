@@ -32,10 +32,13 @@
                         <div class="card">
                           <img src="../'. $picture_row['pictureURL'] .'" alt="shoes" style="width:100%">
                           <div>
-                            <div id="shoe-name">' . ucwords($products_row['name']) . '</div>
-                            <div id="price">$ ' . $products_row['price'] . '</div>
+                            <form method="get" action="../women-shoe">
+                              <input type="hidden" id="productId" name="productID" value=' . $products_row['id'] . '>
+                              <button type="submit" class="btn-shoename">' . ucwords($products_row['name']) . '</button>
+                            </form>
+                            <div id="price">$ '.$products_row['price'].'</div>
                             <form action="">
-                              <button type="submit" class="btn-addcart">Add To Cart</button>
+                              <button type="submit" class="btn-addcart">ADD TO CART</button>
                             </form>
                           </div>
                         </div>

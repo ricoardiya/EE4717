@@ -36,6 +36,7 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   letter-spacing: 0.5px;
+  color: black;
 }
 
 #price {
@@ -43,6 +44,22 @@
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 20px;
+  color: black;
+}
+
+.btn-shoename {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: black;
+  cursor: pointer;
+}
+
+.btn-shoename:hover {
+  text-decoration: underline;
 }
 
 .btn-addcart {

@@ -15,22 +15,44 @@
     <div class="content-wrapper">
       <div class="content-catalog">
         <div class="filter">
-          filter
-          <br>
-          Type
-          <ul>
-            <li>Captoe</li>
-            <li>Boots</li>
-            <li>Longwing</li>
-            <li>Loafers</li>
-            <li>Derby</li>
-            <li>Oxford</li>
-          </ul>
+          <form method="get" action="index.php">
+            FILTERS
+            <hr>
+            Type
+            <br>
+            <input type="checkbox" name="type" value="" onchange="this.form.submit()"> All<br>
+            <input type="checkbox" name="type" value="boots" onchange="this.form.submit()"> Boots<br>
+            <input type="checkbox" name="type" value="captoe" onchange="this.form.submit()"> Captoe<br>
+            <input type="checkbox" name="type" value="derby" onchange="this.form.submit()"> Derby<br>
+            <input type="checkbox" name="type" value="loafers" onchange="this.form.submit()"> Loafers<br>
+            <input type="checkbox" name="type" value="longwing" onchange="this.form.submit()"> Longwing<br>
+            <hr>
+            Color
+            <br>
+            <input type="checkbox" name="color" value="" onchange="this.form.submit()"> All<br>
+            <input type="checkbox" name="color" value="black" onchange="this.form.submit()"> Black<br>
+            <input type="checkbox" name="color" value="brown" onchange="this.form.submit()"> Brown<br>
+            <input type="checkbox" name="color" value="tan" onchange="this.form.submit()"> Tan<br>
+            <input type="checkbox" name="color" value="whiskey" onchange="this.form.submit()"> Whiskey<br>
+            <input type="checkbox" name="color" value="oxblood" onchange="this.form.submit()"> Oxblood<br>
+          </form>
+          <?php
+            $type = '';
+            $color = '';
+
+            if (isset($_GET['type'])) {
+              $type = $_GET['type'];
+            }
+
+            if (isset($_GET['color'])) {
+              $color = $_GET['color'];
+            }
+          ?>
         </div>
         <div class="catalog">
           <div class="row">
             <?php
-              $products_query = "SELECT * FROM products WHERE gender = 'M'";
+              $products_query = "SELECT * FROM products WHERE gender = 'M' AND `name` LIKE '%$type%' AND color LIKE '%$color%'";
               $products_result = mysqli_query($conn, $products_query);
               if (mysqli_num_rows($products_result) > 0) {
                 while($products_row = mysqli_fetch_assoc($products_result)){

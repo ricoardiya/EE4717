@@ -65,13 +65,15 @@
                   <div class="shoe-name-item">' . ucwords($product_row['name']) . '</div>
                   <div class="description">' . $product_row['desc'] . '</div>
                   <hr>
+                  <div id="price">PRICE &nbsp;$ ' . $product_row['price'] . '</div>
+                  <hr>
                 ';
               }
               else {
                   echo "An error has occured. The item was not retrieved";
               }
             ?>
-            <div>
+            <div class="size">
               Choose your size:
               <select name="size">
                 <?php
@@ -91,7 +93,6 @@
             <hr>
             <button type="submit" class="btn-addcart">BUY NOW</button>
             <button type="submit" class="btn-addcart">ADD TO CART</button>
-            <div id="price">$ <?php echo $product_row['price']?></div>
           </div>
         </div>
       </div>

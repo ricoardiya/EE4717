@@ -41,7 +41,7 @@ CREATE TABLE inventory (
 CREATE TABLE pictures (
   `id` int(10) NOT NULL  AUTO_INCREMENT,
   `productID` int(10) NOT NULL,
-  `pictureURL` varchar(80) NOT NULL,
+  `pictureURL` varchar(150) NOT NULL,
   FOREIGN KEY (productID) REFERENCES products(id),
   PRIMARY KEY (id)
 );

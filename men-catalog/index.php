@@ -14,44 +14,73 @@
     <div class="content-wrapper">
       <div class="content-catalog">
         <div class="filter">
+          <?php
+            $types = array('');
+            $colors = array('');
+
+            if (isset($_GET['type'])) {
+              $types = $_GET['type'];
+            }
+
+            if (isset($_GET['color'])) {
+              $colors = $_GET['color'];
+            }
+          ?>
           <form method="get" action="index.php">
             FILTERS
             <hr>
             Type
             <br>
-            <input type="checkbox" name="type" value="" onchange="this.form.submit()"> All<br>
-            <input type="checkbox" name="type" value="boots" onchange="this.form.submit()"> Boots<br>
-            <input type="checkbox" name="type" value="captoe" onchange="this.form.submit()"> Captoe<br>
-            <input type="checkbox" name="type" value="derby" onchange="this.form.submit()"> Derby<br>
-            <input type="checkbox" name="type" value="loafers" onchange="this.form.submit()"> Loafers<br>
-            <input type="checkbox" name="type" value="longwing" onchange="this.form.submit()"> Longwing<br>
+            <input type="checkbox" name="type[]" id="boots" value="boots"> Boots<br>
+            <input type="checkbox" name="type[]" id="captoe" value="captoe"> Captoe<br>
+            <input type="checkbox" name="type[]" id="derby" value="derby"> Derby<br>
+            <input type="checkbox" name="type[]" id="loafers" value="loafers"> Loafers<br>
+            <input type="checkbox" name="type[]" id="longwing" value="longwing"> Longwing<br>
             <hr>
             Color
             <br>
-            <input type="checkbox" name="color" value="" onchange="this.form.submit()"> All<br>
-            <input type="checkbox" name="color" value="black" onchange="this.form.submit()"> Black<br>
-            <input type="checkbox" name="color" value="brown" onchange="this.form.submit()"> Brown<br>
-            <input type="checkbox" name="color" value="tan" onchange="this.form.submit()"> Tan<br>
-            <input type="checkbox" name="color" value="whiskey" onchange="this.form.submit()"> Whiskey<br>
-            <input type="checkbox" name="color" value="oxblood" onchange="this.form.submit()"> Oxblood<br>
+            <input type="checkbox" name="color[]" id="black" value="black"> Black<br>
+            <input type="checkbox" name="color[]" id="brown" value="brown"> Brown<br>
+            <input type="checkbox" name="color[]" id="tan" value="tan"> Tan<br>
+            <input type="checkbox" name="color[]" id="whiskey" value="whiskey"> Whiskey<br>
+            <input type="checkbox" name="color[]" id="oxblood" value="oxblood"> Oxblood<br>
+            <button type="submit" class="btn-addcart">SEARCH</button>
+            <button type="reset" class="btn-addcart">CLEAR FILTER</button>
           </form>
-          <?php
-            $type = '';
-            $color = '';
-
-            if (isset($_GET['type'])) {
-              $type = $_GET['type'];
-            }
-
-            if (isset($_GET['color'])) {
-              $color = $_GET['color'];
-            }
-          ?>
         </div>
+        <script type='text/javascript'>
+          <?php
+          $types_php_array = $types;
+          $types_js_array = json_encode($types_php_array);
+          echo 'var types_js_array = '. $types_js_array . ';
+                for(i = 0; i < types_js_array.length; i++ ) {
+                  document.getElementById(types_js_array[i]).checked = true;
+                };';
+
+          $colors_php_array = $colors;
+          $colors_js_array = json_encode($colors_php_array);
+          echo 'var colors_js_array = '. $colors_js_array . ';
+                for(i = 0; i < colors_js_array.length; i++ ) {
+                  document.getElementById(colors_js_array[i]).checked = true;
+                };';
+          ?>
+        </script>
         <div class="catalog">
           <div class="row">
             <?php
-              $products_query = "SELECT * FROM products WHERE gender = 'M' AND `name` LIKE '%$type%' AND color LIKE '%$color%'";
+              // convert array to string
+              foreach($types as $type){
+                $type_sql[] = 'name LIKE \'%'.$type.'%\'';
+              }
+              $type_sql = implode(" OR ", $type_sql);
+
+              // convert array to string
+              foreach($colors as $color){
+                $color_sql[] = 'color LIKE \'%'.$color.'%\'';
+              }
+              $color_sql = implode(" OR ", $color_sql);
+
+              $products_query = "SELECT * FROM products WHERE gender = 'M' AND $type_sql AND $color_sql";
               $products_result = mysqli_query($conn, $products_query);
               if (mysqli_num_rows($products_result) > 0) {
                 while($products_row = mysqli_fetch_assoc($products_result)){

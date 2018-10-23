@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html>
   <?php
-      include ('../head.php');
-      include ('../dbconn.php');
-      $women_catalog_css = "/ee4717/women-catalog/women-catalog.css";
-      echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $women_catalog_css . '  />';
+    include '../head.php';
+    include '../dbconn.php';
   ?>
-<body>
-  <?php
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/ee4717/common/nav.php";
-    include $path;
-  ?>
-  <div class="content-wrapper">
-  <div class="content">
-      <?php
-          for($x=28; $x<=49; $x++){
-            // $query= "SELECT * FROM pictures WHERE productID = '.$x.'";
-            $query= "SELECT * FROM pictures WHERE productID = $x";
-            $result = mysqli_query($conn, $query);
-            if (mysqli_num_rows($result) > 0) {
-              $row = mysqli_fetch_assoc($result);
-              echo '
-                <div class="card">
-                  <img src="../'. $row['pictureURL'] .'" alt="Avatar" style="width:100%">
-              ';
-            }
-            else {
-                echo "An error has occured. The item was not retrieved";
-            }
-            $query = "SELECT * FROM products WHERE id = $x";
-            $result = mysqli_query($conn, $query);
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                echo '
-                    <div class="container">
-                      <h4><b>'.ucwords($row['name']).'</b></h4>
-                      <p>'.ucwords($row['color']).'</p>
-                      <p>'.$row['desc'].'</p>
-                      <form action="">
-                        <button type="submit">Add To Cart</button>
-                      </form>
-                    </div>
-                  </div>
-                <br><br><br>
-                ';
-            }
-            else {
-              echo "An error has occured. The item was not retrieved";
-            }
-        }
-      ?>
+  <link rel="stylesheet" type="text/css" href="women-catalog.css">
+  <body>
+    <?php
+      $path = $_SERVER['DOCUMENT_ROOT'];
+      $path .= "/ee4717/common/nav.php";
+      include $path;
+    ?>
+    <div class="content-wrapper">
+      <div class="content-catalog">
+        <div class="filter">
+          filter
+        </div>
+        <div class="catalog">
+          <div class="row">
+            <?php
+              $products_query = "SELECT * FROM products WHERE gender = 'W'";
+              $products_result = mysqli_query($conn, $products_query);
+              if (mysqli_num_rows($products_result) > 0) {
+                while($products_row = mysqli_fetch_assoc($products_result)){
+                  $picture_query = "SELECT * FROM pictures WHERE productID = ". $products_row['id'] . "";
+                  $picture_result = mysqli_query($conn, $picture_query);
+                  if (mysqli_num_rows($picture_result)) {
+                    $picture_row = mysqli_fetch_assoc($picture_result);
+                    echo '
+                      <div class="col-3">
+                        <div class="card">
+                          <img src="../'. $picture_row['pictureURL'] .'" alt="shoes" style="width:100%">
+                          <div>
+                            <form method="get" action="../women-shoe">
+                              <input type="hidden" id="productId" name="productID" value=' . $products_row['id'] . '>
+                              <button type="submit" class="btn-shoename">' . ucwords($products_row['name']) . '</button>
+                            </form>
+                            <div id="price">$ '.$products_row['price'].'</div>
+                            <form action="">
+                              <button type="submit" class="btn-addcart">ADD TO CART</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>';
+                  }
+                }
+              }
+            ?>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <?php include  '../common/footer.php'?>
-</body>
+    <?php include  '../common/footer.php'?>
+  </body>
 </html>

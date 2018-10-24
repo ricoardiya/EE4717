@@ -84,7 +84,7 @@
               }
               $color_sql = implode(" OR ", $color_sql);
 
-              $products_query = "SELECT * FROM products WHERE gender = 'M' AND $type_sql AND $color_sql";
+              $products_query = "SELECT * FROM products WHERE gender = 'M' AND ( $type_sql ) AND ( $color_sql )";
               $products_result = mysqli_query($conn, $products_query);
               if (mysqli_num_rows($products_result) > 0) {
                 while($products_row = mysqli_fetch_assoc($products_result)){

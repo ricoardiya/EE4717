@@ -14,11 +14,12 @@
     include $path;
   ?>
   <div class="content-wrapper">
-    <div class="content">
-      <h1 align="center">Contact Page</h1>
-      <br>
-      <div class="row">
-        <div class="left-col">
+    <div class="contact-wrapper">
+      <div class="contact-header">
+        Contact Us
+      </div>
+      <div class="row contact-content">
+        <div class="col left">
           Phone: +65-8490 6300
           <br>
           Email: contact@sepatu.com
@@ -28,21 +29,21 @@
           Working Hour: 07:30-18:00
           <br>
         </div>
-        <div class="right-col">
+        <div class="col right">
           <form action="/ee4717/contact/submit_contact_form.php" class="contact-form">
             <label for="fname">*First Name: </label><br>
-            <input type="text" required id="fname" name="firstname" placeholder="First Name">
+            <input type="text" required id="fname" name="firstname" placeholder="John">
             <br><br>
             <label for="lname">Last Name: </label><br>
-            <input type="text" id="lname" name="lastname" placeholder="Last Name">
+            <input type="text" id="lname" name="lastname" placeholder="Doe">
             <br><br>
             <label for="email">*Email: </label><br>
-            <input type="email" required id="email" name="email" placeholder="Email">
+            <input type="email" required id="email" name="email" placeholder="John@doe.com">
             <br><br>
             <label for="message">*Message: </label><br>
             <textarea rows="4" required id="message" cols="30" name="message" placeholder="Insert your message here ..."></textarea>
             <br><br>
-            <input type="submit" value="Send" class="sendButton">
+            <input type="submit" value="Send" class="btn-contact">
           </form>
           <?php
             $contact_js_handler = "/ee4717/contact/contact-handler.js";
@@ -50,10 +51,10 @@
           ?>
         </div>
       </div>
-      <br>
-      <br>
-      <div class="store">
-        <h1 >Our Store</h1>
+      <div class="contact-header">
+        Our Store
+      </div>
+      <div class="contact-header">
         <img src="../assets/pictures/contact/westgate.PNG" alt="Westgate" width="60%" height="60%">
       </div>
     </div>

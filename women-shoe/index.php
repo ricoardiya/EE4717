@@ -20,7 +20,7 @@
     <div class="content-wrapper">
       <div class="content-item">
         <div class="row">
-          <a href="/ee4717/men-catalog/">< GO BACK TO WOMEN CATALOG</a>
+          <a href="/ee4717/women-catalog/">< GO BACK TO WOMEN CATALOG</a>
         </div>
         <div class="row">
           <div class="col-6">

@@ -20,6 +20,9 @@
     <div class="content-wrapper">
       <div class="content-item">
         <div class="row">
+          <a href="/ee4717/men-catalog/">< GO BACK TO MEN CATALOG</a>
+        </div>
+        <div class="row">
           <div class="col-6">
             <!-- Display picture -->
             <?php

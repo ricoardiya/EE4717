@@ -6,6 +6,19 @@
   padding-top: 150px;
 }
 
+.picture-wrapper {
+  margin-right: 30px;
+}
+
+.container {
+  text-align: center;
+}
+
+.thumbnail {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .shoe-name-item {
   font-family: "Playfair Display", serif;
   font-weight: 300;

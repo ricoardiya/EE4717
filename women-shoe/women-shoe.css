@@ -6,12 +6,26 @@
   padding-top: 150px;
 }
 
+.picture-wrapper {
+  margin-right: 30px;
+  background-color: #f0ede8;
+}
+
+.container {
+  text-align: center;
+}
+
+.thumbnail {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .shoe-name-item {
   font-family: "Playfair Display", serif;
   font-weight: 300;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   color: black;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .description {
@@ -28,6 +42,10 @@
   margin-bottom: 20px;
   font-size: 20px;
   color: black;
+}
+
+.size {
+  font-family: "Montserrat", sans-serif;
 }
 
 .btn-addcart {

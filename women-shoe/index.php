@@ -98,6 +98,38 @@
             <button type="submit" class="btn-addcart">ADD TO CART</button>
           </div>
         </div>
+        <div class="row recommendation-wrapper">
+          <div class="recommendation-header">
+            YOU MAY ALSO LIKE
+          </div>
+          <div class="row recommendation">
+            <?php
+              $recommendation_query = "SELECT * from products WHERE gender = 'W' AND NOT id = " . $product_row['id'] . " ORDER BY RAND() LIMIT 4";
+              $recommendation_result = mysqli_query($conn, $recommendation_query);
+              if (mysqli_num_rows($recommendation_result) > 0) {
+                while($recommendation_row = mysqli_fetch_assoc($recommendation_result)){
+                  $picture_query = "SELECT * FROM pictures WHERE productID = ". $recommendation_row['id'] . "";
+                  $picture_result = mysqli_query($conn, $picture_query);
+                  if (mysqli_num_rows($picture_result)) {
+                    $picture_row = mysqli_fetch_assoc($picture_result);
+                    echo '
+                      <div class="col-3">
+                        <div class="card">
+                          <img src="../'. $picture_row['pictureURL'] .'" alt="shoes" style="width:100%">
+                          <div>
+                            <form method="get" action="../women-shoe">
+                              <input type="hidden" id="productId" name="productID" value=' . $recommendation_row['id'] . '>
+                              <button type="submit" class="btn-shoename">' . ucwords($recommendation_row['name']) . '</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>';
+                  }
+                }
+              }
+            ?>
+          </div>
+        </div>
       </div>
     </div>
     <?php include  '../common/footer.php'?>

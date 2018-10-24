@@ -30,6 +30,10 @@
   color: black;
 }
 
+.size {
+  font-family: "Montserrat", sans-serif;
+}
+
 .btn-addcart {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.5px;

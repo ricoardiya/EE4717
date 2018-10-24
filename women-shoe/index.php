@@ -20,6 +20,9 @@
     <div class="content-wrapper">
       <div class="content-item">
         <div class="row">
+          <a href="/ee4717/women-catalog/">< GO BACK TO WOMEN CATALOG</a>
+        </div>
+        <div class="row">
           <div class="col-6">
             <!-- Display picture -->
             <?php
@@ -65,6 +68,8 @@
                   <div class="shoe-name-item">' . ucwords($product_row['name']) . '</div>
                   <div class="description">' . $product_row['desc'] . '</div>
                   <hr>
+                  <div id="price">PRICE &nbsp;$ '. $product_row['price'] . '</div>
+                  <hr>
                 ';
               }
               else {
@@ -91,7 +96,6 @@
             <hr>
             <button type="submit" class="btn-addcart">BUY NOW</button>
             <button type="submit" class="btn-addcart">ADD TO CART</button>
-            <div id="price">$ <?php echo $product_row['price']?></div>
           </div>
         </div>
       </div>

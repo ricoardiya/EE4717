@@ -5,12 +5,19 @@
   <body>
     <section>
       <header class="header-center">
-        <ul>
+        <!-- <ul class="nav navbar-nav">
           <?php
             $home_path = "/ee4717";
             echo '<li><a class="index-logo" href=' . $home_path. '>SE PA TU</a></li>';
+            echo '<li class="index-right"><a href=' . $home_path. '>Become a member</a></li>';
           ?>
-        </ul>
+        </ul> -->
+        <div class="topnav-centered">
+          <a href="/ee4717" class="index-logo">SE PA TU</a>
+        </div>
+        <div class="topnav-right">
+          <a href="/ee4717">Become a member</a>
+        </div>
       </header>
     </section>
     <div class="index-content-wrapper">
@@ -37,7 +44,6 @@
               &copy; Sepatu Project 2018
             </div>
             <div class="index-footer-right">
-              <a href="./cart">Your Cart</a> &nbsp;&nbsp;&nbsp;
               <a href="./contact">Contact Us</a> &nbsp;&nbsp;&nbsp;
               <a href="">Facebook</a> &nbsp;&nbsp;&nbsp;
               <a href="">Instagram</a>

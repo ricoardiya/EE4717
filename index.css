@@ -126,6 +126,26 @@ body {
 
 /* landing page css */
 
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+}
+
+.topnav-right {
+  float: right;
+  margin-top: 10px;
+  margin-right: 100px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 220;
+  border: 0.8px solid black;
+  padding: 10px;
+}
+
 .index-logo {
   font-size: 45px;
   color: black !important;

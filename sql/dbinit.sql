@@ -79,3 +79,13 @@ CREATE TABLE reviews (
   PRIMARY KEY (id) ,
   FOREIGN KEY (orderID) REFERENCES orders(id)
 );
+
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (id)
+)

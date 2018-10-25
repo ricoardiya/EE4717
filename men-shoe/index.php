@@ -24,37 +24,42 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <!-- Display picture -->
-            <?php
-              $pictures_query = "SELECT * FROM pictures WHERE productID = $productID";
-              $pictures_result = mysqli_query($conn, $pictures_query);
+            <div class="picture-wrapper">
+              <!-- Display picture -->
+              <?php
+                $pictures_query = "SELECT * FROM pictures WHERE productID = $productID";
+                $pictures_result = mysqli_query($conn, $pictures_query);
 
-              if (mysqli_num_rows($pictures_result)) {
-                $picture_row = mysqli_fetch_assoc($pictures_result);
-                echo '
-                  <div class="container">
-                    <img id="expandedImg" style="width:50%" src=../' . $picture_row['pictureURL'] . '>
-                  </div>
-                ';
-              }
-
-              $pictures_result = mysqli_query($conn, $pictures_query);
-
-              echo '<div class="row">';
-
-              if (mysqli_num_rows($pictures_result) > 0) {
-                while($picture_row = mysqli_fetch_assoc($pictures_result)){
+                if (mysqli_num_rows($pictures_result)) {
+                  $picture_row = mysqli_fetch_assoc($pictures_result);
                   echo '
-                    <div class="col">
-                      <img src="../' . $picture_row['pictureURL'] . '" alt="shoes" onclick="openImg(this);" width="100%">
+                    <div class="container">
+                      <img id="expandedImg" style="width:50%" src=../' . $picture_row['pictureURL'] . '>
                     </div>
                   ';
                 }
-              }
 
-              echo '</div>'
-            ?>
-          <script type="text/javascript" src="./display_image.js"></script>
+                $pictures_result = mysqli_query($conn, $pictures_query);
+
+                echo '<div class="thumbnail">
+                        <div class="row">';
+
+                if (mysqli_num_rows($pictures_result) > 0) {
+                  while($picture_row = mysqli_fetch_assoc($pictures_result)){
+                    echo '
+                      <div class="col">
+                        <img src="../' . $picture_row['pictureURL'] . '" alt="shoes" onclick="openImg(this);" width="100%">
+                      </div>
+                    ';
+                  }
+                }
+
+                echo '
+                  </div>
+                </div>'
+              ?>
+              <script type="text/javascript" src="./display_image.js"></script>
+            </div>
           </div>
           <div class="col-6">
             <!-- Product description -->

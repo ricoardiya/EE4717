@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<body>
   <?php
     include '../head.php';
     include '../dbconn.php';
@@ -15,22 +14,77 @@
     <div class="content-wrapper">
       <div class="content-catalog">
         <div class="filter">
-          filter
-          <br>
-          Type
-          <ul>
-            <li>Captoe</li>
-            <li>Boots</li>
-            <li>Longwing</li>
-            <li>Loafers</li>
-            <li>Derby</li>
-            <li>Oxford</li>
-          </ul>
+          <?php
+            $types = array('');
+            $colors = array('');
+
+            if (isset($_GET['type'])) {
+              $types = $_GET['type'];
+            }
+
+            if (isset($_GET['color'])) {
+              $colors = $_GET['color'];
+            }
+          ?>
+          <form method="get" action="index.php">
+            FILTERS
+            <hr>
+            Type
+            <br>
+            <input type="checkbox" name="type[]" id="boots" value="boots"> Boots<br>
+            <input type="checkbox" name="type[]" id="captoe" value="captoe"> Captoe<br>
+            <input type="checkbox" name="type[]" id="derby" value="derby"> Derby<br>
+            <input type="checkbox" name="type[]" id="loafers" value="loafers"> Loafers<br>
+            <input type="checkbox" name="type[]" id="longwing" value="longwing"> Longwing<br>
+            <hr>
+            Color
+            <br>
+            <input type="checkbox" name="color[]" id="black" value="black"> Black<br>
+            <input type="checkbox" name="color[]" id="brown" value="brown"> Brown<br>
+            <input type="checkbox" name="color[]" id="tan" value="tan"> Tan<br>
+            <input type="checkbox" name="color[]" id="whiskey" value="whiskey"> Whiskey<br>
+            <input type="checkbox" name="color[]" id="oxblood" value="oxblood"> Oxblood<br>
+            <button type="submit" class="btn-addcart">SEARCH</button>
+            <button type="reset" class="btn-addcart">CLEAR FILTER</button>
+          </form>
         </div>
+        <script type='text/javascript'>
+          <?php
+          $types_php_array = $types;
+          $types_js_array = json_encode($types_php_array);
+          echo 'var types_js_array = '. $types_js_array . ';
+                if (types_js_array[0] != "") {
+                  for(i = 0; i < types_js_array.length; i++ ) {
+                    document.getElementById(types_js_array[i]).checked = true;
+                  }
+                };';
+
+          $colors_php_array = $colors;
+          $colors_js_array = json_encode($colors_php_array);
+          echo 'var colors_js_array = '. $colors_js_array . ';
+                if (colors_js_array[0] != "") {
+                  for(i = 0; i < colors_js_array.length; i++ ) {
+                    document.getElementById(colors_js_array[i]).checked = true;
+                  }
+                };';
+          ?>
+        </script>
         <div class="catalog">
           <div class="row">
             <?php
-              $products_query = "SELECT * FROM products WHERE gender = 'M'";
+              // convert array to string
+              foreach($types as $type){
+                $type_sql[] = 'name LIKE \'%'.$type.'%\'';
+              }
+              $type_sql = implode(" OR ", $type_sql);
+
+              // convert array to string
+              foreach($colors as $color){
+                $color_sql[] = 'color LIKE \'%'.$color.'%\'';
+              }
+              $color_sql = implode(" OR ", $color_sql);
+
+              $products_query = "SELECT * FROM products WHERE gender = 'M' AND ( $type_sql ) AND ( $color_sql )";
               $products_result = mysqli_query($conn, $products_query);
               if (mysqli_num_rows($products_result) > 0) {
                 while($products_row = mysqli_fetch_assoc($products_result)){

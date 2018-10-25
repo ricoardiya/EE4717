@@ -5,6 +5,7 @@
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="men-catalog.css">
+  <link rel="stylesheet" type="text/css" href="../cart/small-cart.css">
   <body>
     <?php
       $path = $_SERVER['DOCUMENT_ROOT'];
@@ -12,6 +13,9 @@
       include $path;
     ?>
     <div class="content-wrapper">
+      <div class="cart">
+        <?php include '../cart/small-cart.php' ?>
+      </div>
       <div class="content-catalog">
         <div class="filter">
           <?php

@@ -7,11 +7,14 @@ Run this file to intialize database
 
 -- Drop tables if exists
 use sepatu;
+
+DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS review;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS inventory;
 DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS customers;
-DROP TABLE IF EXISTS orders;
 
 -- Initialize products table
 
@@ -81,7 +84,7 @@ CREATE TABLE reviews (
 );
 
 
-CREATE TABLE `contact` (
+CREATE TABLE contact (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,

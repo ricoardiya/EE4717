@@ -6,12 +6,15 @@ Run this file to intialize database
 -- Tables: products, inventory
 
 -- Drop tables if exists
+
 use sepatu;
+DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS inventory;
 DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS customers;
-DROP TABLE IF EXISTS orders;
 
 -- Initialize products table
 
@@ -58,6 +61,7 @@ CREATE TABLE customers (
   `phone` int(8) NOT NULL,
   PRIMARY KEY (id)
 );
+
 -- Initialize orders table
 
 CREATE TABLE orders (
@@ -72,6 +76,8 @@ CREATE TABLE orders (
   FOREIGN KEY (customerID) REFERENCES customers(id)
 );
 
+-- Initialize reviews table
+
 CREATE TABLE reviews (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `orderID` int(10) NOT NULL,
@@ -80,8 +86,9 @@ CREATE TABLE reviews (
   FOREIGN KEY (orderID) REFERENCES orders(id)
 );
 
+-- Initialize contact table
 
-CREATE TABLE `contact` (
+CREATE TABLE contact (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,

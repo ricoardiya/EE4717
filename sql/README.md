@@ -1,4 +1,4 @@
-## Database structure 
+## Database structure
 
 To initialized database
 Please execute in sequence

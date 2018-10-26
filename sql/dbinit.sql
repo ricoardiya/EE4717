@@ -7,7 +7,7 @@ Run this file to intialize database
 
 -- Drop tables if exists
 
-use sepatu;
+--use sepatu;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS reviews;
@@ -145,6 +145,7 @@ CREATE TABLE orders (
 CREATE TABLE reviews (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `transactionID` int(10) NOT NULL,
+  `reviews` text NOT NULL,
   PRIMARY KEY (id),
   INDEX `FK_REVIEW_TRANSACTION_ID` (`transactionID` ASC),
   CONSTRAINT `FK_REVIEW_TRANSACTION_ID`
@@ -169,4 +170,3 @@ CREATE TABLE `members`(
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
-

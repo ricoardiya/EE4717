@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <section>
   <header class="header-center">
     <ul>
@@ -11,5 +14,22 @@
         echo '<li><a class="option" href=' . $women_path. '>Women</a></li>';
       ?>
     </ul>
+    <?php
+      if(isset($_SESSION['name'])) {
+        echo '
+        <div class="topnav-right">
+          Hi, ' . $_SESSION['name'] . ' !
+          <a class="login" href="/ee4717/common/signout.php">SIGN OUT</a>
+        </div>
+        ';
+      } else {
+        echo '
+        <div class="topnav-right">
+          <a href="/ee4717/signup">Become a member</a>
+          <a class="login" href="/ee4717/login">LOG IN</a>
+        </div>
+        ';
+      }
+    ?>
   </header>
 </section>

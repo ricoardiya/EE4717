@@ -13,6 +13,26 @@
   position: fixed;
 }
 
+.topnav-right {
+  float: right;
+  margin-top: -40px;
+  margin-right: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 220;
+  padding: 10px;
+}
+
+.topnav-right .login {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 220;
+  border: 0.8px solid black;
+  padding: 10px;
+}
+
 ul {
   text-align: center;
   list-style-type: none;

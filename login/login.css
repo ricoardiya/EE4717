@@ -1,0 +1,71 @@
+.signin-wrapper {
+  padding-top: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+form {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+input{
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 250px;
+  text-align: center;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.btn-signin {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 290px;
+}
+
+.btn-sigin:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 290px;
+}
+
+.already-member {
+  margin-top: 30px;
+}
+
+.login-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  letter-spacing: 0.8px;
+}
+
+.login-link {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.8px;
+}

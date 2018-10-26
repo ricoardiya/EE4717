@@ -5,19 +5,28 @@
   <body>
     <section>
       <header class="header-center">
-        <!-- <ul class="nav navbar-nav">
-          <?php
-            $home_path = "/ee4717";
-            echo '<li><a class="index-logo" href=' . $home_path. '>SE PA TU</a></li>';
-            echo '<li class="index-right"><a href=' . $home_path. '>Become a member</a></li>';
-          ?>
-        </ul> -->
-        <div class="topnav-centered">
+        <div class="index-topnav-centered">
           <a href="/ee4717" class="index-logo">SE PA TU</a>
         </div>
-        <div class="topnav-right">
-          <a href="/ee4717">Become a member</a>
-        </div>
+        <?php
+          session_start();
+
+          if(isset($_SESSION['name'])) {
+            echo '
+            <div class="index-topnav-right">
+              Hi, ' . $_SESSION['name'] . ' !
+              <a class="login" href="/ee4717/common/signout.php">SIGN OUT</a>
+            </div>
+            ';
+          } else {
+            echo '
+            <div class="index-topnav-right">
+              <a href="/ee4717/signup">Become a member</a>
+              <a class="login" href="/ee4717/login">LOG IN</a>
+            </div>
+            ';
+          }
+        ?>
       </header>
     </section>
     <div class="index-content-wrapper">

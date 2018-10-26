@@ -126,19 +126,29 @@ body {
 
 /* landing page css */
 
-.topnav-centered a {
+.index-topnav-centered a {
   float: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "Playfair Display", serif;
+  display: inline-block;
 }
 
-.topnav-right {
+.index-topnav-right {
   float: right;
   margin-top: 10px;
-  margin-right: 100px;
+  margin-right: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 220;
+  padding: 10px;
+}
+
+.index-topnav-right .login {
+  margin-top: 10px;
+  margin-left: 10px;
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   font-weight: 220;

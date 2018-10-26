@@ -16,10 +16,10 @@
             $_SESSION['history'] = $actual_link;
           }
 
-          if(isset($_SESSION['name'])) {
+          if(isset($_SESSION['firstname'])) {
             echo '
             <div class="index-topnav-right">
-              Hi, ' . $_SESSION['name'] . ' !
+              Hi, ' . $_SESSION['firstname'] . ' !
               <a class="login" href="/ee4717/common/signout.php">SIGN OUT</a>
             </div>
             ';

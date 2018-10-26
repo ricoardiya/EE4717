@@ -97,6 +97,15 @@
                   $picture_result = mysqli_query($conn, $picture_query);
                   if (mysqli_num_rows($picture_result)) {
                     $picture_row = mysqli_fetch_assoc($picture_result);
+
+                    if (!isset($_SESSION['name'])) {
+                      $render_price = '<div id="price">$ '.$products_row['price'].'</div>';
+                    } else {
+                      $render_price ='
+                        <div id="price"><strike>$ ' . $products_row['price'] . '</strike></div>
+                        <div id="price">$ ' . ceil($products_row['price'] * 0.8) . '</div>';
+                    }
+
                     echo '
                       <div class="col-3">
                         <div class="card">
@@ -106,7 +115,7 @@
                               <input type="hidden" id="productId" name="productID" value=' . $products_row['id'] . '>
                               <button type="submit" class="btn-shoename">' . ucwords($products_row['name']) . '</button>
                             </form>
-                            <div id="price">$ '.$products_row['price'].'</div>
+                            ' . $render_price . '
                             <form action="">
                               <button type="submit" class="btn-addcart">ADD TO CART</button>
                             </form>

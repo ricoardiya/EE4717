@@ -98,7 +98,7 @@
                   if (mysqli_num_rows($picture_result)) {
                     $picture_row = mysqli_fetch_assoc($picture_result);
 
-                    if (!isset($_SESSION['name'])) {
+                    if (!isset($_SESSION['firstname'])) {
                       $render_price = '<div id="price">$ '.$products_row['price'].'</div>';
                     } else {
                       $render_price ='

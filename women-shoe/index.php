@@ -67,7 +67,7 @@
               if (mysqli_num_rows($products_result) > 0) {
                 $product_row = mysqli_fetch_assoc($products_result);
 
-                if (!isset($_SESSION['name'])) {
+                if (!isset($_SESSION['firstname'])) {
                   $render_price = '<div id="price">PRICE &nbsp;$ ' . $product_row['price'] . '</div>';
                 } else {
                   $render_price ='<div id="price">PRICE &nbsp;<strike>$ ' . $product_row['price'] . '</strike> $' . ceil($product_row['price'] * 0.8) . ' </div>';

@@ -4,9 +4,9 @@
   include '../dbconn.php';
 
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = sha1($_POST['password']);
 
-  $member_check_query = "SELECT * FROM members WHERE email = \"$email\" AND password = sha1(\"$password\")";
+  $member_check_query = "SELECT * FROM members WHERE email = \"$email\" AND password = \"$password\"";
   echo $member_check_query;
   $member_check_result = mysqli_query($conn, $member_check_query);
   if (mysqli_num_rows($member_check_result) > 0) {

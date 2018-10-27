@@ -10,7 +10,7 @@
   $phone = $_POST['phone'];
   $address = $_POST['address'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
+  $password = sha1($_POST['password']);
 
   // Check if member already exists
   $member_query = "SELECT * FROM members WHERE email = \"$email\"";
@@ -22,7 +22,7 @@
     $customer_insert_query = "INSERT INTO customers(salutation,name,address,email,phone) VALUES (\"$salutation\",\"$name\",\"$address\",\"$email\",\"$phone\")";
     if (mysqli_query($conn, $customer_insert_query)) {
       $customer_id = mysqli_insert_id($conn);
-      $member_insert_query = "INSERT INTO members(customerID, email, password) VALUES ($customer_id,\"$email\",sha1(\"$password\"))";
+      $member_insert_query = "INSERT INTO members(customerID, email, password) VALUES ($customer_id,\"$email\",\"$password\")";
       if (mysqli_query($conn, $member_insert_query)) {
         // set session variables
         $_SESSION['firstname'] = $_POST['firstname'];

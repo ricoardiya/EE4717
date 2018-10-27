@@ -17,14 +17,15 @@
       $customer_row = mysqli_fetch_assoc($customer_result);
 
       // Set session variables
-      $_SESSION['firstname'] = $customer_row['firstname'];
-      $_SESSION['lastname'] = $customer_row['lastname'];
+      $name = explode(" ", $customer_row['name']);
+      $_SESSION['firstname'] = $name[0];
+      $_SESSION['lastname'] = $name[0];
       $_SESSION['email'] = $customer_row['email'];
-      echo 'success';
-      // header('Location: ' . $_SESSION['history'] . '');
+
+      header('Location: ' . $_SESSION['history'] . '');
     }
   } else {
     echo 'error';
-    // header('Location: /ee4717/login/');
+    header('Location: /ee4717/login/');
   }
 ?>

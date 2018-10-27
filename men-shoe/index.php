@@ -126,6 +126,40 @@
                 ?>
               </div>
             </div>
+            <hr>
+            <div class="reviews">
+              <div class="header">
+                Reviews
+              </div>
+              <div class="lists">
+                <?php
+                  $reviews_query = "SELECT reviews.reviews, customers.name FROM `orders`
+                                    RIGHT JOIN reviews ON orders.transactionID = reviews.transactionID
+                                    JOIN transactions ON orders.transactionID = transactions.id
+                                    JOIN customers ON transactions.customerID = customers.id
+                                    WHERE productID = $productID";
+
+                  $reviews_result = mysqli_query($conn, $reviews_query);
+
+                  echo '<table>';
+
+                  if (mysqli_num_rows($reviews_result) > 0) {
+                    while($reviews_row = mysqli_fetch_assoc($reviews_result)){
+                      echo '<tr>
+                              <td>' . $reviews_row['name'] . '</td>
+                              <td>' . $reviews_row['reviews'] . '</td>
+                            </tr>';
+                    }
+                  } else {
+                    echo '<tr>
+                            <td></td>
+                            <td>No reviews yet</tr>
+                          </tr>';
+                  }
+                  echo '</table>';
+                ?>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row recommendation-wrapper">

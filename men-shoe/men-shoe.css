@@ -72,6 +72,31 @@
   display: list-item;
 }
 
+.reviews {
+  margin-top: 50px;
+}
+
+.reviews .header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.reviews table {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  margin-top: 20px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.reviews table tr {
+  border-bottom: 1pt solid #cecece;
+}
+
+.name {
+  width: 30px;
+}
+
 .recommendation-wrapper {
   margin-top: 100px;
   margin-bottom: 100px;

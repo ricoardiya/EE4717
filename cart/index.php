@@ -11,7 +11,12 @@
 ?>
 <!DOCTYPE html>
 <html>
-  <?php include '../head.php' ?>
+  <?php
+    include '../head.php';
+    include '../dbconn.php';
+  ?>
+  <link rel="stylesheet" type="text/css" href="cart.css">
+  <link rel="stylesheet" type="text/css" href="../cart/small-cart.css">
   <body>
     <h1>Your Shopping Cart </h1>
     <?php

@@ -161,7 +161,7 @@ CREATE TABLE reviews (
 CREATE TABLE `members`(
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
-  `password` binary(200) NOT NULL,
+  `password` varchar(25) NOT NULL,
   `customerID` int(10),
   PRIMARY KEY(id),
   INDEX `FK_MEMBER_CUSTOMER_ID` (`customerID` ASC),

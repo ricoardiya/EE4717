@@ -1517,7 +1517,7 @@ INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,50,'Magna deserunt ci
 
 
 -- Initialize member table
-s
+
 CREATE TABLE `members`(
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,

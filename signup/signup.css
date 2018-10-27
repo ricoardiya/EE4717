@@ -1,0 +1,88 @@
+.signup-wrapper {
+  padding-top: 100px;
+  padding-right: 10px;
+  margin-left: 200px;
+  margin-right: 200px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.signup-header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 220;
+  margin-bottom: 50px;
+}
+
+form {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+label {
+  margin-top: 30px;
+}
+
+input[type=radio] {
+  width: 50px;
+}
+
+input {
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 250px;
+  text-align: center;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.btn-signup {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 290px;
+}
+
+.btn-signup:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 290px;
+}
+
+.already-member {
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+.login-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  letter-spacing: 0.8px;
+}
+
+.login-link {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.8px;
+}

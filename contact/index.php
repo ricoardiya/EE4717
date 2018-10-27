@@ -32,14 +32,31 @@
         <div class="col right">
           <form action="/ee4717/contact/submit_contact_form.php" class="contact-form">
             <label for="fname">*First Name: </label><br>
-            <input type="text" required id="fname" name="firstname" placeholder="John">
-            <br><br>
-            <label for="lname">Last Name: </label><br>
-            <input type="text" id="lname" name="lastname" placeholder="Doe">
-            <br><br>
-            <label for="email">*Email: </label><br>
-            <input type="email" required id="email" name="email" placeholder="John@doe.com">
-            <br><br>
+            <?php
+              if (isset($_SESSION['firstname'])) {
+                echo '
+                <input type="text" required id="fname" name="firstname" value=" ' . $_SESSION['firstname'] . ' ">
+                <br><br>
+                <label for="lname">Last Name: </label><br>
+                <input type="text" id="lname" name="lastname" value=" ' . $_SESSION['lastname'] . ' ">
+                <br><br>
+                <label for="email">*Email: </label><br>
+                <input type="email" required id="email" name="email" value=" ' . $_SESSION['email'] . '">
+                <br><br>
+                ';
+              } else {
+                echo '
+                <input type="text" required id="fname" name="firstname" placeholder="John">
+                <br><br>
+                <label for="lname">Last Name: </label><br>
+                <input type="text" id="lname" name="lastname" placeholder="Doe">
+                <br><br>
+                <label for="email">*Email: </label><br>
+                <input type="email" required id="email" name="email" placeholder="John@doe.com">
+                <br><br>
+                ';
+              }
+            ?>
             <label for="message">*Message: </label><br>
             <textarea rows="4" required id="message" cols="30" name="message" placeholder="Insert your message here ..."></textarea>
             <br><br>

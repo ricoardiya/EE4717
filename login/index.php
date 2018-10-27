@@ -16,7 +16,7 @@
     <div class="content-wrapper">
       <div class="signin-wrapper">
         <div>
-          <form action="/submit-login.php" class="contact-form" method="POST">
+          <form action="submit-login.php" class="contact-form" method="POST">
             <label for="email">Email </label><br>
             <input type="email" required id="email" name="email">
             <br><br>

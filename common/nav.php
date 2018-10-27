@@ -5,6 +5,24 @@
   if ($actual_link != 'http://localhost/ee4717/login/' && $actual_link != 'http://localhost/ee4717/signup/') {
     $_SESSION['history'] = $actual_link;
   }
+  //for cart
+  class buy_item{
+    public $productID;
+    public $quantity;
+    public $size;
+  }
+  if(isset($_POST['productID']) && isset($_POST['size']) && isset($_POST['quantity'])){
+    $item = new buy_item();
+    $item->productID = $_POST['productID'];
+    $item->quantity = $_POST['quantity'];
+    $item->size = $_POST['quantity'];
+    if(!isset($_SESSION['cart'])){
+      $_SESSION['cart'] = array();
+      array_push($_SESSION['cart'], $item);
+    }
+    array_push($_SESSION['cart'], $item);
+  }
+
 ?>
 <section>
   <header class="header-center">

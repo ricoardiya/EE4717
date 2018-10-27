@@ -14,12 +14,12 @@
     }
 
     for ($i=0; $i<10;$i++){
+      echo '<br><br>inside cart now: ';
+      echo '<br>';
       $item = new buy_item();
       $item->productID = $i+1;
       $item->quantity = $i+2;
       $item->size = rand(38,42) ;
-      echo '<br><br>inside cart now: ';
-      echo '<br>';
       array_push($_SESSION['cart'], $item);
       echo 'productID: '.$_SESSION['cart'][$i]->productID;
       echo '<br> quantity: '.$_SESSION['cart'][$i]->quantity;

@@ -75,6 +75,12 @@
         </script>
         <div class="catalog">
           <div class="row">
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+              <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+                </div>
+            </div>
             <?php
               // convert array to string
               foreach($types as $type){
@@ -115,9 +121,23 @@
                               <button type="submit" class="btn-shoename">' . ucwords($products_row['name']) . '</button>
                             </form>
                             ' . $render_price . '
-                            <form action="">
-                              <button type="submit" class="btn-addcart">ADD TO CART</button>
-                            </form>
+                              <button id="'. $products_row['id'].'"class="btn-addcart ">ADD TO CART</button>
+                              <script type="text/javascript">
+                                var modal = document.getElementById("myModal");
+                                var btn = document.getElementById('.$products_row['id'].');
+                                var span = document.getElementsByClassName("close")[0];
+                                btn.onclick = function() {
+                                    modal.style.display = "block";
+                                }
+                                span.onclick = function() {
+                                    modal.style.display = "none";
+                                }
+                                window.onclick = function(event) {
+                                    if (event.target == modal) {
+                                        modal.style.display = "none";
+                                    }
+                                }
+                              </script>
                           </div>
                         </div>
                       </div>';
@@ -132,3 +152,6 @@
     <?php include  '../common/footer.php'?>
   </body>
 </html>
+
+
+

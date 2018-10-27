@@ -7,7 +7,7 @@ Run this file to intialize database
 
 -- Drop tables if exists
 
-use newest_sepatu;
+use sepatu;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS orders;

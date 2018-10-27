@@ -107,6 +107,25 @@
             <hr>
             <button type="submit" class="btn-addcart">BUY NOW</button>
             <button type="submit" class="btn-addcart">ADD TO CART</button>
+            <hr>
+            <div class="specs">
+              <div class="header">
+                Specification
+              </div>
+              <div class="lists">
+                <?php
+                  $specs_query = "SELECT * FROM specifications WHERE productID = $productID";
+                  $specs_result = mysqli_query($conn, $specs_query);
+                  echo '<ul class="list">';
+                  if (mysqli_num_rows($specs_result) > 0) {
+                    while($specs_row = mysqli_fetch_assoc($specs_result)){
+                      echo '<li>'. $specs_row['specification'].'</li>';
+                    }
+                  }
+                  echo '</ul>';
+                ?>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row recommendation-wrapper">

@@ -47,6 +47,31 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.specs {
+  margin-top: 50px;
+}
+
+.specs .header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.specs .lists ul {
+  color: black;
+  list-style-type: disc;
+  margin-top: 20px;
+  margin-left: 30px;
+  text-align: left;
+}
+
+.specs .lists li {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 280;
+  padding: 3px;
+  display: list-item;
+}
+
 .recommendation-wrapper {
   margin-top: 100px;
   margin-bottom: 100px;

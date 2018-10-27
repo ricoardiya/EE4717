@@ -8,7 +8,7 @@ Run this file to intialize database
 -- Drop tables if exists
 
 use sepatu;
-DROP TABLE IF EXISTS products;
+
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS orders;
@@ -17,6 +17,7 @@ DROP TABLE IF EXISTS specifications;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS inventory;
 DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS contact;
 
 -- Initialize contact table
@@ -49,7 +50,7 @@ CREATE TABLE customers (
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` int(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -160,7 +161,7 @@ CREATE TABLE reviews (
 CREATE TABLE `members`(
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
-  `password` binary NOT NULL,
+  `password` varchar(50) NOT NULL,
   `customerID` int(10),
   PRIMARY KEY(id),
   INDEX `FK_MEMBER_CUSTOMER_ID` (`customerID` ASC),

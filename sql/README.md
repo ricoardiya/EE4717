@@ -1,18 +1,49 @@
 ## Database structure
 
-To initialized database
-Please execute in sequence
+To initialized database:
 ```
-1. dbinit.sql
-2. seed_product.sql
-3. seed_pictures.sql
-4. seed_customer.sql
-5. seed_inventory.sql
-6. seed_order.sql
-7. seed_reviews.sql
+Make sure the db name written correctly in dbinit.sql file
 ```
 
-### products table
+Then execute these sql file in sequence
+```
+1. dbinit.sql
+2. seed_contacts.sql
+3. seed_customers.sql
+4. seed_products.sql
+5. seed_pictures.sql
+6. seed_inventory.sql
+7. seed_specifications.sql
+8. seed_transactions.sql
+9. seed_orders.sql
+10. seed_reviews.sql
+11. seed_members.sql
+```
+You can also choose to execute all of the sql file above with
+```
+1. all_files.sql
+```
+
+### contacts
+| Column | Data types | PK / FK |
+| ------ | ---------- | ------- |
+| id | int(11) | PK |
+| firstname | varchar(20) |  |
+| lastname | varchar(20) |  |
+| email | varchar(50) | |
+| message | text | |
+
+### customers
+| Column | Data types | PK / FK |
+| ------ | ---------- | ------- |
+| id | int(10) | PK |
+| salutation | varchar(5) | |
+| name | varchar(30) | |
+| address | varchar(100)) | |
+| email | varchar(50) | |
+| phone | varchar(20) | |
+
+### products
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |
 | id | int(10) | PK |
@@ -20,6 +51,7 @@ Please execute in sequence
 | color | char(10) | |
 | desc | text | |
 | gender | char(4) | |
+| price | int(10) | |
 
 ### inventory
 | Column | Data types | PK / FK |
@@ -34,25 +66,33 @@ Please execute in sequence
 | ------ | ---------- | ------- |
 | id | int(10) | PK |
 | productID | int(10) | FK (`products.id`) |
-| pictureURL | varchar(80) | |
+| pictureURL | varchar(150) | |
 
-### customers
+### specifications
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |
 | id | int(10) | PK |
-| name | varchar(30) | |
-| address | varchar(100) | |
-| zipCode | int(80) | |
-| email | varchar(50) | |
-| phone | int(80) | |
+| productID | int(10) | FK (`products.id`) |
+| specification | text | |
+
+### transactions
+| Column | Data types | PK / FK |
+| ------ | ---------- | ------- |
+| id | int(10) | PK |
+| customerID | int(10) | FK (`customers.id`) |
+| firstname | varchar(20) | |
+| lastname | varchar(20) | |
+| address | text | |
+| zipCode | int(6) | |
+| phone | varchar(20) | |
 
 ### orders
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |
 | id | int(10) | PK |
-| customerID | int(10) | FK (`customers.id`) |
+| transactionID | int(10) | FK (`transactions.id`) |
+| productID | int(10) | FK (`products.id`) |
 | dateOrder | date | |
-| productID | int(10) | FK(`products.id`) |
 | quantity | int(10) | |
 | size | int(2) | |
 
@@ -60,6 +100,13 @@ Please execute in sequence
 | Column | Data types | PK / FK |
 | ------ | ---------- | ------- |
 | id | int(10) | PK |
-| customerID | int(10) | FK (`customers.id`) |
-| productID | int(10) | FK(`products.id`) |
+| transactionID | int(10) | FK (`transactions.id`) |
 | reviews | text | |
+
+### members
+| Column | Data types | PK / FK |
+| ------ | ---------- | ------- |
+| id | int(10) | PK |
+| email | varchar(50) | |
+| password | binary(200)) | |
+| customerID | int(10) | FK (`customers.id`) |

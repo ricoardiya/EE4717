@@ -157,6 +157,27 @@
                           </tr>';
                   }
                   echo '</table>';
+
+                  if (isset($_SESSION['email'])) {
+                    $customer_query = "SELECT customers.email, orders.transactionID FROM `orders`
+                                        JOIN transactions ON orders.transactionID = transactions.id
+                                        JOIN customers ON transactions.customerID = customers.id
+                                        WHERE productID = $productID AND customers.email =\"" . $_SESSION['email'] . "\"";
+
+                    $customer_result = mysqli_query($conn, $customer_query);
+
+                    if (mysqli_num_rows($customer_result) > 0) {
+                      $customer_row = mysqli_fetch_assoc($customer_result);
+                      $transaction_id = $customer_row['transactionID'];
+                      echo '
+                      <form action="submit-review.php" method="POST">
+                        <input type="hidden" value="' . $transaction_id . '" name="transactionid" id="transactionid">
+                        <textarea rows="4" required id="message" cols="50" name="review" placeholder="Place your review here"></textarea><br>
+                        <button type="submit" class="btn-addcart">SUBMIT</button>
+                      </form>
+                      ';
+                    }
+                  }
                 ?>
               </div>
             </div>

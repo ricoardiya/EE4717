@@ -1516,11 +1516,6 @@ INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,49,'Incididunt conseq
 INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,50,'Magna deserunt cillum tempor sunt dolore ullamco ullamco.');
 
 
--- Initialize member table
-<<<<<<< HEAD
-=======
-
->>>>>>> 3f1b1ff3ef309705f350278bbc0ab990ea3a8bed
 CREATE TABLE `members`(
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,

@@ -50,7 +50,6 @@
         header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
         exit();
       }
-
     ?>
     <div class="content-wrapper">
       <div class="content-item">
@@ -199,8 +198,7 @@
             <button type="submit" class="btn-addcart">ADD TO CART</button>
           </div>
           </form>
-            <button class="btn-addcart" id="myBtn">MODAL</button>
-          <?php var_dump($_SESSION);?>
+            <!-- <button class="btn-addcart" id="myBtn">MODAL</button> -->
         </div>
         <div class="row recommendation-wrapper">
           <div class="recommendation-header">

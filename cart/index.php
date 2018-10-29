@@ -2,20 +2,15 @@
   if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
   }
+
+  echo "<script> console.log('load php'); </script>";
   if(isset($_GET['delete'])){
+    echo "<script> console.log('empty cart'); </script>";
     unset($_SESSION['cart']);
-    session_unset();
-    header('location: ' . $_SERVER['PHP_SELF'].'?'. SID);
-    exit();
-  }
-  if (isset($_GET['empty'])) {
-    // unset($_SESSION['cart']);
-    session_destroy();
-    header('location: ' . $_SERVER['PHP_SELF']);
+    header('location: ' . $_SERVER['PHP_SELF'].'');
     exit();
   }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -113,7 +108,7 @@
             </table>
           <p>
             <a href="../men-catalog/index.php">Continue Shopping</a> or
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty your cart</a></p>
+            <a href="../cart/index.php?delete=1"> Empty your cart </a>
           </p>
         </div>
       </div>

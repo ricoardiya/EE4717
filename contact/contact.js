@@ -5,6 +5,7 @@ function checkFirstName(event) {
     if (!myName.value. replace(/\s/g, '').length) {
       document.getElementById('firstname-message').style.color = 'red';
       document.getElementById('firstname-message').innerHTML = 'this field cannot contain only whitespace';
+      document.getElementById('fname').placeholder = '';
       document.getElementById("fname").value = '';
       myName.focus();
       myName.select();
@@ -13,6 +14,7 @@ function checkFirstName(event) {
     if (pos == -1) {
       document.getElementById('firstname-message').style.color = 'red';
       document.getElementById('firstname-message').innerHTML = 'wrong format';
+      document.getElementById('fname').placeholder = '';
       document.getElementById("fname").value = '';
       myName.focus();
       myName.select();

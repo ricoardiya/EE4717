@@ -58,6 +58,7 @@
       <div class="cart-header">
         Shopping Cart
       </div>
+      <?php var_dump($_SESSION['cart']);?>
       <div class="cart-content">
             <table class="table-wrapper" border="1">
               <thead>
@@ -110,6 +111,12 @@
             <a href="../men-catalog/index.php">Continue Shopping</a> or
             <a href="../cart/index.php?delete=1"> Empty your cart </a>
           </p>
+          <div class="btn-confirm">
+            <form action="">
+              <input type="hidden" name="">
+              <button type="submit">Confirm</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

@@ -94,7 +94,7 @@
                         echo '<button class="btn-confirm" type="submit" onclick="updateCart();">Update</button>';
                         echo "</td>";
                         echo "<td>";
-                        echo '<img src="../assets/pictures/trash/trash-can.png" alt="trash" width="30px">';
+                        echo '<img src="../assets/pictures/trash/trash-can.png" alt="trash" width="10px">';
                         echo "</td>";
                         echo "</tr>";
                     }

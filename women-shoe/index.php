@@ -54,13 +54,6 @@
     ?>
     <div class="content-wrapper">
       <div class="content-item">
-        <div id="myModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-          </div>
-        </div>
         <div class="row">
           <a href="/ee4717/women-catalog/">< GO BACK TO WOMEN CATALOG</a>
         </div>

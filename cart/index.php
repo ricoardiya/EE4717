@@ -2,14 +2,6 @@
   if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
   }
-
-  echo "<script> console.log('load php'); </script>";
-  if(isset($_GET['delete'])){
-    echo "<script> console.log('empty cart'); </script>";
-    unset($_SESSION['cart']);
-    header('location: ' . $_SERVER['PHP_SELF'].'');
-    exit();
-  }
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +105,7 @@
               <tfoot>
               <tr>
                 <th colspan="5" align='right'>Total:</th><br>
-                <th align='right'>S$<span id="totalPrice"</span>
+                <th align='right'>S$<span id="totalPrice"></span>
                 </th>
               </tr>
               </tfoot>
@@ -124,7 +116,7 @@
             <div>
               <p>
                 <a href="../men-catalog/index.php">Continue Shopping</a> or
-                <a href="../cart/index.php?delete=1"> Empty your cart </a>
+                <a href="emptying-cart.php"> Empty your cart </a>
               </p>
             </div>
         </div>
@@ -230,4 +222,3 @@
     <?php include '../common/footer.php'?>
   </body>
 </html>
-

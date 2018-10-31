@@ -1,5 +1,8 @@
 <?php
-  Session_start();
-  Session_destroy();
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+Session_start();
+unset ($_SESSION["firstname"]);
+unset ($_SESSION["lastname"]);
+unset ($_SESSION["email"]);
+
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

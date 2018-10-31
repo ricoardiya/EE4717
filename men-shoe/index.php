@@ -6,6 +6,7 @@
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="men-shoe.css">
+  <link rel="stylesheet" type="text/css" href="../cart/small-cart.css">
   <body>
     <!-- Include navbar -->
     <?php
@@ -95,7 +96,7 @@
               <script type="text/javascript" src="./display_image.js"></script>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <!-- Product description -->
             <?php
               $products_query = "SELECT * FROM products WHERE id = $productID";
@@ -266,6 +267,13 @@
           </div>
           </form>
             <!-- <button class="btn-addcart" id="myBtn">MODAL</button> -->
+          <div class="col-1">
+            <div class="cart">
+              <?php
+                include '../cart/small-cart.php';
+              ?>
+            </div>
+          </div>
         </div>
         <div class="row recommendation-wrapper">
           <div class="recommendation-header">

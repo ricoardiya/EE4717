@@ -5,6 +5,12 @@
   if ($actual_link != 'http://localhost/ee4717/login/' && $actual_link != 'http://localhost/ee4717/signup/') {
     $_SESSION['history'] = $actual_link;
   }
+  //for cart
+  class buy_item{
+    public $productID;
+    public $quantity;
+    public $size;
+  }
 ?>
 <section>
   <header class="header-center">

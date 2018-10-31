@@ -5,6 +5,7 @@
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="men-catalog.css">
+  <link rel="stylesheet" type="text/css" href="../cart/small-cart.css">
   <body>
     <?php
       $path = $_SERVER['DOCUMENT_ROOT'];
@@ -12,6 +13,9 @@
       include $path;
     ?>
     <div class="content-wrapper">
+      <div class="cart">
+        <?php include '../cart/small-cart.php' ?>
+      </div>
       <div class="content-catalog">
         <div class="filter">
           <?php
@@ -24,6 +28,9 @@
 
             if (isset($_GET['color'])) {
               $colors = $_GET['color'];
+            }
+            if (isset($_GET['productID'])) {
+              $pID = $_GET['productID'];
             }
           ?>
           <form method="get" action="index.php">
@@ -71,6 +78,13 @@
         </script>
         <div class="catalog">
           <div class="row">
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+              <span class="close" onclick="close()">&times;</span>
+                  <div id="modal_name"></div>
+                  <div id="modal_picture"></div>
+                </div>
+            </div>
             <?php
               // convert array to string
               foreach($types as $type){
@@ -111,9 +125,7 @@
                               <button type="submit" class="btn-shoename">' . ucwords($products_row['name']) . '</button>
                             </form>
                             ' . $render_price . '
-                            <form action="">
-                              <button type="submit" class="btn-addcart">ADD TO CART</button>
-                            </form>
+                              <button id="'. $products_row['id'].'" class="btn-addcart" onclick="myFunction(this)">ADD TO CART</button>
                           </div>
                         </div>
                       </div>';
@@ -125,6 +137,62 @@
         </div>
       </div>
     </div>
+      <script type="text/javascript">
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("");
+        var span = document.getElementsByClassName("close")[0];
+
+        function myFunction(elem) {
+            console.log(elem.id);
+
+            // var newUrl= window.location.protocol +"//" + window.location.host + path + '?id=' + elem.id;
+            var newUrl= 'http://localhost/ee4717/men-catalog?id=' + elem.id;
+
+            console.log('newURL: ' , newUrl);
+            window.history.pushState({path: newUrl}, '', newUrl);
+
+            console.log(window.location.href);
+            if (elem.id && document.getElementById("modal_name") && document.getElementById("modal_picture")){
+              <?php
+                if(!isset($_GET['id'])){
+                  $id=$_GET['id'] ;
+                }else{
+                  $id=1;
+                }
+
+                $get_products = "SELECT pictures.pictureURL, products.name, products.price, products.desc FROM pictures INNER JOIN products ON pictures.productID = products.id WHERE products.id=$id";
+                $products_result = mysqli_query($conn, $get_products);
+                if (mysqli_num_rows($products_result) > 0) {
+                  $products_row = mysqli_fetch_assoc($products_result);
+                  echo '
+                  document.getElementById("modal_name").innerHTML = "Product: '.$products_row['name'].'";
+                  document.getElementById("modal_picture").innerHTML = "<img src=\"../'. $products_row['pictureURL'] .'\" alt=\"shoes\" style=\"height:50% width:50%\">";
+                  ';
+                }
+              ?>
+              modal.style.display = "block";
+            }
+        }
+        function close() {
+            if (document.getElementById("modal_name") && document.getElementById("modal_picture")){
+              document.getElementById("modal_picture").outerHTML = "";
+              document.getElementById("modal_name").innerHTML = "";
+            }
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+              if (document.getElementById("modal_name") && document.getElementById("modal_picture")){
+                document.getElementById("modal_picture").outerHTML = "";
+                document.getElementById("modal_name").innerHTML = "";
+              }
+              modal.style.display = "block";
+            }
+        }
+      </script>
     <?php include  '../common/footer.php'?>
   </body>
 </html>

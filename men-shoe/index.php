@@ -24,7 +24,7 @@
         $_SESSION['cart'] = array();
       }
       if (isset($_POST['productID']) && isset($_POST['size']) && isset($_POST['quantity'])) {
-        if(empty($_SESSION['cart'])){
+        if(empty($_SESSION['cart'])){ //if the cart still empty
           $item = new buy_item();
           $item->productID = $_POST['productID'];
           $item->size = $_POST['size'];
@@ -33,7 +33,7 @@
           header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
           exit();
         }else{
-          for($i=0; $i<count($_SESSION['cart']) ; $i++){
+          for($i=0; $i<count($_SESSION['cart']) ; $i++){ // the cart still empty
             if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
               // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);

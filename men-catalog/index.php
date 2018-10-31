@@ -35,7 +35,7 @@
     }
     echo "<script>";
     echo " var js_shoes = ".json_encode($shoes) . ";";
-    echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
+    // echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
     echo "</script>";
   ?>
   <body>
@@ -113,7 +113,8 @@
                     <div class="col-6 font-modal">
                       <div id="modal_name"></div>
                       <div id="modal_price"></div>
-                      <form action="">
+                      <form action="./addToCart.php" method="POST">
+                        <div id="modal_productID"></div>
                         <div id="modal_size">Select your size: <select name="selected_size" id="selected_size"></select></div>
                         <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity"></div>
                         <div id="modal_button"><button class="btn-addcart" onclick="addToCart()">ADD TO CART</button></div>
@@ -185,6 +186,7 @@
           let btn = document.getElementById(elem.id);
           console.log('btn.id: ', btn.id);
           if(elem.id && btn.id && document.getElementById("modal_name") && document.getElementById("modal_price")){
+            document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' value="+ elem.id +">";
             for (var i=1; i < js_shoes.length ; i++){
               if(js_shoes[i]['id'] == btn.id){
                 document.getElementById("modal_name").innerHTML = js_shoes[i]['name'] + "<br>";

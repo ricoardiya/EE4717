@@ -61,44 +61,54 @@
         Shopping Cart
       </div>
       <div class="cart-content">
-            <table class="table-wrapper" border="1">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Picture</th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Size</th>
-                  <th>Quantity</th>
-                </tr>
-              </thead>
-              <tbody>
-            <?php
-            $total = 0;
-            if (isset($_SESSION['cart'])){
-              for ($i=0,$a=1; $i < $arr_length; $i++, $a++){
-                  echo "<tr>";
-                  echo  "<td>". $a ."</td>";
-                  $products_query = "SELECT products.name, pictures.pictureURL, products.price FROM products INNER JOIN pictures ON products.id = pictures.productID WHERE products.id =". $_SESSION['cart'][$i]->productID. ";";
-                  $products_result = mysqli_query($conn, $products_query);
-                  if (mysqli_num_rows($products_result) > 0) {
-                    $products_row = mysqli_fetch_assoc($products_result);
-                    echo "<td><img src=\"../".$products_row['pictureURL']."\" alt='shoes' width='50%' height='50%'></td>";
-                    echo "<td>".ucwords($products_row['name'])."</td>";
-                    echo "<td>".$products_row['price']."</td>";
-                  }
-                  echo "<td>" ;
-                  // echo '<input id="size-'.$stock[$i]->row.'" min=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="getSize(this)">';
-                  echo '<input id="size-'.$i.'" step=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="setMaxQuantity(this)">';
-                  echo "</td>";
+        <form action="./updateCart.php" method="POST">
+        <table class="table-wrapper" border="1">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Picture</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Size</th>
+              <th>Quantity</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+                <?php
+                  $total = 0;
+                  if (isset($_SESSION['cart'])){
+                    for ($i=0,$a=1; $i < $arr_length; $i++, $a++){
+                        echo "<tr>";
+                        echo  "<td>". $a ."</td>";
+                        $products_query = "SELECT products.name, pictures.pictureURL, products.price FROM products INNER JOIN pictures ON products.id = pictures.productID WHERE products.id =". $_SESSION['cart'][$i]->productID. ";";
+                        $products_result = mysqli_query($conn, $products_query);
+                        if (mysqli_num_rows($products_result) > 0) {
+                          $products_row = mysqli_fetch_assoc($products_result);
+                          echo "<td><img src=\"../".$products_row['pictureURL']."\" alt='shoes' width='50%' height='50%'></td>";
+                          echo "<td>".ucwords($products_row['name'])."</td>";
+                          echo "<td>".$products_row['price']."</td>";
+                        }
+                        echo "<td>" ;
+                        // echo '<input id="size-'.$stock[$i]->row.'" min=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="getSize(this)">';
+                        echo '<input id="size-'.$i.'" name="size-'.$i.'" step=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="setMaxQuantity(this)">';
+                        echo "</td>";
 
-                  echo "<td>";
-                  echo '<input  id="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
-                  echo "</td>";
-                  echo "</tr>";
-              }
-            }
-            ?>
+                        echo "<td>";
+                        echo '<input  id="quantity-'.$i.'" name="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<button class="btn-confirm" type="submit" onclick="updateCart();">Update</button>';
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<img src="../assets/pictures/trash/trash-can.png" alt="trash" width="30px">';
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                    echo '<input type="hidden" name="total" value='.$arr_length.'>';
+                  }
+                ?>
               </tbody>
               <tfoot>
               <tr>
@@ -108,12 +118,9 @@
               </tr>
               </tfoot>
             </table>
-            <div >
-              <form action="">
-                <input type="hidden" name="">
-                <button class="btn-confirm" type="submit">Confirm</button>
-              </form>
-            </div>
+          <button class="btn-confirm" type="submit" onclick="updateCart();">Confirm</button>
+
+          </form>
             <div>
               <p>
                 <a href="../men-catalog/index.php">Continue Shopping</a> or
@@ -214,8 +221,13 @@
       document.getElementById('totalPrice').innerHTML = total;
       return total;
     }
+    function updateCart(){
+      var message = document.getElementById("updateCartMessage");
+      message.className="show";
+      setTimeout(function(){ message.className = message.className.replace("show",""); }, 3000);
+    }
     </script>
-    <?php include  '../common/footer.php'?>
+    <?php include '../common/footer.php'?>
   </body>
 </html>
 

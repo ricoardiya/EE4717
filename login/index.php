@@ -15,6 +15,11 @@
     ?>
     <div class="content-wrapper">
       <div class="signin-wrapper">
+        <?php
+          if(isset($_SESSION['login-error'])) {
+            echo $_SESSION['login-error'];
+          }
+        ?>
         <div>
           <form action="submit-login.php" class="contact-form" method="POST">
             <label for="email">Email </label><br>
@@ -31,6 +36,11 @@
         </div>
       </div>
     </div>
+    <?php
+      if(isset($_SESSION['login-error'])) {
+        unset($_SESSION['login-error']);
+      }
+    ?>
     <?php include  '../common/footer.php'?>
   </body>
 </html>

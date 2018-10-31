@@ -19,6 +19,11 @@
         <div class="signup-header">
           Become a member
         </div>
+        <?php
+          if(isset($_SESSION['signup-error'])) {
+            echo $_SESSION['signup-error'];
+          }
+        ?>
         <div>
           <form action="/ee4717/signup/submit-signup.php" method="POST" class="contact-form" onsubmit="return checkError()">
             <label for="salutation">*Salutation</label><br>
@@ -68,6 +73,11 @@
         <script type="text/javascript" src="signup-handler.js"></script>
       </div>
     </div>
+    <?php
+      if(isset($_SESSION['signup-error'])){
+        unset ($_SESSION["signup-error"]);
+      }
+    ?>
     <?php include  '../common/footer.php'?>
   </body>
 </html>

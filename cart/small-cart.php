@@ -23,7 +23,7 @@
             <td>2</td>
           </tr>
         </table>
-        <button class="btn-addcart">GO TO CART</button>
+        <a href="../cart/index.php"><button class="btn-addcart">GO TO CART</button>
         <button class="btn-addcart">CHECKOUT</button>
       </div>
     </div>

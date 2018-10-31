@@ -73,6 +73,48 @@
   display: list-item;
 }
 
+.reviews {
+  margin-top: 50px;
+}
+
+.reviews .header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.reviews table {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.reviews table tr {
+  border-bottom: 1pt solid #cecece;
+}
+
+.name {
+  width: 30px;
+}
+
+form {
+  margin-top: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+textarea,input{
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
 .recommendation-wrapper {
   margin-top: 100px;
   margin-bottom: 100px;

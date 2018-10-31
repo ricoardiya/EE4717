@@ -189,6 +189,80 @@
             <hr>
             <button type="submit" class="btn-addcart">BUY NOW</button>
             <button type="submit" class="btn-addcart">ADD TO CART</button>
+            <hr>
+            <div class="specs">
+              <div class="header">
+                Specification
+              </div>
+              <div class="lists">
+                <?php
+                  $specs_query = "SELECT * FROM specifications WHERE productID = $productID";
+                  $specs_result = mysqli_query($conn, $specs_query);
+                  echo '<ul class="list">';
+                  if (mysqli_num_rows($specs_result) > 0) {
+                    while($specs_row = mysqli_fetch_assoc($specs_result)){
+                      echo '<li>'. $specs_row['specification'].'</li>';
+                    }
+                  }
+                  echo '</ul>';
+                ?>
+              </div>
+            </div>
+            <hr>
+            <div class="reviews">
+              <div class="header">
+                Reviews
+              </div>
+              <div class="lists">
+                <?php
+                  $reviews_query = "SELECT reviews.reviews, customers.name FROM `orders`
+                                    RIGHT JOIN reviews ON orders.transactionID = reviews.transactionID
+                                    JOIN transactions ON orders.transactionID = transactions.id
+                                    JOIN customers ON transactions.customerID = customers.id
+                                    WHERE productID = $productID";
+
+                  $reviews_result = mysqli_query($conn, $reviews_query);
+
+                  echo '<table>';
+
+                  if (mysqli_num_rows($reviews_result) > 0) {
+                    while($reviews_row = mysqli_fetch_assoc($reviews_result)){
+                      echo '<tr>
+                              <td>' . $reviews_row['name'] . '</td>
+                              <td>' . $reviews_row['reviews'] . '</td>
+                            </tr>';
+                    }
+                  } else {
+                    echo '<tr>
+                            <td></td>
+                            <td>No reviews yet</tr>
+                          </tr>';
+                  }
+                  echo '</table>';
+
+                  if (isset($_SESSION['email'])) {
+                    $customer_query = "SELECT customers.email, orders.transactionID FROM `orders`
+                                        JOIN transactions ON orders.transactionID = transactions.id
+                                        JOIN customers ON transactions.customerID = customers.id
+                                        WHERE productID = $productID AND customers.email =\"" . $_SESSION['email'] . "\"";
+
+                    $customer_result = mysqli_query($conn, $customer_query);
+
+                    if (mysqli_num_rows($customer_result) > 0) {
+                      $customer_row = mysqli_fetch_assoc($customer_result);
+                      $transaction_id = $customer_row['transactionID'];
+                      echo '
+                      <form action="submit-review.php" method="POST">
+                        <input type="hidden" value="' . $transaction_id . '" name="transactionid" id="transactionid">
+                        <textarea rows="4" required id="message" cols="50" name="review" placeholder="Place your review here"></textarea><br>
+                        <button type="submit" class="btn-addcart">SUBMIT</button>
+                      </form>
+                      ';
+                    }
+                  }
+                ?>
+              </div>
+            </div>
           </div>
           </form>
             <!-- <button class="btn-addcart" id="myBtn">MODAL</button> -->

@@ -17,7 +17,12 @@
   $member_result = mysqli_query($conn, $member_query);
 
   if (mysqli_num_rows($member_result)) {
-    echo 'error';
+    $_SESSION['signup-error'] = '
+      <div style="color:red;">
+        Account already exists<br><br><br>
+      </div>
+      ';
+    header('Location: /ee4717/signup/');
   } else {
     $customer_insert_query = "INSERT INTO customers(salutation,name,address,email,phone) VALUES (\"$salutation\",\"$name\",\"$address\",\"$email\",\"$phone\")";
     if (mysqli_query($conn, $customer_insert_query)) {

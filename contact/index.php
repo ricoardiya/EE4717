@@ -36,23 +36,35 @@
               if (isset($_SESSION['firstname'])) {
                 echo '
                 <input type="text" required id="fname" name="firstname" value=" ' . $_SESSION['firstname'] . ' ">
+                <br>
+                <span id="firstname-message"></span>
                 <br><br>
                 <label for="lname">Last Name: </label><br>
                 <input type="text" id="lname" name="lastname" value=" ' . $_SESSION['lastname'] . ' ">
+                <br>
+                <span id="lastname-message"></span>
                 <br><br>
                 <label for="email">*Email: </label><br>
                 <input type="email" required id="email" name="email" value=" ' . $_SESSION['email'] . '">
+                <br>
+                <span id="address-message"></span>
                 <br><br>
                 ';
               } else {
                 echo '
                 <input type="text" required id="fname" name="firstname" placeholder="John">
+                <br>
+                <span id="firstname-message"></span>
                 <br><br>
                 <label for="lname">Last Name: </label><br>
                 <input type="text" id="lname" name="lastname" placeholder="Doe">
+                <br>
+                <span id="lastname-message"></span>
                 <br><br>
                 <label for="email">*Email: </label><br>
                 <input type="email" required id="email" name="email" placeholder="John@doe.com">
+                <br>
+                <span id="email-message"></span>
                 <br><br>
                 ';
               }

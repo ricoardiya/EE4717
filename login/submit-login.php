@@ -25,7 +25,11 @@
       header('Location: ' . $_SESSION['history'] . '');
     }
   } else {
-    echo 'error';
+    $_SESSION['login-error'] = '
+      <div style="color:red;">
+        Invalid email or password <br><br><br>
+      </div>
+    ';
     header('Location: /ee4717/login/');
   }
 ?>

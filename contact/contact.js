@@ -1,4 +1,3 @@
-
 function chkName(event) {
     var myName = event.currentTarget;
     var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
@@ -39,4 +38,3 @@ function chkEmail(event) {
       return false;
     }
 }
-

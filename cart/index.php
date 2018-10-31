@@ -31,9 +31,11 @@
         public $size;
         public $quantity;
         public $price;
-
       }
-      for ($i=0; $i < count($_SESSION['cart']); $i++){
+
+      $arr_length=empty($_SESSION['cart']) ? 0 : count($_SESSION['cart']);
+
+      for ($i=0; $i < $arr_length; $i++){
         $inventory_query = "SELECT products.price, inventory.size, inventory.stock FROM inventory  INNER JOIN products ON products.id=inventory.productID WHERE inventory.productID =". $_SESSION['cart'][$i]->productID. ";";
         $inventory_result = mysqli_query($conn, $inventory_query);
         if (mysqli_num_rows($inventory_result) > 0) {
@@ -58,7 +60,6 @@
       <div class="cart-header">
         Shopping Cart
       </div>
-      <?php var_dump($_SESSION['cart']);?>
       <div class="cart-content">
             <table class="table-wrapper" border="1">
               <thead>
@@ -75,7 +76,7 @@
             <?php
             $total = 0;
             if (isset($_SESSION['cart'])){
-              for ($i=0,$a=1; $i < count($_SESSION['cart']); $i++, $a++){
+              for ($i=0,$a=1; $i < $arr_length; $i++, $a++){
                   echo "<tr>";
                   echo  "<td>". $a ."</td>";
                   $products_query = "SELECT products.name, pictures.pictureURL, products.price FROM products INNER JOIN pictures ON products.id = pictures.productID WHERE products.id =". $_SESSION['cart'][$i]->productID. ";";
@@ -107,20 +108,25 @@
               </tr>
               </tfoot>
             </table>
-          <p>
-            <a href="../men-catalog/index.php">Continue Shopping</a> or
-            <a href="../cart/index.php?delete=1"> Empty your cart </a>
-          </p>
-          <div class="btn-confirm">
-            <form action="">
-              <input type="hidden" name="">
-              <button type="submit">Confirm</button>
-            </form>
-          </div>
+            <div >
+              <form action="">
+                <input type="hidden" name="">
+                <button class="btn-confirm" type="submit">Confirm</button>
+              </form>
+            </div>
+            <div>
+              <p>
+                <a href="../men-catalog/index.php">Continue Shopping</a> or
+                <a href="../cart/index.php?delete=1"> Empty your cart </a>
+              </p>
+            </div>
         </div>
       </div>
     </div>
     <script>
+    <?php
+      $arr_length = empty($_SESSION['cart']) ? $arr_length=0: count($_SESSION['cart'])
+    ?>
     function getQuantity(elem){
       var inputquantity = document.getElementById(elem.id).value;
       calculateDollar();
@@ -148,7 +154,7 @@
       getSize();
     }
     function startUp() {
-      for (i=0; i< <?php echo count($_SESSION['cart']); ?> ; i++){
+      for (i=0; i< <?php echo $arr_length; ?>; i++){
         let q_field = "quantity-" + i;
         let s_field = "size-" + i;
         let inputsize = document.getElementById(s_field).value;
@@ -191,8 +197,7 @@
 
     function calculateDollar(){
       let total=0;
-      console.log('count ', <?php echo count($_SESSION['cart']); ?>);
-      for (i=0; i< <?php echo count($_SESSION['cart']); ?> ; i++){
+      for (i=0; i< <?php echo $arr_length; ?> ; i++){
         let q_field = "quantity-" + i;
         let s_field = "size-" + i;
         let quantity = document.getElementById(q_field).value;

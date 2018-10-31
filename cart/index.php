@@ -95,7 +95,7 @@
               <tfoot>
               <tr>
                 <th colspan="5" align='right'>Total:</th><br>
-                <th align='right'>S$<span id="totalPrice"</span>
+                <th align='right'>S$<span id="totalPrice"></span>
                 </th>
               </tr>
               </tfoot>

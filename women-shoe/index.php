@@ -6,6 +6,7 @@
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="women-shoe.css">
+  <link rel="stylesheet" type="text/css" href="../cart/small-cart.css">
   <body>
     <!-- Include navbar -->
     <?php
@@ -16,6 +17,40 @@
     <!-- GET productID from URL -->
     <?php
       $productID = $_GET['productID'];
+    ?>
+    <!-- Session for cart -->
+    <?php
+      session_start();
+      if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
+      }
+      if (isset($_POST['productID']) && isset($_POST['size']) && isset($_POST['quantity'])) {
+        if(empty($_SESSION['cart'])){
+          $item = new buy_item();
+          $item->productID = $_POST['productID'];
+          $item->size = $_POST['size'];
+          $item->quantity = $_POST['quantity'];
+          array_push($_SESSION['cart'], $item);
+          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          exit();
+        }else{
+          for($i=0; $i<count($_SESSION['cart']) ; $i++){
+            if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
+              // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
+              $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
+              header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              exit();
+            }
+          }
+        }
+        $item = new buy_item();
+        $item->productID = $_POST['productID'];
+        $item->size = $_POST['size'];
+        $item->quantity = $_POST['quantity'];
+        array_push($_SESSION['cart'], $item);
+        header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        exit();
+      }
     ?>
     <div class="content-wrapper">
       <div class="content-item">
@@ -59,7 +94,7 @@
               <script type="text/javascript" src="./display_image.js"></script>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <!-- Product description -->
             <?php
               $products_query = "SELECT * FROM products WHERE id = $productID";
@@ -86,9 +121,11 @@
                   echo "An error has occured. The item was not retrieved";
               }
             ?>
-            <div>
+          <form action="" method="POST">
+            <input type="hidden" name="productID" value=<?php echo $productID; ?>>
+            <div class="size">
               Choose your size:
-              <select name="size">
+              <select name="size" id="size" onload="getSize();" onchange="getSize();">
                 <?php
                   // query inventory of the product
                   $inventory_query = "SELECT * FROM inventory WHERE productID = $productID AND stock <> 0";
@@ -102,6 +139,51 @@
                   }
                 ?>
               </select>
+            </div>
+            <div class="quantity">
+              Quantity:
+                <?php
+                  // query inventory of the product
+                  $stock = array();
+                  class set{
+                    public $size;
+                    public $quantity;
+                  }
+                  $inventory_query = "SELECT * FROM inventory WHERE productID = $productID AND stock <> 0";
+                  $inventory_result = mysqli_query($conn, $inventory_query);
+                  if (mysqli_num_rows($inventory_result) > 0) {
+                    while($inventory_row = mysqli_fetch_assoc($inventory_result)){
+                      $list = new set();
+                      $list->size = $inventory_row['size'];
+                      $list->quantity = $inventory_row['stock'];
+                      array_push($stock, $list);
+                    }
+                  }
+                  echo "<script>";
+                  echo " var js_stock = ".json_encode($stock) . ";";
+                  echo "</script>";
+                  ?>
+                <input type="number" name="quantity" min=1 value=1 id="quantity" onchange="getQuantity();">
+                <script>
+                  var inv = js_stock[0]['quantity'];
+                  var quantity = 1;
+                  var inputsize= js_stock[0]['size'];
+                  function getSize(){
+                    var inputsize = document.getElementById('size').value;
+                    function getVal(input, key) {
+                        for (var i=0; i < input.length ; ++i){
+                            if(input[i]['size'] == key){
+                              return input[i]['quantity'];
+                            }
+                        }
+                    }
+                    var inv = getVal(js_stock, inputsize);
+                    document.getElementById("quantity").max = inv;
+                  }
+                  function getQuantity(){
+                    var quantity= document.getElementById("quantity").value;
+                  }
+                </script>
             </div>
             <hr>
             <button type="submit" class="btn-addcart">BUY NOW</button>
@@ -181,6 +263,14 @@
               </div>
             </div>
           </div>
+          </form>
+          <div class="col-1">
+            <div class="cart">
+              <?php
+                include '../cart/small-cart.php';
+              ?>
+            </div>
+          </div>
         </div>
         <div class="row recommendation-wrapper">
           <div class="recommendation-header">
@@ -216,6 +306,22 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      var modal = document.getElementById('myModal');
+      var btn = document.getElementById("myBtn");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+          modal.style.display = "block";
+      }
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+    </script>
     <?php include  '../common/footer.php'?>
   </body>
 </html>

@@ -22,10 +22,10 @@ Then execute these sql file in sequence
 You can also choose to execute all of the sql file above by copying all files
 ```
 Step to generate all files:
-1. If you are on Windows: Open CMD and type the following command:
+1. If you are on Windows: Open CMD, navigate to /ee4717/sql/ folder and type the following command:
 * copy /b *.sql all files.sql
 
-2. If you are on Mac/Linux: Open terminal and type the following command:
+2. If you are on Mac/Linux: Open terminal, navigate to /ee4717/sql/ folder and type the following command:
 * cat *.sql > all_files.sql
 ```
 

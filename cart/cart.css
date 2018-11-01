@@ -24,16 +24,30 @@
   margin: auto;
 }
 img{
-  width: 90%;
   vertical-align: middle;
+  width: 60px;
+  height: 100px;
   align-content: center;
 }
 
-p, table{
+p {
   vertical-align: middle;
   width: 100%;
   padding: 3px 3px;
   text-align: center;
+}
+
+table{
+  vertical-align: middle;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  padding: 3px 3px;
+  text-align: center;
+  border-radius:10px;
+  border:1px solid #ccc;
+  border-bottom:2px solid #bbb;
+  border-top:1px solid #ddd;
+  border-collapse: collapse;
 }
 
 input[type="number"] {
@@ -53,7 +67,6 @@ input[type="number"] {
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
-  float: right;
   margin-top:20px;
   margin-bottom: 20px;
 }
@@ -71,6 +84,19 @@ input[type="number"] {
   padding: 8px 15px;
   cursor: pointer;
 }
+#confirmBtn{
+  float: right;
+}
+
+#updateBtn, #editBtn{
+  float: middle;
+}
+
+#trashBtn{
+  width:15px;
+  height: 20px;
+}
+
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #updateCartMessage {

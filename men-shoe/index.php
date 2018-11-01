@@ -266,7 +266,7 @@
             </div>
           </div>
           </form>
-            <!-- <button class="btn-addcart" id="myBtn">MODAL</button> -->
+
           <div class="col-1">
             <div class="cart">
               <?php
@@ -309,22 +309,6 @@
         </div>
       </div>
     </div>
-      <script type="text/javascript">
-          var modal = document.getElementById('myModal');
-          var btn = document.getElementById("myBtn");
-          var span = document.getElementsByClassName("close")[0];
-          btn.onclick = function() {
-              modal.style.display = "block";
-          }
-          span.onclick = function() {
-              modal.style.display = "none";
-          }
-          window.onclick = function(event) {
-              if (event.target == modal) {
-                  modal.style.display = "none";
-              }
-          }
-      </script>
     <?php include  '../common/footer.php'?>
   </body>
 </html>

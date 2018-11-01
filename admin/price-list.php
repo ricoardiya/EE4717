@@ -3,6 +3,7 @@
   <?php
     include '../head.php';
     include '../path.php';
+    include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="admin.css">
   <body>
@@ -38,6 +39,38 @@
 
           <div style="margin-left:20%;padding:1px 16px;">
             <h2>Price list</h2>
+
+            <?php
+
+              $product_query = "SELECT id, name, price, gender FROM products";
+              $product_result = mysqli_query($conn, $product_query);
+
+              echo '<table id="inventory">';
+              echo '
+                      <tr>
+                        <th>Product name</th>
+                        <th>Price</th>
+                        <th>Gender</th>
+                        <th>Edit</th>
+                      </tr>
+                  ';
+              if(mysqli_num_rows($product_result) > 0) {
+                $row = 0;
+                while($product_row = mysqli_fetch_assoc($product_result)) {
+                  echo '
+                    <tr>
+                      <td>' . ucwords($product_row['name']) . '</td>
+                      <td>' . $product_row['price'] . '</td>
+                      <td>' . $product_row['gender'] . '</td>
+                      <td><a href="' . $_SESSION['admin-history'] . '&inventory_id=' . $product_row['id'] .'&size=' . $product_row['name']. '&stock=' . $product_row['price']. '"><img src="../assets/pictures/edit/edit.png" alt="edit" width="20px"></a></td>
+                    </tr>
+                  ';
+                  $row ++;
+                }
+              }
+
+              echo '</table>';
+            ?>
           </div>
         </div>
       </div>

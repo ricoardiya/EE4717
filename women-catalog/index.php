@@ -2,9 +2,10 @@
 <html>
   <?php
     include '../head.php';
+    include '../path.php';
     include '../dbconn.php';
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/ee4717/common/nav.php";
+    $path .= $root_path . "/common/nav.php";
     include $path;
   ?>
   <link rel="stylesheet" type="text/css" href="women-catalog.css">

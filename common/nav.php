@@ -16,9 +16,11 @@
   <header class="header-center">
     <ul>
       <?php
-        $men_path = "/ee4717/men-catalog";
-        $home_path = "/ee4717";
-        $women_path = "/ee4717/women-catalog";
+        include '../path.php';
+
+        $men_path = $root_path . "/men-catalog";
+        $home_path = $root_path;
+        $women_path = $root_path . "/women-catalog";
 
         echo '<li><a class="option" href=' . $men_path . '>Men</a></li>';
         echo '<li><a class="logo" href=' . $home_path. '>SE PA TU</a></li>';
@@ -30,14 +32,14 @@
         echo '
         <div class="topnav-right">
           Hi, ' . $_SESSION['firstname'] . ' !
-          <a class="login" href="/ee4717/common/signout.php">SIGN OUT</a>
+          <a class="login" href=' . $root_path . '/common/signout.php>SIGN OUT</a>
         </div>
         ';
       } else {
         echo '
         <div class="topnav-right">
-          <a href="/ee4717/signup">Become a member</a>
-          <a class="login" href="/ee4717/login">LOG IN</a>
+          <a href=' . $root_path . '/signup>Become a member</a>
+          <a class="login" href=' . $root_path . '/login>LOG IN</a>
         </div>
         ';
       }

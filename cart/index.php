@@ -8,8 +8,9 @@
 <html>
   <?php
     include '../head.php';
-    $cart_css = "/ee4717/cart/cart.css";
-    $small_cart_css = "/ee4717/cart/small-cart.css";
+    include '../path.php';
+    $cart_css = $root_path . "/cart/cart.css";
+    $small_cart_css = $root_path . "/cart/small-cart.css";
     echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $cart_css . '>';
     echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $small_cart_css . '>';
     include '../common/nav.php';

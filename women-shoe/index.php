@@ -3,6 +3,7 @@
 <body>
   <?php
     include '../head.php';
+    include '../path.php';
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="women-shoe.css">
@@ -11,7 +12,7 @@
     <!-- Include navbar -->
     <?php
       $path = $_SERVER['DOCUMENT_ROOT'];
-      $path .= "/ee4717/common/nav.php";
+      $path .= $root_path . "/common/nav.php";
       include $path;
     ?>
     <!-- GET productID from URL -->
@@ -55,7 +56,7 @@
     <div class="content-wrapper">
       <div class="content-item">
         <div class="row">
-          <a href="/ee4717/women-catalog/">< GO BACK TO WOMEN CATALOG</a>
+          <a href=<?php echo $root_path . '/women-catalog' ?>>< GO BACK TO WOMEN CATALOG</a>
         </div>
         <div class="row">
           <div class="col-6">

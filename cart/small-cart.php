@@ -7,7 +7,7 @@
     <?php
       $arr_length = empty($_SESSION['cart']) ? 0 : count($_SESSION['cart']);
       $cart_arr_length = $arr_length > 2 ? 2 : $arr_length;
-      if(isset($_SESSION['cart'])) {
+      if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         echo '<table>';
         for ($i=0,$a=1; $i < $cart_arr_length; $i++, $a++){
             echo "<tr>";

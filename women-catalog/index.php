@@ -35,7 +35,7 @@
     }
     echo "<script>";
     echo " var js_shoes = ".json_encode($shoes) . ";";
-    echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
+    // echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
     echo "</script>";
   ?>
   <body>
@@ -111,14 +111,22 @@
         </script>
         <div class="catalog">
           <div class="row">
-            <div id="pop-up" class="modal">
+          <div id="pop-up" class="modal">
               <div class="modal-content">
               <span class="close" onclick="close()">&times;</span>
-                  <div id="modal_name"></div>
-                  <div id="modal_picture"></div>
-                  <div id="modal_price"></div>
-                  <div id="modal_size"></div>
-                  <div id="modal_quantity"></div>
+                  <div class="row">
+                    <div class="col-6" id="modal_picture"></div>
+                    <div class="col-6 font-modal">
+                      <div id="modal_name"></div>
+                      <div id="modal_price"></div>
+                      <form action="./addToCart.php" method="POST">
+                        <div id="modal_productID"></div>
+                        <div id="modal_size">Select your size: <select name="selected_size" id="selected_size"></select></div>
+                        <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity"></div>
+                        <div id="modal_button"><button class="btn-addcart" onclick="addToCart()">ADD TO CART</button></div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
             </div>
             <?php
@@ -176,40 +184,57 @@
       <script type="text/javascript">
         var modal = document.getElementById("pop-up");
         var span = document.getElementsByClassName("close")[0];
-
         function popup(elem){
+          document.getElementById("selected_size").innerHTML = "";
           console.log('elem.id: ', elem.id);
           let btn = document.getElementById(elem.id);
           console.log('btn.id: ', btn.id);
           if(elem.id && btn.id && document.getElementById("modal_name") && document.getElementById("modal_price")){
+            document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' value="+ elem.id +">";
             for (var i=1; i < js_shoes.length ; i++){
               if(js_shoes[i]['id'] == btn.id){
-                document.getElementById("modal_name").innerHTML = "Name: " + js_shoes[i]['name'] + "<br>";
+                document.getElementById("modal_name").innerHTML = js_shoes[i]['name'] + "<br>";
                 document.getElementById("modal_picture").innerHTML = "<img src=\"../" + js_shoes[i]['picture'] + "\" alt='shoes' width=50% style='margin:auto;'><br>";
-                document.getElementById("modal_price").innerHTML = "Price: " + js_shoes[i]['price']+ "<br>";
-                modal.style.display = "block";
+                document.getElementById("modal_price").innerHTML = "PRICE $ " + js_shoes[i]['price']+ "<br>";
+                document.getElementById("selected_size").innerHTML += "<option value=\"" + js_shoes[i]['size'] + "\">" + js_shoes[i]['size'] + "</option>";
+                console.log( js_shoes[i]['id'] ,'avail size : ', js_shoes[i]['size']);
               }
             }
+            getSize(elem.id);
+            modal.style.display = "block";
           }
         }
         function close() {
-            if (document.getElementById("modal_name") && document.getElementById("modal_picture")){
-              document.getElementById("modal_picture").outerHTML = "";
-              document.getElementById("modal_name").innerHTML = "";
-            }
-            modal.style.display = "block";
+            modal.style.display = "none";
         }
         span.onclick = function () {
             modal.style.display = "none";
         }
         window.onclick = function(event) {
             if (event.target == modal) {
-              if (document.getElementById("modal_name") && document.getElementById("modal_picture")){
-                document.getElementById("modal_picture").outerHTML = "";
-                document.getElementById("modal_name").innerHTML = "";
-              }
-              modal.style.display = "block";
+              modal.style.display = "none";
             }
+        }
+
+        function getSize(productID){
+          var inputsize = document.getElementById('selected_size').value;
+          console.log("productID: ", productID," inputsize ", inputsize);
+          function getVal(input, key) {
+              for (var i=0; i < input.length ; ++i){
+                  if(input[i]['size'] == key && input[i]['id'] == productID){
+                    return input[i]['quantity'];
+                  }
+              }
+              return 0;
+          }
+          var inv = getVal(js_shoes, inputsize);
+          console.log("max of: ", inputsize," is ", inv);
+          document.getElementById("selected_quantity").max = inv;
+        }
+
+        function addToCart(){
+          var inputsize = document.getElementById('selected_size').value;
+          var inputsize = document.getElementById('selected_quantity').value;
         }
       </script>
     <?php include  '../common/footer.php'?>

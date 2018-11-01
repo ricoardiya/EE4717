@@ -38,7 +38,7 @@
 }
 
 img {
-  display: block;
+  /* display: block; */
   margin-left: 8px;
   margin-top: 10px;
 }

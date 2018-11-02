@@ -64,7 +64,7 @@
           ?>
           <form method="get" action="index.php">
             FILTERS
-            <hr>
+            <hr><br>
             Type
             <br>
             <input type="checkbox" name="type[]" id="billy" value="billy" > Billy<br>
@@ -74,7 +74,7 @@
             <input type="checkbox" name="type[]" id="sienna" value="sienna" > Sienna<br>
             <input type="checkbox" name="type[]" id="terri" value="terri" > Terri<br>
             <input type="checkbox" name="type[]" id="veronica" value="veronica" > Veronica<br>
-            <hr>
+            <br><br>
             Color
             <br>
             <input type="checkbox" name="color[]" id="black" value="black" > Black<br>

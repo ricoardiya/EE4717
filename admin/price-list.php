@@ -27,6 +27,45 @@
         ?>
       </header>
     </section>
+    <?php
+      if(isset($_GET['product_id'])) {
+        $link = substr($_SESSION['admin-history'], 0, strpos($_SESSION['admin-history'], "?"));
+        echo '
+        <div id="pop-up" class="modal">
+          <div class="modal-content">
+            <span class="close"><a href=' . $link . '>&times;</a></span>
+            <div class="row form-content">
+              <form action="update-price.php" method="POST">
+                <input type="hidden" name="product_id" value=' . $_GET['product_id'] . '>
+                <input type="hidden" name="redirect_link" value=' . $link . '>
+                <table class="table-modal">
+                  <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td>' . ucwords($_GET['shoename']) . '</td>
+                  </tr>
+                  <tr>
+                    <td>Gender</td>
+                    <td>:</td>
+                    <td>' . $_GET['gender'] . '</td>
+                  </tr>
+                  <tr>
+                    <td>Price</td>
+                    <td>:</td>
+                    <td><input type="number" value=' . $_GET['price']. ' min=1 name="price" id="price"></td>
+                  </tr>
+                </table>
+                <div>
+                  <input class="btn-update" type="submit" value="UPDATE">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        ';
+      }
+
+    ?>
     <div class="content-wrapper">
       <div class="admin-content">
         <div class="admin-nav">
@@ -55,17 +94,15 @@
                       </tr>
                   ';
               if(mysqli_num_rows($product_result) > 0) {
-                $row = 0;
                 while($product_row = mysqli_fetch_assoc($product_result)) {
                   echo '
                     <tr>
                       <td>' . ucwords($product_row['name']) . '</td>
                       <td>' . $product_row['price'] . '</td>
                       <td>' . $product_row['gender'] . '</td>
-                      <td><a href="' . $_SESSION['admin-history'] . '&inventory_id=' . $product_row['id'] .'&size=' . $product_row['name']. '&stock=' . $product_row['price']. '"><img src="../assets/pictures/edit/edit.png" alt="edit" width="20px"></a></td>
+                      <td><a href="' . $_SESSION['admin-history'] . '?product_id=' . $product_row['id'] .'&shoename=' . $product_row['name']. '&price=' . $product_row['price']. '&gender=' . $product_row['gender']. '"><img src="../assets/pictures/edit/edit.png" alt="edit" width="20px"></a></td>
                     </tr>
                   ';
-                  $row ++;
                 }
               }
 

@@ -166,12 +166,13 @@ h2 {
   margin: auto;
   padding: 15px;
   border: 1px solid #888;
-  width: 400px;
+  width: 500px;
 }
 
 .form-content {
   padding-top: 50px;
   padding-left: 80px;
+  padding-right: 80px;
   padding-bottom: 50px;
 }
 

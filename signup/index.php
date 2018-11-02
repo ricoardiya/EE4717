@@ -3,6 +3,7 @@
 <body>
   <?php
     include '../head.php';
+    include '../path.php';
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="signup.css">
@@ -11,7 +12,7 @@
     <!-- Include navbar -->
     <?php
       $path = $_SERVER['DOCUMENT_ROOT'];
-      $path .= "/ee4717/common/nav.php";
+      $path .= $root_path . "/common/nav.php";
       include $path;
     ?>
     <div class="content-wrapper">
@@ -25,7 +26,7 @@
           }
         ?>
         <div>
-          <form action="/ee4717/signup/submit-signup.php" method="POST" class="contact-form" onsubmit="return checkError()">
+          <form action="submit-signup.php" method="POST" class="contact-form" onsubmit="return checkError()">
             <label for="salutation">*Salutation</label><br>
             <input class="salution-radio" type="radio" name="salutation" value="mr">Mr.
             <input class="salution-radio" type="radio" name="salutation" value="ms">Ms.
@@ -68,7 +69,7 @@
           </form>
         </div>
         <div class="already-member">
-          <span class="login-text">Already a member?</span> &nbsp; <a class="login-link" href="/ee4717/login">LOG IN</a>
+          <span class="login-text">Already a member?</span> &nbsp; <a class="login-link" href=<?php echo $root_path . '/login' ?>>LOG IN</a>
         </div>
         <script type="text/javascript" src="signup-handler.js"></script>
       </div>

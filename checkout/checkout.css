@@ -1,0 +1,165 @@
+.checkout-wrapper {
+  padding-top: 100px;
+  padding-right: 10px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.checkout-header {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 40px;
+}
+
+.checkout-content {
+  margin-bottom: 100px;
+}
+.checkout-content-header {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 40px;
+}
+
+.left {
+  border-right: 1px solid black;
+  padding-right: 20px;
+  text-align: right;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.8px;
+}
+
+.right {
+  padding-left: 20px;
+}
+
+form {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+textarea,input{
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.btn-confirm {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.btn-confirm:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.btn-confirm-wrapper{
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin: 20px 0px 200px 10px;
+
+}
+.btn-confirm-wrapper:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+input {
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 250px;
+  text-align: center;
+}
+
+input[type=radio] {
+  width: 50px;
+}
+
+table{
+  vertical-align: middle;
+  width: 100%;
+  margin: auto;
+  font-family: "Montserrat", sans-serif;
+  padding: 3px 3px;
+  text-align: center;
+  border-radius:10px;
+  border:1px solid #ccc;
+  border-bottom:2px solid #bbb;
+  border-top:1px solid #ddd;
+  border-collapse: collapse;
+}
+
+img{
+  vertical-align: middle;
+  width: 60px;
+  height: 100px;
+  align-content: center;
+}
+
+#trashBtn{
+  width:15px;
+  height: 20px;
+}
+
+.table-wrapper{
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
+
+#priceSummary{
+  text-align: right;
+  float:right;
+  width: 80%;
+}

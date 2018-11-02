@@ -98,6 +98,16 @@ function checkPhone(event) {
     phone.select();
     return false;
   }
+  let regex = /^\d{4}(?:[\s]*\d{4})$/; //allowed pattern (9123 2323) or (91232323) only
+  if (regex.test(phone.value)){
+    document.getElementById('phone-message').style.color = 'green';
+    document.getElementById('phone-message').innerHTML = 'correct';
+    return true;
+  }else{
+    document.getElementById('phone-message').style.color = 'red';
+    document.getElementById('phone-message').innerHTML = 'incorrect phone';
+    return false;
+  }
 }
 
 function checkAddress(event) {
@@ -112,6 +122,8 @@ function checkAddress(event) {
     address.focus();
     address.select();
     return false;
+  } else {
+    document.getElementById('address-message').innerHTML = '';
   }
 }
 

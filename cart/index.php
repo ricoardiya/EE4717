@@ -126,13 +126,13 @@
               </tbody>
             </table>
             <div class= "row" style="float:right;">
-              <a href="../men-catalog/index.php"><button class="btn-confirm">Continue Shopping</button></a>
+              <!-- <a href="../men-catalog/index.php"><button class="btn-confirm">Continue Shopping</button></a> -->
               <a href="../checkout/index.php"><button type="submit" class="btn-confirm">Checkout</button></a>
             </div>
             <br><br><br><br><br><br>
             <div>
               <p id="emptyCart">
-                <a href="../men-catalog/index.php">Continue Shopping</a> or
+                <a href="../index.php">Continue Shopping</a> or
                 <a href="emptying-cart.php"> Empty your cart </a>
               </p>
             </div>
@@ -141,12 +141,12 @@
       <?php
       }else {
       ?>
-        <div class= "row" id="empty">
-          <p style="font-size:30px;">Your Cart is Empty!</p>
+        <div>
+          <p id="empty" style="font-size:30px;">Your Cart is Empty!</p>
         </div>
-        <div class= "row">
-          <p>
-            <a href="../men-catalog/index.php">Continue Shopping</a>
+        <div>
+          <p id="empty" style="font-size:15px;">
+            <a href="../men-catalog/index.php">Back To Shop</a>
           </p>
         </div>
       <?php

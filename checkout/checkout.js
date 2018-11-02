@@ -237,3 +237,45 @@ function checkEmailContact(event) {
     document.getElementById('email-message-contact').innerHTML = '';
   }
 }
+
+function checkPhoneContact(event) {
+  var phone = event.currentTarget;
+  if (!phone.value. replace(/\s/g, '').length) {
+    document.getElementById('phone-message-contact').style.color = 'red';
+    document.getElementById('phone-message-contact').innerHTML = 'this field cannot contain only whitespace';
+    document.getElementById('phone_contact').placeholder = '';
+    document.getElementById("phone_contact").value = '';
+
+    phone.focus();
+    phone.select();
+    return false;
+  }
+  let regex = /^\d{4}(?:[\s]*\d{4})$/; //allowed pattern (9123 2323) or (91232323) only
+  if (regex.test(phone.value)){
+    document.getElementById('phone-message-contact').style.color = 'green';
+    document.getElementById('phone-message-contact').innerHTML = 'correct';
+    return true;
+  }else{
+    document.getElementById('phone-message-contact').style.color = 'red';
+    document.getElementById('phone-message-contact').innerHTML = 'incorrect phone';
+    document.getElementById('phone_contact').placeholder = '';
+    document.getElementById("phone_contact").value = '';
+    return false;
+  }
+}
+
+function checkAddressContact(event) {
+  var address = event.currentTarget;
+  if (!address.value. replace(/\s/g, '').length) {
+    document.getElementById('address-message-shipping').style.color = 'red';
+    document.getElementById('address-message-shipping').innerHTML = 'this field cannot contain only whitespace';
+    document.getElementById('address_shipping').placeholder = '';
+    document.getElementById('address_shipping').value = '';
+
+    address.focus();
+    address.select();
+    return false;
+  } else {
+    document.getElementById('address-message-shipping').innerHTML = '';
+  }
+}

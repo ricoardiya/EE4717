@@ -12,8 +12,13 @@ phone_shipping.addEventListener("change", checkPhoneShipping, false);
 let firstname_contact = document.getElementById("fname_contact");
 let lastname_contact = document.getElementById("lname_contact");
 let email_contact = document.getElementById("email_contact");
+let address_contact = document.getElementById("address_contact");
+let phone_contact = document.getElementById("phone_contact");
+
 firstname_contact.addEventListener("change", checkFirstNameContact, false);
 lastname_contact.addEventListener("change", checkLastNameContact, false);
 email_contact.addEventListener("change", checkEmailContact, false);
+address_contact.addEventListener("change", checkAddressContact, false);
+phone_contact.addEventListener("change", checkPhoneContact, false);
 
 

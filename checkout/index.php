@@ -13,6 +13,12 @@
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/ee4717/common/nav.php";
     include $path;
+    if(!isset($_SESSION['cart'])){
+      $_SESSION['cart']= array();
+    }
+    if(empty($_SESSION['cart'])){
+      header('Location: /ee4717/cart/index.php');
+    }
   ?>
   <div class="content-wrapper">
     <div class="checkout-wrapper">
@@ -31,20 +37,30 @@
                 <input class="salution-radio" type="radio" name="salutation" value="ms">Ms.
                 <input class="salution-radio" type="radio" name="salutation" value="mrs">Mrs.
                 <br><br>
-                <label for="fname">*First Name</label><br>
+                <label for="fname_contact">*First Name</label><br>
                 <input type="text" required id="fname_contact" name="firstname_contact" placeholder="John">
                 <br>
                 <span id='firstname-message-contact'></span>
                 <br><br>
-                <label for="lname">Last Name</label><br>
+                <label for="lastname_contact">Last Name</label><br>
                 <input type="text" id="lname_contact" name="lastname_contact" placeholder="Doe">
                 <br>
                 <span id='lastname-message-contact'></span>
                 <br><br>
-                <label for="email">*Email</label><br>
+                <label for="email_contact">*Email</label><br>
                 <input type="email" required id="email_contact" name="email_contact" placeholder="John@doe.com">
                 <br>
                 <span id='email-message-contact'></span>
+                <br><br>
+                <label for="address_contact">*Address</label><br>
+                <input type="text" required id="address_contact" name="address_contact" placeholder="34 Nanyang Avenue Singapore">
+                <br>
+                <span id='address-message-contact'></span>
+                <br><br>
+                <label for="phone_contact">*Phone</label><br>
+                <input type="text" required id="phone_contact" name="phone_contact" placeholder="8657 9230">
+                <br>
+                <span id='phone-message-contact'></span>
                 <br><br>
             </div>
           </div>
@@ -53,27 +69,27 @@
               Shipping Details
             </div>
             <div>
-                <label for="fname">*First Name</label><br>
+                <label for="fname_shipping">*First Name</label><br>
                 <input type="text" required id="fname_shipping" name="firstname_shipping" placeholder="John">
                 <br>
                 <span id='firstname-message-shipping'></span>
                 <br><br>
-                <label for="lname">Last Name</label><br>
+                <label for="lastname_shipping">Last Name</label><br>
                 <input type="text" id="lname_shipping" name="lastname_shipping" placeholder="Doe">
                 <br>
                 <span id='lastname-message-shipping'></span>
                 <br><br>
-                <label for="address">*Address</label><br>
+                <label for="address_shipping">*Address</label><br>
                 <input type="text" required id="address_shipping" name="address_shipping" placeholder="34 Nanyang Avenue Singapore">
                 <br>
                 <span id='address-message-shipping'></span>
                 <br><br>
-                <label for="zipCode">*ZipCode</label><br>
+                <label for="zipCode_shipping">*ZipCode</label><br>
                 <input type="text" required id="zipCode_shipping" name="zipCode_shipping" placeholder="636894">
                 <br>
                 <span id='zipCode-message-shipping'></span>
                 <br><br>
-                <label for="phone">*Phone</label><br>
+                <label for="phone_shipping">*Phone</label><br>
                 <input type="text" required id="phone_shipping" name="phone_shipping" placeholder="8657 9230">
                 <br>
                 <span id='phone-message-shipping'></span>
@@ -126,7 +142,7 @@
                   echo "</td>";
                   echo "</tr>";
                 }
-                echo '<input type="hidden" name="total" value='.$totalPrice.'>';
+                echo '<input type="hidden" name="total" value='.$total.'>';
                 ?>
             </tbody>
           </table>

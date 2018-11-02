@@ -32,14 +32,21 @@
           $item->size = $_POST['size'];
           $item->quantity = $_POST['quantity'];
           array_push($_SESSION['cart'], $item);
-          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          if(!isset($_GET['buyNow'])){
+            header('location: /ee4717/cart/index.php');
+          }else{
+            header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          }
           exit();
         }else{
-          for($i=0; $i<count($_SESSION['cart']) ; $i++){ // the cart still empty
+          for($i=0; $i<count($_SESSION['cart']) ; $i++){
             if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
-              // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
-              header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              if(!isset($_GET['buyNow'])){
+                header('location: /ee4717/cart/index.php');
+              }else{
+                header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              }
               exit();
             }
           }
@@ -49,7 +56,11 @@
         $item->size = $_POST['size'];
         $item->quantity = $_POST['quantity'];
         array_push($_SESSION['cart'], $item);
-        header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        if(!isset($_GET['buyNow'])){
+          header('location: /ee4717/cart/index.php');
+        }else{
+          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        }
         exit();
       }
     ?>
@@ -189,7 +200,7 @@
                 </script>
             </div>
             <hr>
-            <button type="submit" class="btn-addcart">BUY NOW</button>
+            <a href="../men-shoe/index.php?buyNow=1"><button type="submit" class="btn-addcart" >BUY NOW</button></a>
             <button type="submit" class="btn-addcart">ADD TO CART</button>
             <hr>
             <div class="specs">

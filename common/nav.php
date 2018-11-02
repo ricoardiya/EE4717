@@ -1,5 +1,7 @@
 <?php
-  session_start();
+  if (session_status() == PHP_SESSION_NONE){
+    session_start();
+  }
   // Setting history on all pages except login page and signup page
   $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   if ($actual_link != 'http://localhost/ee4717/login/' && $actual_link != 'http://localhost/ee4717/signup/') {

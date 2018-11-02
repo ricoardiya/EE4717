@@ -1303,7 +1303,7 @@ INSERT INTO specifications(id,productID,specification) VALUES (NULL,48,'Goodyear
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,49,'Goodyear welt construction');
 
 
--- Initialize orders table
+-- Initialize transactions table
 
 CREATE TABLE `transactions` (
   `id` int(10) NOT NULL AUTO_INCREMENT,

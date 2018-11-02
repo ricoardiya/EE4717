@@ -126,7 +126,7 @@
                   echo "</td>";
                   echo "</tr>";
                 }
-                echo '<input type="hidden" name="total" value='.$arr_length.'>';
+                echo '<input type="hidden" name="total" value='.$totalPrice.'>';
                 ?>
             </tbody>
           </table>

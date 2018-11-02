@@ -109,7 +109,7 @@ CREATE TABLE `transactions` (
   `address` text NOT NULL,
   `zipCode` int(6),
   `phone` varchar(20) NOT NULL,
-  `totalPrice` int(255) NOT NULL
+  `totalPrice` int(255) NOT NULL,
   PRIMARY KEY (id),
   INDEX `FK_CUSTOMER_ID` (`customerID` ASC),
   CONSTRAINT `FK_CUSTOMER_ID`
@@ -172,6 +172,7 @@ CREATE TABLE `members`(
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
 INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,1,'Reprehenderit sint occaecat fugiat eiusmod occaecat ea.');
 INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,2,'Et quis incididunt adipisicing veniam amet sunt Lorem ipsum.');
 INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,3,'Pariatur ex mollit proident culpa do culpa.');
@@ -1456,8 +1457,12 @@ INSERT INTO specifications(id,productID,specification) VALUES (NULL,48,'Goodyear
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,49,'Goodyear welt construction');
 
 
+<<<<<<< HEAD
+-- Initialize transactions table
+=======
 
 -- Initialize orders table
+>>>>>>> f52ef68d997d2dd8dd23c1cb15256eaf1de4a16d
 
 CREATE TABLE `transactions` (
   `id` int(10) NOT NULL AUTO_INCREMENT,

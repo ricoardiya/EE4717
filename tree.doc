@@ -1,0 +1,495 @@
+Folder PATH listing for volume OS
+Volume serial number is 1254-4A91
+C:.
+|   .editorconfig
+|   .gitignore
+|   dbconn.php
+|   head.php
+|   index.css
+|   index.php
+|   path.php
+|   README.md
+|   tree.doc
+|   
++---.github
+|       PULL_REQUEST_TEMPLATE.md
+|       
++---admin
+|       admin-login.php
+|       admin-signout.php
+|       admin-submit-login.php
+|       admin.css
+|       index.php
+|       price-list.php
+|       sales.php
+|       update-inventory.php
+|       update-price.php
+|       
++---assets
+|   +---fonts
+|   |       Montserrat-Regular.ttf
+|   |       OpenSans-Bold.ttf
+|   |       OpenSans-BoldItalic.ttf
+|   |       OpenSans-ExtraBold.ttf
+|   |       OpenSans-ExtraBoldItalic.ttf
+|   |       OpenSans-Italic.ttf
+|   |       OpenSans-Light.ttf
+|   |       OpenSans-LightItalic.ttf
+|   |       OpenSans-Regular.ttf
+|   |       OpenSans-SemiBold.ttf
+|   |       OpenSans-SemiBoldItalic.ttf
+|   |       PlayfairDisplay-Black.ttf
+|   |       PlayfairDisplay-BlackItalic.ttf
+|   |       PlayfairDisplay-Bold.ttf
+|   |       PlayfairDisplay-BoldItalic.ttf
+|   |       PlayfairDisplay-Italic.ttf
+|   |       PlayfairDisplay-Regular.ttf
+|   |       
+|   \---pictures
+|       |   favicon.ico
+|       |   logo.png
+|       |   
+|       +---cart
+|       |       shopping-cart.png
+|       |       
+|       +---contact
+|       |       westgate.PNG
+|       |       
+|       +---edit
+|       |       edit.png
+|       |       
+|       +---men
+|       |   |   men.png
+|       |   |   
+|       |   +---boots-captoe-brogues-espresso-crazy-horse-leather
+|       |   |       boots-captoe-brogues-espresso-crazy-horse-leather-1.jpg
+|       |   |       boots-captoe-brogues-espresso-crazy-horse-leather-2.jpg
+|       |   |       boots-captoe-brogues-espresso-crazy-horse-leather-3.jpg
+|       |   |       boots-captoe-brogues-espresso-crazy-horse-leather-4.jpg
+|       |   |       boots-captoe-brogues-espresso-crazy-horse-leather.jpg
+|       |   |       
+|       |   +---chelsea-boots-black-suede
+|       |   |       chelsea-boots-black-suede-1.jpg
+|       |   |       chelsea-boots-black-suede-2.jpg
+|       |   |       chelsea-boots-black-suede-3.jpg
+|       |   |       chelsea-boots-black-suede.jpg
+|       |   |       
+|       |   +---chelsea-boots-grey-suede
+|       |   |       chelsea-boots-grey-suede-1.jpg
+|       |   |       chelsea-boots-grey-suede-2.jpg
+|       |   |       chelsea-boots-grey-suede-3.jpg
+|       |   |       chelsea-boots-grey-suede-4.jpg
+|       |   |       chelsea-boots-grey-suede.jpg
+|       |   |       
+|       |   +---chelsea-boots-tan-ch
+|       |   |       chelsea-boots-tan-ch-1.jpg
+|       |   |       chelsea-boots-tan-ch-2.jpg
+|       |   |       chelsea-boots-tan-ch-3.jpg
+|       |   |       chelsea-boots-tan-ch-4.jpg
+|       |   |       chelsea-boots-tan-ch.jpg
+|       |   |       
+|       |   +---chukka-captoe-brogues
+|       |   |       chukka-captoe-brogues-1.jpg
+|       |   |       chukka-captoe-brogues-2.jpg
+|       |   |       chukka-captoe-brogues-3.jpg
+|       |   |       chukka-captoe-brogues-4.jpg
+|       |   |       chukka-captoe-brogues.jpg
+|       |   |       
+|       |   +---chukka-captoe-brogues-firebrown
+|       |   |       chukka-captoe-brogues-firebrown-1.jpg
+|       |   |       chukka-captoe-brogues-firebrown-2.jpg
+|       |   |       chukka-captoe-brogues-firebrown-3.jpg
+|       |   |       chukka-captoe-brogues-firebrown-4.jpg
+|       |   |       chukka-captoe-brogues-firebrown.jpg
+|       |   |       
+|       |   +---derby-longwing-black-scotch-black
+|       |   |       derby-longwing-black-scotch-black-1.jpg
+|       |   |       derby-longwing-black-scotch-black-2.jpg
+|       |   |       derby-longwing-black-scotch-black-3.jpg
+|       |   |       derby-longwing-black-scotch-black-4.jpg
+|       |   |       derby-longwing-black-scotch-black.jpg
+|       |   |       
+|       |   +---derby-wingtip-oxblood
+|       |   |       derby-wingtip-oxblood-1.jpg
+|       |   |       derby-wingtip-oxblood-2.jpg
+|       |   |       derby-wingtip-oxblood-3.jpg
+|       |   |       derby-wingtip-oxblood-4.jpg
+|       |   |       derby-wingtip-oxblood-5.jpg
+|       |   |       derby-wingtip-oxblood-6.jpg
+|       |   |       derby-wingtip-oxblood.jpg
+|       |   |       
+|       |   +---laofers-slippers-life-heels-black
+|       |   |       loafers-slippers-life-heels-black-1.jpg
+|       |   |       loafers-slippers-life-heels-black-2.jpg
+|       |   |       loafers-slippers-life-heels-black-3.jpg
+|       |   |       loafers-slippers-life-heels-black.jpg
+|       |   |       
+|       |   +---loafers-penny-black
+|       |   |       loafers-penny-black-1.jpg
+|       |   |       loafers-penny-black-2.jpg
+|       |   |       loafers-penny-black-3.jpg
+|       |   |       loafers-penny-black-4.jpg
+|       |   |       loafers-penny-black.jpg
+|       |   |       
+|       |   +---loafers-penny-life-heels-black
+|       |   |       loafers-penny-life-heels-black-1.jpg
+|       |   |       loafers-penny-life-heels-black-2.jpg
+|       |   |       loafers-penny-life-heels-black-3.jpg
+|       |   |       loafers-penny-life-heels-black.jpg
+|       |   |       
+|       |   +---loafers-slippers-black
+|       |   |       loafers-slippers-black-1.jpg
+|       |   |       loafers-slippers-black-2.jpg
+|       |   |       loafers-slippers-black-3.jpg
+|       |   |       loafers-slippers-black-4.jpg
+|       |   |       loafers-slippers-black-5.jpg
+|       |   |       loafers-slippers-black.jpg
+|       |   |       
+|       |   +---loafers-tasseled-life-whiskey
+|       |   |       loafers-tasseled-life-whiskey-1.jpg
+|       |   |       loafers-tasseled-life-whiskey-2.jpg
+|       |   |       loafers-tasseled-life-whiskey-3.jpg
+|       |   |       loafers-tasseled-life-whiskey-4.jpg
+|       |   |       loafers-tasseled-life-whiskey.jpg
+|       |   |       
+|       |   +---loafers-tasseled-oxblood-leather
+|       |   |       loafers-tasseled-oxblood-leather-1.jpg
+|       |   |       loafers-tasseled-oxblood-leather-2.jpg
+|       |   |       loafers-tasseled-oxblood-leather-3.jpg
+|       |   |       loafers-tasseled-oxblood-leather-4.jpg
+|       |   |       loafers-tasseled-oxblood-leather.jpg
+|       |   |       
+|       |   +---loafers-wingtip-black-leather
+|       |   |       loafers-wingtip-black-leather-1.jpg
+|       |   |       loafers-wingtip-black-leather-2.jpg
+|       |   |       loafers-wingtip-black-leather-3.jpg
+|       |   |       loafers-wingtip-black-leather-4.jpg
+|       |   |       loafers-wingtip-black-leather-5.jpg
+|       |   |       loafers-wingtip-black-leather.jpg
+|       |   |       
+|       |   +---oxford-blucher-black-wax
+|       |   |       oxford-blucher-black-wax-1.jpg
+|       |   |       oxford-blucher-black-wax-2.jpg
+|       |   |       oxford-blucher-black-wax-3.jpg
+|       |   |       oxford-blucher-black-wax-4.jpg
+|       |   |       oxford-blucher-black-wax.jpg
+|       |   |       
+|       |   +---oxford-captoe-brogues-black-leather
+|       |   |       oxford-captoe-brogues-black-leather-1.jpg
+|       |   |       oxford-captoe-brogues-black-leather-2.jpg
+|       |   |       oxford-captoe-brogues-black-leather-3.jpg
+|       |   |       oxford-captoe-brogues-black-leather-4.jpg
+|       |   |       oxford-captoe-brogues-black-leather-5.jpg
+|       |   |       oxford-captoe-brogues-black-leather.jpg
+|       |   |       
+|       |   +---oxford-captoe-brogues-calf-tan
+|       |   |       oxford-captoe-brogues-calf-tan-1.jpg
+|       |   |       oxford-captoe-brogues-calf-tan-2.jpg
+|       |   |       oxford-captoe-brogues-calf-tan-3.jpg
+|       |   |       oxford-captoe-brogues-calf-tan-4.jpg
+|       |   |       oxford-captoe-brogues-calf-tan.jpg
+|       |   |       
+|       |   +---oxford-captoe-life-black
+|       |   |       oxford-captoe-life-black-1.jpg
+|       |   |       oxford-captoe-life-black-2.jpg
+|       |   |       oxford-captoe-life-black-3.jpg
+|       |   |       oxford-captoe-life-black-4.jpg
+|       |   |       oxford-captoe-life-black.jpg
+|       |   |       
+|       |   +---oxford-captoe-life-fire-brown
+|       |   |       oxford-captoe-life-fire-brown-1.jpg
+|       |   |       oxford-captoe-life-fire-brown-2.jpg
+|       |   |       oxford-captoe-life-fire-brown-3.jpg
+|       |   |       oxford-captoe-life-fire-brown.jpg
+|       |   |       
+|       |   +---oxford-captoe-life-saddle-tan
+|       |   |       oxford-captoe-life-saddle-tan-1.jpg
+|       |   |       oxford-captoe-life-saddle-tan-2.jpg
+|       |   |       oxford-captoe-life-saddle-tan-3.jpg
+|       |   |       oxford-captoe-life-saddle-tan-4.jpg
+|       |   |       oxford-captoe-life-saddle-tan.jpg
+|       |   |       
+|       |   +---oxford-wingtip-life-black
+|       |   |       oxford-wingtip-life-black-1.jpg
+|       |   |       oxford-wingtip-life-black-2.jpg
+|       |   |       oxford-wingtip-life-black-3.jpg
+|       |   |       oxford-wingtip-life-black-4.jpg
+|       |   |       oxford-wingtip-life-black.jpg
+|       |   |       
+|       |   +---oxford-wingtip-life-cigar-brown
+|       |   |       oxford-wingtip-life-cigar-brown-1.jpg
+|       |   |       oxford-wingtip-life-cigar-brown-2.jpg
+|       |   |       oxford-wingtip-life-cigar-brown-3.jpg
+|       |   |       oxford-wingtip-life-cigar-brown-4.jpg
+|       |   |       oxford-wingtip-life-cigar-brown.jpg
+|       |   |       
+|       |   +---oxford-wingtip-life-fire-brown
+|       |   |       oxford-wingtip-life-fire-brown-1.jpg
+|       |   |       oxford-wingtip-life-fire-brown-2.jpg
+|       |   |       oxford-wingtip-life-fire-brown-3.jpg
+|       |   |       oxford-wingtip-life-fire-brown.jpg
+|       |   |       
+|       |   +---oxford-wingtip-life-whiskey
+|       |   |       oxford-wingtip-life-whiskey-1.jpg
+|       |   |       oxford-wingtip-life-whiskey-2.jpg
+|       |   |       oxford-wingtip-life-whiskey-3.jpg
+|       |   |       oxford-wingtip-life-whiskey-4.jpg
+|       |   |       oxford-wingtip-life-whiskey.jpg
+|       |   |       
+|       |   +---oxford-wingtip-life-wolf-grey
+|       |   |       oxford-wing-tip-life-wolf-grey-1.jpg
+|       |   |       oxford-wing-tip-life-wolf-grey-2.jpg
+|       |   |       oxford-wing-tip-life-wolf-grey-3.jpg
+|       |   |       oxford-wing-tip-life-wolf-grey-4.jpg
+|       |   |       oxford-wing-tip-life-wolf-grey.jpg
+|       |   |       
+|       |   \---oxfors-captoe-life-black-natural-sole
+|       |           oxford-captoe-life-black-natural-sole-1.jpg
+|       |           oxford-captoe-life-black-natural-sole-2.jpg
+|       |           oxford-captoe-life-black-natural-sole-3.jpg
+|       |           oxford-captoe-life-black-natural-sole-4.jpg
+|       |           oxford-captoe-life-black-natural-sole.jpg
+|       |           
+|       +---trash
+|       |       trash-can.png
+|       |       
+|       \---women
+|           |   women.png
+|           |   
+|           +---billy-short-black
+|           |       billy-short-black-1.jpg
+|           |       billy-short-black-2.jpg
+|           |       billy-short-black-3.jpg
+|           |       billy-short-black-4.jpg
+|           |       billy-short-black.jpg
+|           |       
+|           +---billy-short-cognac
+|           |       billy-short-cognac-1.jpg
+|           |       billy-short-cognac-2.jpg
+|           |       billy-short-cognac-3.jpg
+|           |       billy-short-cognac-4.jpg
+|           |       billy-short-cognac.jpg
+|           |       
+|           +---elyssa-oxford-black
+|           |       elyssa-oxford-black-1.jpg
+|           |       elyssa-oxford-black-2.jpg
+|           |       elyssa-oxford-black-3.jpg
+|           |       elyssa-oxford-black-4.jpg
+|           |       elyssa-oxford-black.jpg
+|           |       
+|           +---elyssa-oxford-cognac
+|           |       elyssa-oxford-cognac-1.jpg
+|           |       elyssa-oxford-cognac-2.jpg
+|           |       elyssa-oxford-cognac-3.jpg
+|           |       elyssa-oxford-cognac-4.jpg
+|           |       elyssa-oxford-cognac.jpg
+|           |       
+|           +---elyssa-oxford-silver
+|           |       elyssa-oxford-silver-1.jpg
+|           |       elyssa-oxford-silver-2.jpg
+|           |       elyssa-oxford-silver-3.jpg
+|           |       elyssa-oxford-silver-4.jpg
+|           |       elyssa-oxford-silver.jpg
+|           |       
+|           +---kelly-cvo-oxford-black
+|           |       kelly-cvo-oxford-black-1.jpg
+|           |       kelly-cvo-oxford-black-2.jpg
+|           |       kelly-cvo-oxford-black-3.jpg
+|           |       kelly-cvo-oxford-black-4.jpg
+|           |       kelly-cvo-oxford-black.jpg
+|           |       
+|           +---kelly-cvo-oxford-grey
+|           |       kelly-cvo-oxford-grey-1.jpg
+|           |       kelly-cvo-oxford-grey-2.jpg
+|           |       kelly-cvo-oxford-grey-3.jpg
+|           |       kelly-cvo-oxford-grey-4.jpg
+|           |       kelly-cvo-oxford-grey.jpg
+|           |       
+|           +---kenzie-venetian-black
+|           |       kenzie-venetian-black-1.jpg
+|           |       kenzie-venetian-black-2.jpg
+|           |       kenzie-venetian-black-3.jpg
+|           |       kenzie-venetian-black-4.jpg
+|           |       kenzie-venetian-black.jpg
+|           |       
+|           +---kenzie-venetian-red
+|           |       kenzie-venetian-red-1.jpg
+|           |       kenzie-venetian-red-2.jpg
+|           |       kenzie-venetian-red-3.jpg
+|           |       kenzie-venetian-red-4.jpg
+|           |       kenzie-venetian-red.jpg
+|           |       
+|           +---ray-mule-black
+|           |       ray-mule-black-1.jpg
+|           |       ray-mule-black-2.jpg
+|           |       ray-mule-black-3.jpg
+|           |       ray-mule-black-4.jpg
+|           |       ray-mule-black.jpg
+|           |       
+|           +---ray-mule-cognac
+|           |       ray-mule-cognac-1.jpg
+|           |       ray-mule-cognac-2.jpg
+|           |       ray-mule-cognac-3.jpg
+|           |       ray-mule-cognac-4.jpg
+|           |       ray-mule-cognac.jpg
+|           |       
+|           +---sienna-ballet-black
+|           |       sienna-ballet-black-1.jpg
+|           |       sienna-ballet-black-2.jpg
+|           |       sienna-ballet-black-3.jpg
+|           |       sienna-ballet-black-4.jpg
+|           |       sienna-ballet-black.jpg
+|           |       
+|           +---sienna-ballet-red
+|           |       sienna-ballet-red-1.jpg
+|           |       sienna-ballet-red-2.jpg
+|           |       sienna-ballet-red-3.jpg
+|           |       sienna-ballet-red-4.jpg
+|           |       sienna-ballet-red.jpg
+|           |       
+|           +---sienna-ballet-saddle
+|           |       sienna-ballet-saddle-1.jpg
+|           |       sienna-ballet-saddle-2.jpg
+|           |       sienna-ballet-saddle-3.jpg
+|           |       sienna-ballet-saddle-4.jpg
+|           |       sienna-ballet-saddle.jpg
+|           |       
+|           +---terri-penny-cognac
+|           |       terri-penny-cognac-1.jpg
+|           |       terri-penny-cognac-2.jpg
+|           |       terri-penny-cognac-3.jpg
+|           |       terri-penny-cognac-4.jpg
+|           |       terri-penny-cognac.jpg
+|           |       
+|           +---terri-penny-loafer-black
+|           |       terri-penny-loafer-black-1.jpg
+|           |       terri-penny-loafer-black-2.jpg
+|           |       terri-penny-loafer-black-3.jpg
+|           |       terri-penny-loafer-black-4.jpg
+|           |       terri-penny-loafer-black.jpg
+|           |       
+|           +---terri-zip-ankle-bootie-black
+|           |       terri-zip-ankle-bootie-black-1.jpg
+|           |       terri-zip-ankle-bootie-black-2.jpg
+|           |       terri-zip-ankle-bootie-black-3.jpg
+|           |       terri-zip-ankle-bootie-black-4.jpg
+|           |       terri-zip-ankle-bootie-black.jpg
+|           |       
+|           +---terri-zip-ankle-bootie-cognac
+|           |       terri-zip-ankle-bootie-cognac-1.jpg
+|           |       terri-zip-ankle-bootie-cognac-2.jpg
+|           |       terri-zip-ankle-bootie-cognac-3.jpg
+|           |       terri-zip-ankle-bootie-cognac-4.jpg
+|           |       terri-zip-ankle-bootie-cognac.jpg
+|           |       
+|           +---terri-zip-ankle-bootie-grey
+|           |       terri-zip-ankle-bootie-grey-1.jpg
+|           |       terri-zip-ankle-bootie-grey-2.jpg
+|           |       terri-zip-ankle-bootie-grey-3.jpg
+|           |       terri-zip-ankle-bootie-grey-4.jpg
+|           |       terri-zip-ankle-bootie-grey.jpg
+|           |       
+|           +---veronica-bootie-black
+|           |       veronica-bootie-black-1.jpg
+|           |       veronica-bootie-black-2.jpg
+|           |       veronica-bootie-black-3.jpg
+|           |       veronica-bootie-black-4.jpg
+|           |       veronica-bootie-black.jpg
+|           |       
+|           +---veronica-bootie-redwood
+|           |       veronica-bootie-redwood-1.jpg
+|           |       veronica-bootie-redwood-2.jpg
+|           |       veronica-bootie-redwood-3.jpg
+|           |       veronica-bootie-redwood-4.jpg
+|           |       veronica-bootie-redwood.jpg
+|           |       
+|           \---veronica-bootie-tan
+|                   veronica-bootie-tan-1.jpg
+|                   veronica-bootie-tan-2.jpg
+|                   veronica-bootie-tan-3.jpg
+|                   veronica-bootie-tan-4.jpg
+|                   veronica-bootie-tan.jpg
+|                   
++---cart
+|       calculateInvoice.php
+|       cart.css
+|       catalog.php
+|       delete-item.php
+|       emptying-cart.php
+|       index.php
+|       small-cart.css
+|       small-cart.php
+|       submitOrder.php
+|       updateCart.php
+|       
++---checkout
+|       checkout-handler.js
+|       checkout.css
+|       checkout.js
+|       index.php
+|       submitOrder.php
+|       
++---common
+|       footer.css
+|       footer.php
+|       nav.css
+|       nav.php
+|       signout.php
+|       
++---contact
+|       contact-handler.js
+|       contact.css
+|       contact.js
+|       index.php
+|       submit_contact_form.php
+|       
++---login
+|       index.php
+|       login.css
+|       submit-login.php
+|       
++---men-catalog
+|       addToCart.php
+|       index.php
+|       men-catalog.css
+|       
++---men-shoe
+|       display_image.js
+|       index.php
+|       men-shoe.css
+|       submit-review.php
+|       
++---signup
+|       index.php
+|       signup-handler.js
+|       signup.css
+|       signup.js
+|       submit-signup.php
+|       
++---sql
+|       01_dbinit.sql
+|       02_seed_contacts.sql
+|       03_seed_customers.sql
+|       04_seed_products.sql
+|       05_seed_pictures.sql
+|       06_seed_inventory.sql
+|       07_seed_specifications.sql
+|       08_seed_transactions.sql
+|       09_seed_orders.sql
+|       10_seed_reviews.sql
+|       11_seed_members.sql
+|       all_files.sql
+|       README.md
+|       seed_admin.sql
+|       
++---women-catalog
+|       addToCart.php
+|       index.php
+|       women-catalog.css
+|       
+\---women-shoe
+        display_image.js
+        index.php
+        submit-review.php
+        women-shoe.css
+        

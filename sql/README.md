@@ -23,10 +23,10 @@ You can also choose to execute all of the sql file above by copying all files
 ```
 Step to generate all files:
 1. If you are on Windows: Open CMD, navigate to /ee4717/sql/ folder and type the following command:
-* copy /b *.sql all files.sql
+> copy /b *.sql all_files.sql
 
 2. If you are on Mac/Linux: Open terminal, navigate to /ee4717/sql/ folder and type the following command:
-* cat *.sql > all_files.sql
+$ cat *.sql > all_files.sql
 ```
 
 ### contacts

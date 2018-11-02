@@ -1456,6 +1456,27 @@ INSERT INTO specifications(id,productID,specification) VALUES (NULL,48,'Goodyear
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,49,'Goodyear welt construction');
 
 
+
+-- Initialize orders table
+
+CREATE TABLE `transactions` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `customerID` INT(10) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `address` text NOT NULL,
+  `zipCode` int(6),
+  `phone` varchar(20) NOT NULL,
+  `totalPrice` int(255) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX `FK_CUSTOMER_ID` (`customerID` ASC),
+  CONSTRAINT `FK_CUSTOMER_ID`
+    FOREIGN KEY (customerID)
+    REFERENCES customers(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,1,'Lucy','Fleming','930 Pitkin Avenue #8-105, Singapore',937662,'94874223', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,2,'Hart','Kerr','359 Engert Avenue #19-186, Singapore',235461,'49474219', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,3,'Mara','Potter','391 Hubbard Place #6-166, Singapore',327591,'61983059', 100);
@@ -1506,6 +1527,29 @@ INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,48,'Thornton','Frye','997 Times Placez #28-121, Singapore',261224,'37309048', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,49,'Jones','Bartlett','127 Fleet Street #16-103, Singapore',826579,'81424273', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,50,'Valerie','Stanton','586 Malbone Street #36-172, Singapore',958144,'65718414', 100);
+
+CREATE TABLE orders (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `transactionID` INT(10) NOT NULL,
+  `productID` int(10) NOT NULL,
+  `dateOrder` DATE NOT NULL,
+  `quantity` int(10) NOT NULL,
+  `size` int(2) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX `FK_TRANSACTION_ID` (`transactionID` ASC),
+  INDEX `FK_PRODUCT_ID` (`productID` ASC),
+  CONSTRAINT `FK_TRANSACTION_ID`
+    FOREIGN KEY (transactionID)
+    REFERENCES transactions(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `FK_PRODUCT_ID`
+    FOREIGN KEY (productID)
+    REFERENCES products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,1,46,'2018-06-12T08:39:27',3,42);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,2,10,'2018-09-24T09:24:30',12,39);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,3,29,'2018-04-17T05:41:23',4,39);

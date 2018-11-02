@@ -85,6 +85,7 @@
             <input type="checkbox" name="color[]" id="redwood" value="redwood" > Redwood<br>
             <input type="checkbox" name="color[]" id="tan" value="tan" > Tan<br>
             <input type="checkbox" name="color[]" id="saddle" value="saddle" > Saddle<br>
+            <br><br>
             <button type="submit" class="btn-addcart">SEARCH</button>
             <button type="reset" class="btn-addcart">CLEAR FILTER</button>
           </form>

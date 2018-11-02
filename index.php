@@ -9,7 +9,7 @@
     <section>
       <header class="header-center">
         <div class="index-topnav-centered">
-          <a href="/ee4717" class="index-logo">SE PA TU</a>
+          <a href=<?php echo $root_path ?> class="index-logo">SE PA TU</a>
         </div>
         <?php
           session_start();
@@ -30,7 +30,7 @@
             echo '
             <div class="index-topnav-right">
               <a href="' . $root_path .  '/signup">Become a member</a>
-              <a class="login" href="' . $root_path . '/ee4717/login">LOG IN</a>
+              <a class="login" href="' . $root_path . '/login">LOG IN</a>
             </div>
             ';
           }
@@ -48,7 +48,7 @@
           </a>
           <a href=<?php echo $root_path . '/women-catalog' ?>>
             <div class="column">
-              <img src=<?php echo $root_path . '//assets/pictures/women/women.png' ?> alt="women" height="460" width="460">
+              <img src=<?php echo $root_path . '/assets/pictures/women/women.png' ?> alt="women" height="460" width="460">
               <p id="tag">WOMEN</p>
             </div>
           </a>

@@ -8,6 +8,7 @@ Run this file to intialize database
 -- Drop tables if exists
 
 use sepatu;
+
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS orders;
@@ -29,7 +30,219 @@ CREATE TABLE contact (
   `message` text NOT NULL,
   PRIMARY KEY (id)
 );
+-- Initialize products table
 
+CREATE TABLE products (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `color` char(10) NOT NULL,
+  `desc` text NOT NULL,
+  `gender` char(4) NOT NULL,
+  `price` int(10) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- Initialize customers table
+
+CREATE TABLE customers (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `salutation` varchar(5) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- Initialize inventory table
+
+CREATE TABLE inventory (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `productID` int(10) NOT NULL,
+  `size` int(10) NOT NULL,
+  `stock` int(10) NOT NULL,
+  CONSTRAINT
+    FOREIGN KEY (productID)
+    REFERENCES products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  PRIMARY KEY (id)
+);
+
+-- Initialize pictures table
+
+CREATE TABLE pictures (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `productID` int(10) NOT NULL,
+  `pictureURL` varchar(150) NOT NULL,
+  CONSTRAINT
+    FOREIGN KEY (productID)
+    REFERENCES products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  PRIMARY KEY (id)
+);
+
+-- Initialize specifications table
+
+CREATE TABLE specifications (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `productID` int(10) NOT NULL,
+  `specification` text NOT NULL,
+  CONSTRAINT
+    FOREIGN KEY (productID)
+    REFERENCES products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  PRIMARY KEY (id)
+);
+
+
+
+-- Initialize orders table
+
+CREATE TABLE `transactions` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `customerID` INT(10) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `address` text NOT NULL,
+  `zipCode` int(6),
+  `phone` varchar(20) NOT NULL,
+  `totalPrice` int(255) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX `FK_CUSTOMER_ID` (`customerID` ASC),
+  CONSTRAINT `FK_CUSTOMER_ID`
+    FOREIGN KEY (customerID)
+    REFERENCES customers(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+
+CREATE TABLE orders (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `transactionID` INT(10) NOT NULL,
+  `productID` int(10) NOT NULL,
+  `dateOrder` DATE NOT NULL,
+  `quantity` int(10) NOT NULL,
+  `size` int(2) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX `FK_TRANSACTION_ID` (`transactionID` ASC),
+  INDEX `FK_PRODUCT_ID` (`productID` ASC),
+  CONSTRAINT `FK_TRANSACTION_ID`
+    FOREIGN KEY (transactionID)
+    REFERENCES transactions(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `FK_PRODUCT_ID`
+    FOREIGN KEY (productID)
+    REFERENCES products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+-- Initialize reviews table
+
+CREATE TABLE reviews (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `transactionID` int(10) NOT NULL,
+  `reviews` text NOT NULL,
+  PRIMARY KEY (id),
+  INDEX `FK_REVIEW_TRANSACTION_ID` (`transactionID` ASC),
+  CONSTRAINT `FK_REVIEW_TRANSACTION_ID`
+    FOREIGN KEY (transactionID)
+    REFERENCES transactions(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+-- Initialize member table
+
+CREATE TABLE `members`(
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `customerID` int(10),
+  PRIMARY KEY(id),
+  INDEX `FK_MEMBER_CUSTOMER_ID` (`customerID` ASC),
+  CONSTRAINT `FK_MEMBER_CUSTOMER_ID`
+    FOREIGN KEY (customerID)
+    REFERENCES customers(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,1,'Reprehenderit sint occaecat fugiat eiusmod occaecat ea.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,2,'Et quis incididunt adipisicing veniam amet sunt Lorem ipsum.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,3,'Pariatur ex mollit proident culpa do culpa.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,4,'Culpa id ullamco Lorem amet labore nostrud dolor duis ex incididunt ad duis.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,5,'Est sunt eiusmod ex tempor adipisicing eu elit.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,6,'Nostrud reprehenderit est laborum veniam enim adipisicing voluptate.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,7,'Ad aliquip mollit labore consequat laborum culpa sunt culpa consequat minim ex aute.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,8,'Ut duis eiusmod minim culpa exercitation est dolor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,9,'Minim veniam minim nulla dolore do pariatur ad.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,10,'Cupidatat do deserunt anim excepteur esse excepteur occaecat.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,11,'Et irure laborum do proident dolor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,12,'Sint laboris culpa ad ad exercitation aliqua ut eiusmod.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,13,'Adipisicing nisi exercitation quis commodo commodo aliquip amet labore ea dolor dolor quis cillum.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,14,'Consectetur eiusmod adipisicing veniam eu sint exercitation dolor exercitation tempor minim consequat.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,15,'Est voluptate qui sint nostrud sunt cupidatat deserunt cillum id officia reprehenderit.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,16,'Commodo et esse culpa irure est exercitation officia laboris.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,17,'Est consequat aute esse labore exercitation fugiat et Lorem occaecat voluptate.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,18,'Sunt nulla aliquip nulla minim esse cillum aute velit aliqua.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,19,'Aute sunt voluptate veniam ullamco Lorem velit laborum ex occaecat.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,20,'Aute ea enim id nostrud est duis pariatur minim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,21,'Laborum enim non commodo consectetur aliquip.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,22,'Culpa excepteur tempor do do ad reprehenderit anim reprehenderit tempor in Lorem occaecat laborum eu.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,23,'Velit laborum pariatur proident enim elit esse exercitation exercitation non.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,24,'Magna ea labore exercitation aliqua Lorem dolor aliqua.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,25,'Laborum cupidatat ea sit quis labore sunt tempor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,26,'Officia esse aliquip excepteur ipsum duis irure eiusmod duis minim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,27,'Ad sint reprehenderit esse commodo excepteur reprehenderit sit.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,28,'Veniam dolor amet aliquip veniam irure.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,29,'Nulla aute sint exercitation aliquip deserunt dolore ex ea.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,30,'Laboris ullamco aliquip anim ad culpa do consectetur dolor qui.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,31,'Officia cupidatat ut in ipsum culpa in.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,32,'Ut laboris magna id cupidatat pariatur amet esse id ea deserunt labore dolor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,33,'Adipisicing tempor excepteur est nostrud minim aliquip.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,34,'Proident excepteur quis anim consectetur ea dolore.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,35,'Magna culpa nisi ut deserunt non culpa pariatur adipisicing officia nulla.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,36,'Laborum qui magna consequat voluptate nulla aliqua dolor culpa ex est proident sunt est.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,37,'Deserunt ex reprehenderit proident mollit nisi aliqua.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,38,'Et aliqua laborum esse tempor consectetur incididunt.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,39,'Est do duis laboris amet occaecat occaecat quis veniam velit amet voluptate enim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,40,'Exercitation anim laborum quis irure ut magna esse ullamco laborum nulla ea eu sunt tempor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,41,'Lorem proident voluptate qui labore amet duis culpa laboris enim qui officia ut laboris exercitation.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,42,'Minim ipsum Lorem qui cillum reprehenderit proident est officia fugiat non.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,43,'Ut velit ad Lorem do dolor fugiat cupidatat in sunt anim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,44,'Tempor consectetur ex adipisicing commodo qui pariatur dolore ad.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,45,'Excepteur officia incididunt culpa minim sit proident cillum esse incididunt.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,46,'Culpa eiusmod Lorem nostrud non eiusmod laborum.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,47,'Dolor ad sit aliqua id occaecat commodo consectetur voluptate qui laborum irure.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,48,'Sit proident ut Lorem minim in cupidatat velit duis et cupidatat tempor incididunt.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,49,'Incididunt consequat velit eu voluptate cupidatat eiusmod incididunt esse laboris non cupidatat consequat adipisicing minim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,50,'Magna deserunt cillum tempor sunt dolore ullamco ullamco.');
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leliabeck@skinserve.com', sha1('password'), 1);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'joyprice@skinserve.com', sha1('password'), 2);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'gillespiearmstrong@skinserve.com', sha1('password'),3);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'nixonclark@skinserve.com', sha1('password'), 4);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'pollymcpherson@skinserve.com', sha1('password'), 5);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'michaelrivas@skinserve.com', sha1('password'), 6);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 7);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 8);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'marjoriecarlson@skinserve.com', sha1('password'), 9);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'frankiegutierrez@skinserve.com', sha1('password'), 10);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'grantmcfarland@skinserve.com', sha1('password'), 11);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leonardvance@skinserve.com', sha1('password'), 12);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'jessicafields@skinserve.com', sha1('password'), 13);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'yatesbailey@skinserve.com', sha1('password'), 14);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'eulaclayton@skinserve.com', sha1('password'), 15);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'penablankenship@skinserve.com', sha1('password'), 16);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'randolphbeard@skinserve.com', sha1('password'), 17);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'lakeishalevy@skinserve.com', sha1('password'), 18);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'chasitywooten@skinserve.com', sha1('password'), 19);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'elsabowers@skinserve.com', sha1('password'), 20);
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Mcdowell','Mayo','mcdowellmayo@exospeed.com','Velit id reprehenderit velit adipisicing adipisicing in dolor id.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Angelia','Castro','angeliacastro@exospeed.com','Sit elit occaecat consectetur exercitation enim.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Rogers','Sanchez','rogerssanchez@exospeed.com','Fugiat est cillum sunt officia laboris qui occaecat nostrud laboris consequat Lorem reprehenderit aute.');
@@ -130,20 +343,6 @@ INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Lorrie','
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Mcintyre','Melton','mcintyremelton@exospeed.com','Consequat sunt duis consequat non dolore aute ullamco enim deserunt.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Booth','Webster','boothwebster@exospeed.com','Ad deserunt veniam minim est occaecat.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Ramos','Wilkerson','ramoswilkerson@exospeed.com','Exercitation mollit cillum elit voluptate sint officia adipisicing enim enim veniam pariatur pariatur.');
-
-
--- Initialize customers table
-
-CREATE TABLE customers (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `salutation` varchar(5) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  PRIMARY KEY (id)
-);
-
 INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Ms.','Lelia Beck','857 Llama Court, Worton, Pennsylvania','leliabeck@skinserve.com',95504892);
 INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Mrs.','Joy Price','860 Lincoln Terrace, Campo, Virgin Islands','joyprice@skinserve.com',52777122);
 INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Mr.','Gillespie Armstrong','528 Oakland Place, Lafferty, South Carolina','gillespiearmstrong@skinserve.com',64595552);
@@ -345,21 +544,6 @@ INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Ms.'
 INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Mr.','Thelma Sloan','566 Monument Walk, Waumandee, Texas','thelmasloan@skinserve.com',54026955);
 INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Mr.','Bernard Donovan','148 Cypress Court, Richmond, Virginia','bernarddonovan@skinserve.com',65460343);
 INSERT INTO customers(id,salutation,name,address,email,phone) VALUES (NULL,'Mr.','Clara Hays','629 Berry Street, Conway, Washington','clarahays@skinserve.com',43655352);
-
-
-
--- Initialize products table
-CREATE TABLE products (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `color` char(10) NOT NULL,
-  `desc` text NOT NULL,
-  `gender` char(4) NOT NULL,
-  `price` int(10) NOT NULL,
-
-  PRIMARY KEY (id)
-);
-
 INSERT INTO `products` (`id`, `name`, `color`, `desc`, `gender`, `price`) VALUES
 (NULL, 'boots captoe brogues espresso crazy horse leather', 'espresso', 'Our boots captoe gives a dash of heritage charm by detailing them with classic broguing. Skilfully crafted in military from tactile crazy horse in a rich espresso with leather microrubber sole. This shoes made with Military last, D width.We recommend true to size for this shoes.', 'M', 90),
 (NULL, 'chelsea boots black suede', 'black', 'Ticking off almost two centuries of adventures, the Chelsea boot is a style staple for men around the globe. Wherever your week takes you, to the concrete jungle or somewhere off the beaten track, a pair of Chelsea boots are the ultimate companion. Made from Black suede upper and leather sole combination on a Venice last, we recommend you go true size for this model.', 'M', 80),
@@ -400,9 +584,9 @@ INSERT INTO `products` (`id`, `name`, `color`, `desc`, `gender`, `price`) VALUES
 (NULL, 'kenzie venetian red', 'red', 'The ''Kenzie'' ballerina-inspired flats are every girl''s dream- simple and very cool. This slip-on pair has been crafted from supple antiqued Italian leather in a sleek pointed-toe shape.', 'W', 381.40),
 (NULL, 'ray mule black', 'black', 'The sleek city Western-inspired silhouette of the mule makes for a subtle style statement. Simple slip on construction with a pointed toe and low heel crafted from a smooth oiled vegetable tanned Italian leather.', 'W', 344.80),
 (NULL, 'ray mule cognac', 'cognac', 'The sleek city Western-inspired silhouette of the mule makes for a subtle style statement. Simple slip on construction with a pointed toe and low heel crafted from a smooth oiled vegetable tanned Italian leather.', 'W', 344.80),
-(NULL, 'sienna ballet black', 'black', 'A hybrid of our beloved Carson and Regina ballet flats, the Sienna defines dressy sophistication. Beautifully tailored with a pointed toe, this shoe is handcrafted from a luxuriously soft polished full grain Italian leather. Leather lined, lightweight and designed with a rubber outsole—it''s like you''re walking on air.', 'W', 342.90),
-(NULL, 'sienna ballet red', 'red', 'A hybrid of our beloved Carson and Regina ballet flats, the Sienna defines dressy sophistication. Beautifully tailored with a pointed toe, this shoe is handcrafted from a luxuriously soft polished full grain Italian leather. Leather lined, lightweight and designed with a rubber outsole—it''s like you''re walking on air.', 'W', 287.90),
-(NULL, 'sienna ballet saddle', 'saddle', 'A hybrid of our beloved Carson and Regina ballet flats, the Sienna defines dressy sophistication. Beautifully tailored with a pointed toe, this shoe is handcrafted from a luxuriously soft polished full grain Italian leather. Leather lined, lightweight and designed with a rubber outsole—it''s like you''re walking on air.', 'W', 287.90),
+(NULL, 'sienna ballet black', 'black', 'A hybrid of our beloved Carson and Regina ballet flats, the Sienna defines dressy sophistication. Beautifully tailored with a pointed toe, this shoe is handcrafted from a luxuriously soft polished full grain Italian leather. Leather lined, lightweight and designed with a rubber outsole-it''s like you''re walking on air.', 'W', 342.90),
+(NULL, 'sienna ballet red', 'red', 'A hybrid of our beloved Carson and Regina ballet flats, the Sienna defines dressy sophistication. Beautifully tailored with a pointed toe, this shoe is handcrafted from a luxuriously soft polished full grain Italian leather. Leather lined, lightweight and designed with a rubber outsole-it''s like you''re walking on air.', 'W', 287.90),
+(NULL, 'sienna ballet saddle', 'saddle', 'A hybrid of our beloved Carson and Regina ballet flats, the Sienna defines dressy sophistication. Beautifully tailored with a pointed toe, this shoe is handcrafted from a luxuriously soft polished full grain Italian leather. Leather lined, lightweight and designed with a rubber outsole-it''s like you''re walking on air.', 'W', 287.90),
 (NULL, 'terri penny cognac', 'cognac', 'Made from tumbled Buffalo leather, these ''Terri'' loafers are embellished with hammered coin like studs where you''d traditionally find a penny slot. They have a low heel and subtlety squared off at the toe. Showcase this statement pair by wearing yours to the office, or when you''re out and about.', 'W', 344.80),
 (NULL, 'terri penny loafer black', 'black', 'Topped with a classic penny slot and set on a comfortable flat heel, these loafers have been cleanly crafted from the finest tumbled Italian Buffalo leather. Flexible leather sole with rubber top lift.', 'W', 439.20),
 (NULL, 'terri zip ankle bootie black', 'black', 'Frye designs timeless pieces with simplicity. These booties are made from soft antiqued vintage Italian leather in a zip-up silhouette so they fit snugly against your ankle. Flexible leather soles with rubber top lift ensure traction.', 'W', 439.20),
@@ -411,384 +595,6 @@ INSERT INTO `products` (`id`, `name`, `color`, `desc`, `gender`, `price`) VALUES
 (NULL, 'veronica bootie black', 'black', 'Sometimes re-thinking one simple detail is all it takes to modernize a classic style- take the buckles on these booties, for example. Crafted from soft full grain leather, the ''Veronica'' have hand-stitched Goodyear welt soles that are durable and waterproof. We''re not exactly sure what it is, but there''s something about the style that gives you a boost and well, attitude. Whatever it is, we know magic when we see it. Trust us', 'W', 535.50),
 (NULL, 'veronica bootie redwood', 'redwood', 'Sometimes re-thinking one simple detail is all it takes to modernize a classic style- take the buckles on these booties, for example. Crafted from soft full grain leather, the ''Veronica'' have hand-stitched Goodyear welt soles that are durable and waterproof. We''re not exactly sure what it is, but there''s something about the style that gives you a boost and well, attitude. Whatever it is, we know magic when we see it. Trust us', 'W', 535.50),
 (NULL,'veronica booties tan', 'tan', 'Sometimes re-thinking one simple detail is all it takes to modernize a classic style- take the buckles on these booties, for example. Crafted from soft full grain leather, the ''Veronica'' have hand-stitched Goodyear welt soles that are durable and waterproof. We''re not exactly sure what it is, but there''s something about the style that gives you a boost and well, attitude. Whatever it is, we know magic when we see it. Trust us', 'W', 535.50);
-
-
-
-
--- Initialize inventory table
-
-CREATE TABLE inventory (
-  `id` int(10) NOT NULL  AUTO_INCREMENT,
-  `productID` int(10) NOT NULL,
-  `size` int(10) NOT NULL,
-  `stock` int(10) NOT NULL,
-  CONSTRAINT
-    FOREIGN KEY (productID)
-    REFERENCES products(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  PRIMARY KEY (id)
-);
-
-
-INSERT INTO inventory(id,productID,size,stock) VALUES (1,1,38,97);
-INSERT INTO inventory(id,productID,size,stock) VALUES (2,1,39,93);
-INSERT INTO inventory(id,productID,size,stock) VALUES (3,1,40,100);
-INSERT INTO inventory(id,productID,size,stock) VALUES (4,1,41,9);
-INSERT INTO inventory(id,productID,size,stock) VALUES (5,1,42,77);
-INSERT INTO inventory(id,productID,size,stock) VALUES (6,1,43,52);
-INSERT INTO inventory(id,productID,size,stock) VALUES (7,1,44,58);
-INSERT INTO inventory(id,productID,size,stock) VALUES (8,2,38,74);
-INSERT INTO inventory(id,productID,size,stock) VALUES (9,2,39,74);
-INSERT INTO inventory(id,productID,size,stock) VALUES (10,2,40,88);
-INSERT INTO inventory(id,productID,size,stock) VALUES (11,2,41,45);
-INSERT INTO inventory(id,productID,size,stock) VALUES (12,2,42,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (13,2,43,69);
-INSERT INTO inventory(id,productID,size,stock) VALUES (14,2,44,59);
-INSERT INTO inventory(id,productID,size,stock) VALUES (15,3,38,7);
-INSERT INTO inventory(id,productID,size,stock) VALUES (16,3,39,50);
-INSERT INTO inventory(id,productID,size,stock) VALUES (17,3,40,94);
-INSERT INTO inventory(id,productID,size,stock) VALUES (18,3,41,16);
-INSERT INTO inventory(id,productID,size,stock) VALUES (19,3,42,83);
-INSERT INTO inventory(id,productID,size,stock) VALUES (20,3,43,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (21,3,44,42);
-INSERT INTO inventory(id,productID,size,stock) VALUES (22,4,38,33);
-INSERT INTO inventory(id,productID,size,stock) VALUES (23,4,39,11);
-INSERT INTO inventory(id,productID,size,stock) VALUES (24,4,40,50);
-INSERT INTO inventory(id,productID,size,stock) VALUES (25,4,41,60);
-INSERT INTO inventory(id,productID,size,stock) VALUES (26,4,42,18);
-INSERT INTO inventory(id,productID,size,stock) VALUES (27,4,43,65);
-INSERT INTO inventory(id,productID,size,stock) VALUES (28,4,44,66);
-INSERT INTO inventory(id,productID,size,stock) VALUES (29,5,38,82);
-INSERT INTO inventory(id,productID,size,stock) VALUES (30,5,39,91);
-INSERT INTO inventory(id,productID,size,stock) VALUES (31,5,40,3);
-INSERT INTO inventory(id,productID,size,stock) VALUES (32,5,41,16);
-INSERT INTO inventory(id,productID,size,stock) VALUES (33,5,42,65);
-INSERT INTO inventory(id,productID,size,stock) VALUES (34,5,43,78);
-INSERT INTO inventory(id,productID,size,stock) VALUES (35,5,44,73);
-INSERT INTO inventory(id,productID,size,stock) VALUES (36,6,38,40);
-INSERT INTO inventory(id,productID,size,stock) VALUES (37,6,39,44);
-INSERT INTO inventory(id,productID,size,stock) VALUES (38,6,40,71);
-INSERT INTO inventory(id,productID,size,stock) VALUES (39,6,41,61);
-INSERT INTO inventory(id,productID,size,stock) VALUES (40,6,42,15);
-INSERT INTO inventory(id,productID,size,stock) VALUES (41,6,43,66);
-INSERT INTO inventory(id,productID,size,stock) VALUES (42,6,44,80);
-INSERT INTO inventory(id,productID,size,stock) VALUES (50,7,38,94);
-INSERT INTO inventory(id,productID,size,stock) VALUES (51,7,39,7);
-INSERT INTO inventory(id,productID,size,stock) VALUES (52,7,40,4);
-INSERT INTO inventory(id,productID,size,stock) VALUES (53,7,41,19);
-INSERT INTO inventory(id,productID,size,stock) VALUES (54,7,42,75);
-INSERT INTO inventory(id,productID,size,stock) VALUES (55,7,43,99);
-INSERT INTO inventory(id,productID,size,stock) VALUES (56,7,44,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (57,8,38,43);
-INSERT INTO inventory(id,productID,size,stock) VALUES (58,8,39,89);
-INSERT INTO inventory(id,productID,size,stock) VALUES (59,8,40,92);
-INSERT INTO inventory(id,productID,size,stock) VALUES (60,8,41,4);
-INSERT INTO inventory(id,productID,size,stock) VALUES (61,8,42,41);
-INSERT INTO inventory(id,productID,size,stock) VALUES (62,8,43,60);
-INSERT INTO inventory(id,productID,size,stock) VALUES (63,8,44,22);
-INSERT INTO inventory(id,productID,size,stock) VALUES (64,9,38,13);
-INSERT INTO inventory(id,productID,size,stock) VALUES (65,9,39,24);
-INSERT INTO inventory(id,productID,size,stock) VALUES (66,9,40,98);
-INSERT INTO inventory(id,productID,size,stock) VALUES (67,9,41,49);
-INSERT INTO inventory(id,productID,size,stock) VALUES (68,9,42,3);
-INSERT INTO inventory(id,productID,size,stock) VALUES (69,9,43,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (70,9,44,88);
-INSERT INTO inventory(id,productID,size,stock) VALUES (71,10,38,66);
-INSERT INTO inventory(id,productID,size,stock) VALUES (72,10,39,32);
-INSERT INTO inventory(id,productID,size,stock) VALUES (73,10,40,41);
-INSERT INTO inventory(id,productID,size,stock) VALUES (74,10,41,92);
-INSERT INTO inventory(id,productID,size,stock) VALUES (75,10,42,65);
-INSERT INTO inventory(id,productID,size,stock) VALUES (76,10,43,67);
-INSERT INTO inventory(id,productID,size,stock) VALUES (77,10,44,73);
-INSERT INTO inventory(id,productID,size,stock) VALUES (78,11,38,58);
-INSERT INTO inventory(id,productID,size,stock) VALUES (79,11,39,52);
-INSERT INTO inventory(id,productID,size,stock) VALUES (80,11,40,54);
-INSERT INTO inventory(id,productID,size,stock) VALUES (81,11,41,63);
-INSERT INTO inventory(id,productID,size,stock) VALUES (82,11,42,49);
-INSERT INTO inventory(id,productID,size,stock) VALUES (83,11,43,86);
-INSERT INTO inventory(id,productID,size,stock) VALUES (84,11,44,48);
-INSERT INTO inventory(id,productID,size,stock) VALUES (85,12,38,38);
-INSERT INTO inventory(id,productID,size,stock) VALUES (86,12,39,50);
-INSERT INTO inventory(id,productID,size,stock) VALUES (87,12,40,2);
-INSERT INTO inventory(id,productID,size,stock) VALUES (88,12,41,39);
-INSERT INTO inventory(id,productID,size,stock) VALUES (89,12,42,79);
-INSERT INTO inventory(id,productID,size,stock) VALUES (90,12,43,68);
-INSERT INTO inventory(id,productID,size,stock) VALUES (91,12,44,57);
-INSERT INTO inventory(id,productID,size,stock) VALUES (92,13,38,46);
-INSERT INTO inventory(id,productID,size,stock) VALUES (93,13,39,51);
-INSERT INTO inventory(id,productID,size,stock) VALUES (94,13,40,2);
-INSERT INTO inventory(id,productID,size,stock) VALUES (95,13,41,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (96,13,42,77);
-INSERT INTO inventory(id,productID,size,stock) VALUES (97,13,43,18);
-INSERT INTO inventory(id,productID,size,stock) VALUES (98,13,44,79);
-INSERT INTO inventory(id,productID,size,stock) VALUES (99,14,38,62);
-INSERT INTO inventory(id,productID,size,stock) VALUES (100,14,39,99);
-INSERT INTO inventory(id,productID,size,stock) VALUES (101,14,40,28);
-INSERT INTO inventory(id,productID,size,stock) VALUES (102,14,41,63);
-INSERT INTO inventory(id,productID,size,stock) VALUES (103,14,42,22);
-INSERT INTO inventory(id,productID,size,stock) VALUES (104,14,43,41);
-INSERT INTO inventory(id,productID,size,stock) VALUES (105,14,44,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (106,15,38,42);
-INSERT INTO inventory(id,productID,size,stock) VALUES (107,15,39,53);
-INSERT INTO inventory(id,productID,size,stock) VALUES (108,15,40,35);
-INSERT INTO inventory(id,productID,size,stock) VALUES (109,15,41,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (110,15,42,91);
-INSERT INTO inventory(id,productID,size,stock) VALUES (111,15,43,4);
-INSERT INTO inventory(id,productID,size,stock) VALUES (112,15,44,27);
-INSERT INTO inventory(id,productID,size,stock) VALUES (113,16,38,51);
-INSERT INTO inventory(id,productID,size,stock) VALUES (114,16,39,60);
-INSERT INTO inventory(id,productID,size,stock) VALUES (115,16,40,46);
-INSERT INTO inventory(id,productID,size,stock) VALUES (116,16,41,85);
-INSERT INTO inventory(id,productID,size,stock) VALUES (117,16,42,57);
-INSERT INTO inventory(id,productID,size,stock) VALUES (118,16,43,69);
-INSERT INTO inventory(id,productID,size,stock) VALUES (119,16,44,71);
-INSERT INTO inventory(id,productID,size,stock) VALUES (120,17,38,30);
-INSERT INTO inventory(id,productID,size,stock) VALUES (121,17,39,3);
-INSERT INTO inventory(id,productID,size,stock) VALUES (122,17,40,3);
-INSERT INTO inventory(id,productID,size,stock) VALUES (123,17,41,14);
-INSERT INTO inventory(id,productID,size,stock) VALUES (124,17,42,83);
-INSERT INTO inventory(id,productID,size,stock) VALUES (125,17,43,58);
-INSERT INTO inventory(id,productID,size,stock) VALUES (126,17,44,82);
-INSERT INTO inventory(id,productID,size,stock) VALUES (127,18,38,48);
-INSERT INTO inventory(id,productID,size,stock) VALUES (128,18,39,15);
-INSERT INTO inventory(id,productID,size,stock) VALUES (129,18,40,21);
-INSERT INTO inventory(id,productID,size,stock) VALUES (130,18,41,81);
-INSERT INTO inventory(id,productID,size,stock) VALUES (131,18,42,46);
-INSERT INTO inventory(id,productID,size,stock) VALUES (132,18,43,46);
-INSERT INTO inventory(id,productID,size,stock) VALUES (133,18,44,64);
-INSERT INTO inventory(id,productID,size,stock) VALUES (134,19,38,4);
-INSERT INTO inventory(id,productID,size,stock) VALUES (135,19,39,62);
-INSERT INTO inventory(id,productID,size,stock) VALUES (136,19,40,66);
-INSERT INTO inventory(id,productID,size,stock) VALUES (137,19,41,41);
-INSERT INTO inventory(id,productID,size,stock) VALUES (138,19,42,5);
-INSERT INTO inventory(id,productID,size,stock) VALUES (139,19,43,97);
-INSERT INTO inventory(id,productID,size,stock) VALUES (140,19,44,84);
-INSERT INTO inventory(id,productID,size,stock) VALUES (141,20,38,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (142,20,39,16);
-INSERT INTO inventory(id,productID,size,stock) VALUES (143,20,40,20);
-INSERT INTO inventory(id,productID,size,stock) VALUES (144,20,41,94);
-INSERT INTO inventory(id,productID,size,stock) VALUES (145,20,42,3);
-INSERT INTO inventory(id,productID,size,stock) VALUES (146,20,43,15);
-INSERT INTO inventory(id,productID,size,stock) VALUES (147,20,44,9);
-INSERT INTO inventory(id,productID,size,stock) VALUES (148,21,38,28);
-INSERT INTO inventory(id,productID,size,stock) VALUES (149,21,39,75);
-INSERT INTO inventory(id,productID,size,stock) VALUES (150,21,40,36);
-INSERT INTO inventory(id,productID,size,stock) VALUES (151,21,41,22);
-INSERT INTO inventory(id,productID,size,stock) VALUES (152,21,42,11);
-INSERT INTO inventory(id,productID,size,stock) VALUES (153,21,43,80);
-INSERT INTO inventory(id,productID,size,stock) VALUES (154,21,44,93);
-INSERT INTO inventory(id,productID,size,stock) VALUES (155,22,38,31);
-INSERT INTO inventory(id,productID,size,stock) VALUES (156,22,39,22);
-INSERT INTO inventory(id,productID,size,stock) VALUES (157,22,40,18);
-INSERT INTO inventory(id,productID,size,stock) VALUES (158,22,41,5);
-INSERT INTO inventory(id,productID,size,stock) VALUES (159,22,42,47);
-INSERT INTO inventory(id,productID,size,stock) VALUES (160,22,43,53);
-INSERT INTO inventory(id,productID,size,stock) VALUES (161,22,44,41);
-INSERT INTO inventory(id,productID,size,stock) VALUES (162,23,38,65);
-INSERT INTO inventory(id,productID,size,stock) VALUES (163,23,39,91);
-INSERT INTO inventory(id,productID,size,stock) VALUES (164,23,40,90);
-INSERT INTO inventory(id,productID,size,stock) VALUES (165,23,41,27);
-INSERT INTO inventory(id,productID,size,stock) VALUES (166,23,42,4);
-INSERT INTO inventory(id,productID,size,stock) VALUES (167,23,43,39);
-INSERT INTO inventory(id,productID,size,stock) VALUES (168,23,44,46);
-INSERT INTO inventory(id,productID,size,stock) VALUES (169,24,38,54);
-INSERT INTO inventory(id,productID,size,stock) VALUES (170,24,39,34);
-INSERT INTO inventory(id,productID,size,stock) VALUES (171,24,40,18);
-INSERT INTO inventory(id,productID,size,stock) VALUES (172,24,41,57);
-INSERT INTO inventory(id,productID,size,stock) VALUES (173,24,42,88);
-INSERT INTO inventory(id,productID,size,stock) VALUES (174,24,43,7);
-INSERT INTO inventory(id,productID,size,stock) VALUES (175,24,44,95);
-INSERT INTO inventory(id,productID,size,stock) VALUES (176,25,38,47);
-INSERT INTO inventory(id,productID,size,stock) VALUES (177,25,39,34);
-INSERT INTO inventory(id,productID,size,stock) VALUES (178,25,40,30);
-INSERT INTO inventory(id,productID,size,stock) VALUES (179,25,41,91);
-INSERT INTO inventory(id,productID,size,stock) VALUES (180,25,42,76);
-INSERT INTO inventory(id,productID,size,stock) VALUES (181,25,43,70);
-INSERT INTO inventory(id,productID,size,stock) VALUES (182,25,44,100);
-INSERT INTO inventory(id,productID,size,stock) VALUES (183,26,38,11);
-INSERT INTO inventory(id,productID,size,stock) VALUES (184,26,39,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (185,26,40,3);
-INSERT INTO inventory(id,productID,size,stock) VALUES (186,26,41,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (187,26,42,31);
-INSERT INTO inventory(id,productID,size,stock) VALUES (188,26,43,13);
-INSERT INTO inventory(id,productID,size,stock) VALUES (189,26,44,12);
-INSERT INTO inventory(id,productID,size,stock) VALUES (190,27,38,2);
-INSERT INTO inventory(id,productID,size,stock) VALUES (191,27,39,21);
-INSERT INTO inventory(id,productID,size,stock) VALUES (192,27,40,99);
-INSERT INTO inventory(id,productID,size,stock) VALUES (193,27,41,75);
-INSERT INTO inventory(id,productID,size,stock) VALUES (194,27,42,81);
-INSERT INTO inventory(id,productID,size,stock) VALUES (195,27,43,18);
-INSERT INTO inventory(id,productID,size,stock) VALUES (196,27,44,56);
-INSERT INTO inventory(id,productID,size,stock) VALUES (197,28,36,77);
-INSERT INTO inventory(id,productID,size,stock) VALUES (198,28,37,29);
-INSERT INTO inventory(id,productID,size,stock) VALUES (199,28,38,42);
-INSERT INTO inventory(id,productID,size,stock) VALUES (200,28,39,14);
-INSERT INTO inventory(id,productID,size,stock) VALUES (201,28,40,21);
-INSERT INTO inventory(id,productID,size,stock) VALUES (202,28,41,47);
-INSERT INTO inventory(id,productID,size,stock) VALUES (203,28,42,53);
-INSERT INTO inventory(id,productID,size,stock) VALUES (204,29,36,31);
-INSERT INTO inventory(id,productID,size,stock) VALUES (205,29,37,70);
-INSERT INTO inventory(id,productID,size,stock) VALUES (206,29,38,36);
-INSERT INTO inventory(id,productID,size,stock) VALUES (207,29,39,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (208,29,40,53);
-INSERT INTO inventory(id,productID,size,stock) VALUES (209,29,41,91);
-INSERT INTO inventory(id,productID,size,stock) VALUES (210,29,42,73);
-INSERT INTO inventory(id,productID,size,stock) VALUES (211,30,36,12);
-INSERT INTO inventory(id,productID,size,stock) VALUES (212,30,37,74);
-INSERT INTO inventory(id,productID,size,stock) VALUES (213,30,38,99);
-INSERT INTO inventory(id,productID,size,stock) VALUES (214,30,39,20);
-INSERT INTO inventory(id,productID,size,stock) VALUES (215,30,40,67);
-INSERT INTO inventory(id,productID,size,stock) VALUES (216,30,41,1);
-INSERT INTO inventory(id,productID,size,stock) VALUES (217,30,42,37);
-INSERT INTO inventory(id,productID,size,stock) VALUES (218,31,36,72);
-INSERT INTO inventory(id,productID,size,stock) VALUES (219,31,37,36);
-INSERT INTO inventory(id,productID,size,stock) VALUES (220,31,38,94);
-INSERT INTO inventory(id,productID,size,stock) VALUES (221,31,39,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (222,31,40,36);
-INSERT INTO inventory(id,productID,size,stock) VALUES (223,31,41,53);
-INSERT INTO inventory(id,productID,size,stock) VALUES (224,31,42,27);
-INSERT INTO inventory(id,productID,size,stock) VALUES (225,32,36,18);
-INSERT INTO inventory(id,productID,size,stock) VALUES (226,32,37,22);
-INSERT INTO inventory(id,productID,size,stock) VALUES (227,32,38,16);
-INSERT INTO inventory(id,productID,size,stock) VALUES (228,32,39,86);
-INSERT INTO inventory(id,productID,size,stock) VALUES (229,32,40,7);
-INSERT INTO inventory(id,productID,size,stock) VALUES (230,32,41,28);
-INSERT INTO inventory(id,productID,size,stock) VALUES (231,32,42,36);
-INSERT INTO inventory(id,productID,size,stock) VALUES (232,33,36,88);
-INSERT INTO inventory(id,productID,size,stock) VALUES (233,33,37,41);
-INSERT INTO inventory(id,productID,size,stock) VALUES (234,33,38,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (235,33,39,43);
-INSERT INTO inventory(id,productID,size,stock) VALUES (236,33,40,57);
-INSERT INTO inventory(id,productID,size,stock) VALUES (237,33,41,60);
-INSERT INTO inventory(id,productID,size,stock) VALUES (238,33,42,85);
-INSERT INTO inventory(id,productID,size,stock) VALUES (239,34,36,33);
-INSERT INTO inventory(id,productID,size,stock) VALUES (240,34,37,93);
-INSERT INTO inventory(id,productID,size,stock) VALUES (241,34,38,83);
-INSERT INTO inventory(id,productID,size,stock) VALUES (242,34,39,76);
-INSERT INTO inventory(id,productID,size,stock) VALUES (243,34,40,56);
-INSERT INTO inventory(id,productID,size,stock) VALUES (244,34,41,88);
-INSERT INTO inventory(id,productID,size,stock) VALUES (245,34,42,73);
-INSERT INTO inventory(id,productID,size,stock) VALUES (246,35,36,80);
-INSERT INTO inventory(id,productID,size,stock) VALUES (247,35,37,15);
-INSERT INTO inventory(id,productID,size,stock) VALUES (248,35,38,43);
-INSERT INTO inventory(id,productID,size,stock) VALUES (249,35,39,24);
-INSERT INTO inventory(id,productID,size,stock) VALUES (250,35,40,78);
-INSERT INTO inventory(id,productID,size,stock) VALUES (251,35,41,55);
-INSERT INTO inventory(id,productID,size,stock) VALUES (252,35,42,15);
-INSERT INTO inventory(id,productID,size,stock) VALUES (253,36,36,67);
-INSERT INTO inventory(id,productID,size,stock) VALUES (254,36,37,78);
-INSERT INTO inventory(id,productID,size,stock) VALUES (255,36,38,21);
-INSERT INTO inventory(id,productID,size,stock) VALUES (256,36,39,86);
-INSERT INTO inventory(id,productID,size,stock) VALUES (257,36,40,35);
-INSERT INTO inventory(id,productID,size,stock) VALUES (258,36,41,33);
-INSERT INTO inventory(id,productID,size,stock) VALUES (259,36,42,29);
-INSERT INTO inventory(id,productID,size,stock) VALUES (260,37,36,91);
-INSERT INTO inventory(id,productID,size,stock) VALUES (261,37,37,9);
-INSERT INTO inventory(id,productID,size,stock) VALUES (262,37,38,93);
-INSERT INTO inventory(id,productID,size,stock) VALUES (263,37,39,79);
-INSERT INTO inventory(id,productID,size,stock) VALUES (264,37,40,49);
-INSERT INTO inventory(id,productID,size,stock) VALUES (265,37,41,2);
-INSERT INTO inventory(id,productID,size,stock) VALUES (266,37,42,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (267,38,36,46);
-INSERT INTO inventory(id,productID,size,stock) VALUES (268,38,37,48);
-INSERT INTO inventory(id,productID,size,stock) VALUES (269,38,38,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (270,38,39,69);
-INSERT INTO inventory(id,productID,size,stock) VALUES (271,38,40,39);
-INSERT INTO inventory(id,productID,size,stock) VALUES (272,38,41,7);
-INSERT INTO inventory(id,productID,size,stock) VALUES (273,38,42,1);
-INSERT INTO inventory(id,productID,size,stock) VALUES (274,39,36,49);
-INSERT INTO inventory(id,productID,size,stock) VALUES (275,39,37,32);
-INSERT INTO inventory(id,productID,size,stock) VALUES (276,39,38,60);
-INSERT INTO inventory(id,productID,size,stock) VALUES (277,39,39,45);
-INSERT INTO inventory(id,productID,size,stock) VALUES (278,39,40,80);
-INSERT INTO inventory(id,productID,size,stock) VALUES (279,39,41,52);
-INSERT INTO inventory(id,productID,size,stock) VALUES (280,39,42,76);
-INSERT INTO inventory(id,productID,size,stock) VALUES (281,40,36,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (282,40,37,73);
-INSERT INTO inventory(id,productID,size,stock) VALUES (283,40,38,97);
-INSERT INTO inventory(id,productID,size,stock) VALUES (284,40,39,69);
-INSERT INTO inventory(id,productID,size,stock) VALUES (285,40,40,48);
-INSERT INTO inventory(id,productID,size,stock) VALUES (286,40,41,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (287,40,42,42);
-INSERT INTO inventory(id,productID,size,stock) VALUES (288,41,36,19);
-INSERT INTO inventory(id,productID,size,stock) VALUES (289,41,37,32);
-INSERT INTO inventory(id,productID,size,stock) VALUES (290,41,38,69);
-INSERT INTO inventory(id,productID,size,stock) VALUES (291,41,39,80);
-INSERT INTO inventory(id,productID,size,stock) VALUES (292,41,40,63);
-INSERT INTO inventory(id,productID,size,stock) VALUES (293,41,41,74);
-INSERT INTO inventory(id,productID,size,stock) VALUES (294,41,42,62);
-INSERT INTO inventory(id,productID,size,stock) VALUES (295,42,36,61);
-INSERT INTO inventory(id,productID,size,stock) VALUES (296,42,37,53);
-INSERT INTO inventory(id,productID,size,stock) VALUES (297,42,38,63);
-INSERT INTO inventory(id,productID,size,stock) VALUES (298,42,39,58);
-INSERT INTO inventory(id,productID,size,stock) VALUES (299,42,40,20);
-INSERT INTO inventory(id,productID,size,stock) VALUES (300,42,41,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (301,42,42,57);
-INSERT INTO inventory(id,productID,size,stock) VALUES (302,43,36,6);
-INSERT INTO inventory(id,productID,size,stock) VALUES (303,43,37,76);
-INSERT INTO inventory(id,productID,size,stock) VALUES (304,43,38,75);
-INSERT INTO inventory(id,productID,size,stock) VALUES (305,43,39,94);
-INSERT INTO inventory(id,productID,size,stock) VALUES (306,43,40,63);
-INSERT INTO inventory(id,productID,size,stock) VALUES (307,43,41,87);
-INSERT INTO inventory(id,productID,size,stock) VALUES (308,43,42,62);
-INSERT INTO inventory(id,productID,size,stock) VALUES (309,44,36,71);
-INSERT INTO inventory(id,productID,size,stock) VALUES (310,44,37,65);
-INSERT INTO inventory(id,productID,size,stock) VALUES (311,44,38,64);
-INSERT INTO inventory(id,productID,size,stock) VALUES (312,44,39,96);
-INSERT INTO inventory(id,productID,size,stock) VALUES (313,44,40,39);
-INSERT INTO inventory(id,productID,size,stock) VALUES (314,44,41,25);
-INSERT INTO inventory(id,productID,size,stock) VALUES (315,44,42,35);
-INSERT INTO inventory(id,productID,size,stock) VALUES (316,45,36,71);
-INSERT INTO inventory(id,productID,size,stock) VALUES (317,45,37,16);
-INSERT INTO inventory(id,productID,size,stock) VALUES (318,45,38,12);
-INSERT INTO inventory(id,productID,size,stock) VALUES (319,45,39,5);
-INSERT INTO inventory(id,productID,size,stock) VALUES (320,45,40,94);
-INSERT INTO inventory(id,productID,size,stock) VALUES (321,45,41,79);
-INSERT INTO inventory(id,productID,size,stock) VALUES (322,45,42,90);
-INSERT INTO inventory(id,productID,size,stock) VALUES (323,46,36,62);
-INSERT INTO inventory(id,productID,size,stock) VALUES (324,46,37,34);
-INSERT INTO inventory(id,productID,size,stock) VALUES (325,46,38,16);
-INSERT INTO inventory(id,productID,size,stock) VALUES (326,46,39,59);
-INSERT INTO inventory(id,productID,size,stock) VALUES (327,46,40,60);
-INSERT INTO inventory(id,productID,size,stock) VALUES (328,46,41,51);
-INSERT INTO inventory(id,productID,size,stock) VALUES (329,46,42,52);
-INSERT INTO inventory(id,productID,size,stock) VALUES (330,47,36,35);
-INSERT INTO inventory(id,productID,size,stock) VALUES (331,47,37,100);
-INSERT INTO inventory(id,productID,size,stock) VALUES (332,47,38,44);
-INSERT INTO inventory(id,productID,size,stock) VALUES (333,47,39,82);
-INSERT INTO inventory(id,productID,size,stock) VALUES (334,47,40,45);
-INSERT INTO inventory(id,productID,size,stock) VALUES (335,47,41,97);
-INSERT INTO inventory(id,productID,size,stock) VALUES (336,47,42,32);
-INSERT INTO inventory(id,productID,size,stock) VALUES (337,48,36,83);
-INSERT INTO inventory(id,productID,size,stock) VALUES (338,48,37,39);
-INSERT INTO inventory(id,productID,size,stock) VALUES (339,48,38,37);
-INSERT INTO inventory(id,productID,size,stock) VALUES (340,48,39,14);
-INSERT INTO inventory(id,productID,size,stock) VALUES (341,48,40,54);
-INSERT INTO inventory(id,productID,size,stock) VALUES (342,48,41,67);
-INSERT INTO inventory(id,productID,size,stock) VALUES (343,48,42,89);
-INSERT INTO inventory(id,productID,size,stock) VALUES (344,49,36,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (345,49,37,64);
-INSERT INTO inventory(id,productID,size,stock) VALUES (346,49,38,52);
-INSERT INTO inventory(id,productID,size,stock) VALUES (347,49,39,5);
-INSERT INTO inventory(id,productID,size,stock) VALUES (348,49,40,71);
-INSERT INTO inventory(id,productID,size,stock) VALUES (349,49,41,10);
-INSERT INTO inventory(id,productID,size,stock) VALUES (350,49,42,69);
-
--- Initialize pictures table
-
-CREATE TABLE pictures (
-  `id` int(10) NOT NULL  AUTO_INCREMENT,
-  `productID` int(10) NOT NULL,
-  `pictureURL` varchar(150) NOT NULL,
-  CONSTRAINT
-    FOREIGN KEY (productID)
-    REFERENCES products(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  PRIMARY KEY (id)
-);
-
 INSERT INTO `pictures` (`id`, `productID`, `pictureURL`) VALUES
 (NULL,1,'assets/pictures/men/boots-captoe-brogues-espresso-crazy-horse-leather/boots-captoe-brogues-espresso-crazy-horse-leather-1.jpg'),
 (NULL,1,'assets/pictures/men/boots-captoe-brogues-espresso-crazy-horse-leather/boots-captoe-brogues-espresso-crazy-horse-leather-2.jpg'),
@@ -1035,21 +841,369 @@ INSERT INTO `pictures` (`id`, `productID`, `pictureURL`) VALUES
 (NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan-3.jpg'),
 (NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan-4.jpg'),
 (NULL,49,'assets/pictures/women/veronica-bootie-tan/veronica-bootie-tan.jpg');
+INSERT INTO inventory(id,productID,size,stock) VALUES (1,1,38,97);
+INSERT INTO inventory(id,productID,size,stock) VALUES (2,1,39,93);
+INSERT INTO inventory(id,productID,size,stock) VALUES (3,1,40,100);
+INSERT INTO inventory(id,productID,size,stock) VALUES (4,1,41,9);
+INSERT INTO inventory(id,productID,size,stock) VALUES (5,1,42,77);
+INSERT INTO inventory(id,productID,size,stock) VALUES (6,1,43,52);
+INSERT INTO inventory(id,productID,size,stock) VALUES (7,1,44,58);
+INSERT INTO inventory(id,productID,size,stock) VALUES (8,2,38,74);
+INSERT INTO inventory(id,productID,size,stock) VALUES (9,2,39,74);
+INSERT INTO inventory(id,productID,size,stock) VALUES (10,2,40,88);
+INSERT INTO inventory(id,productID,size,stock) VALUES (11,2,41,45);
+INSERT INTO inventory(id,productID,size,stock) VALUES (12,2,42,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (13,2,43,69);
+INSERT INTO inventory(id,productID,size,stock) VALUES (14,2,44,59);
+INSERT INTO inventory(id,productID,size,stock) VALUES (15,3,38,7);
+INSERT INTO inventory(id,productID,size,stock) VALUES (16,3,39,50);
+INSERT INTO inventory(id,productID,size,stock) VALUES (17,3,40,94);
+INSERT INTO inventory(id,productID,size,stock) VALUES (18,3,41,16);
+INSERT INTO inventory(id,productID,size,stock) VALUES (19,3,42,83);
+INSERT INTO inventory(id,productID,size,stock) VALUES (20,3,43,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (21,3,44,42);
+INSERT INTO inventory(id,productID,size,stock) VALUES (22,4,38,33);
+INSERT INTO inventory(id,productID,size,stock) VALUES (23,4,39,11);
+INSERT INTO inventory(id,productID,size,stock) VALUES (24,4,40,50);
+INSERT INTO inventory(id,productID,size,stock) VALUES (25,4,41,60);
+INSERT INTO inventory(id,productID,size,stock) VALUES (26,4,42,18);
+INSERT INTO inventory(id,productID,size,stock) VALUES (27,4,43,65);
+INSERT INTO inventory(id,productID,size,stock) VALUES (28,4,44,66);
+INSERT INTO inventory(id,productID,size,stock) VALUES (29,5,38,82);
+INSERT INTO inventory(id,productID,size,stock) VALUES (30,5,39,91);
+INSERT INTO inventory(id,productID,size,stock) VALUES (31,5,40,3);
+INSERT INTO inventory(id,productID,size,stock) VALUES (32,5,41,16);
+INSERT INTO inventory(id,productID,size,stock) VALUES (33,5,42,65);
+INSERT INTO inventory(id,productID,size,stock) VALUES (34,5,43,78);
+INSERT INTO inventory(id,productID,size,stock) VALUES (35,5,44,73);
+INSERT INTO inventory(id,productID,size,stock) VALUES (36,6,38,40);
+INSERT INTO inventory(id,productID,size,stock) VALUES (37,6,39,44);
+INSERT INTO inventory(id,productID,size,stock) VALUES (38,6,40,71);
+INSERT INTO inventory(id,productID,size,stock) VALUES (39,6,41,61);
+INSERT INTO inventory(id,productID,size,stock) VALUES (40,6,42,15);
+INSERT INTO inventory(id,productID,size,stock) VALUES (41,6,43,66);
+INSERT INTO inventory(id,productID,size,stock) VALUES (42,6,44,80);
+INSERT INTO inventory(id,productID,size,stock) VALUES (50,7,38,94);
+INSERT INTO inventory(id,productID,size,stock) VALUES (51,7,39,7);
+INSERT INTO inventory(id,productID,size,stock) VALUES (52,7,40,4);
+INSERT INTO inventory(id,productID,size,stock) VALUES (53,7,41,19);
+INSERT INTO inventory(id,productID,size,stock) VALUES (54,7,42,75);
+INSERT INTO inventory(id,productID,size,stock) VALUES (55,7,43,99);
+INSERT INTO inventory(id,productID,size,stock) VALUES (56,7,44,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (57,8,38,43);
+INSERT INTO inventory(id,productID,size,stock) VALUES (58,8,39,89);
+INSERT INTO inventory(id,productID,size,stock) VALUES (59,8,40,92);
+INSERT INTO inventory(id,productID,size,stock) VALUES (60,8,41,4);
+INSERT INTO inventory(id,productID,size,stock) VALUES (61,8,42,41);
+INSERT INTO inventory(id,productID,size,stock) VALUES (62,8,43,60);
+INSERT INTO inventory(id,productID,size,stock) VALUES (63,8,44,22);
+INSERT INTO inventory(id,productID,size,stock) VALUES (64,9,38,13);
+INSERT INTO inventory(id,productID,size,stock) VALUES (65,9,39,24);
+INSERT INTO inventory(id,productID,size,stock) VALUES (66,9,40,98);
+INSERT INTO inventory(id,productID,size,stock) VALUES (67,9,41,49);
+INSERT INTO inventory(id,productID,size,stock) VALUES (68,9,42,3);
+INSERT INTO inventory(id,productID,size,stock) VALUES (69,9,43,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (70,9,44,88);
+INSERT INTO inventory(id,productID,size,stock) VALUES (71,10,38,66);
+INSERT INTO inventory(id,productID,size,stock) VALUES (72,10,39,32);
+INSERT INTO inventory(id,productID,size,stock) VALUES (73,10,40,41);
+INSERT INTO inventory(id,productID,size,stock) VALUES (74,10,41,92);
+INSERT INTO inventory(id,productID,size,stock) VALUES (75,10,42,65);
+INSERT INTO inventory(id,productID,size,stock) VALUES (76,10,43,67);
+INSERT INTO inventory(id,productID,size,stock) VALUES (77,10,44,73);
+INSERT INTO inventory(id,productID,size,stock) VALUES (78,11,38,58);
+INSERT INTO inventory(id,productID,size,stock) VALUES (79,11,39,52);
+INSERT INTO inventory(id,productID,size,stock) VALUES (80,11,40,54);
+INSERT INTO inventory(id,productID,size,stock) VALUES (81,11,41,63);
+INSERT INTO inventory(id,productID,size,stock) VALUES (82,11,42,49);
+INSERT INTO inventory(id,productID,size,stock) VALUES (83,11,43,86);
+INSERT INTO inventory(id,productID,size,stock) VALUES (84,11,44,48);
+INSERT INTO inventory(id,productID,size,stock) VALUES (85,12,38,38);
+INSERT INTO inventory(id,productID,size,stock) VALUES (86,12,39,50);
+INSERT INTO inventory(id,productID,size,stock) VALUES (87,12,40,2);
+INSERT INTO inventory(id,productID,size,stock) VALUES (88,12,41,39);
+INSERT INTO inventory(id,productID,size,stock) VALUES (89,12,42,79);
+INSERT INTO inventory(id,productID,size,stock) VALUES (90,12,43,68);
+INSERT INTO inventory(id,productID,size,stock) VALUES (91,12,44,57);
+INSERT INTO inventory(id,productID,size,stock) VALUES (92,13,38,46);
+INSERT INTO inventory(id,productID,size,stock) VALUES (93,13,39,51);
+INSERT INTO inventory(id,productID,size,stock) VALUES (94,13,40,2);
+INSERT INTO inventory(id,productID,size,stock) VALUES (95,13,41,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (96,13,42,77);
+INSERT INTO inventory(id,productID,size,stock) VALUES (97,13,43,18);
+INSERT INTO inventory(id,productID,size,stock) VALUES (98,13,44,79);
+INSERT INTO inventory(id,productID,size,stock) VALUES (99,14,38,62);
+INSERT INTO inventory(id,productID,size,stock) VALUES (100,14,39,99);
+INSERT INTO inventory(id,productID,size,stock) VALUES (101,14,40,28);
+INSERT INTO inventory(id,productID,size,stock) VALUES (102,14,41,63);
+INSERT INTO inventory(id,productID,size,stock) VALUES (103,14,42,22);
+INSERT INTO inventory(id,productID,size,stock) VALUES (104,14,43,41);
+INSERT INTO inventory(id,productID,size,stock) VALUES (105,14,44,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (106,15,38,42);
+INSERT INTO inventory(id,productID,size,stock) VALUES (107,15,39,53);
+INSERT INTO inventory(id,productID,size,stock) VALUES (108,15,40,35);
+INSERT INTO inventory(id,productID,size,stock) VALUES (109,15,41,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (110,15,42,91);
+INSERT INTO inventory(id,productID,size,stock) VALUES (111,15,43,4);
+INSERT INTO inventory(id,productID,size,stock) VALUES (112,15,44,27);
+INSERT INTO inventory(id,productID,size,stock) VALUES (113,16,38,51);
+INSERT INTO inventory(id,productID,size,stock) VALUES (114,16,39,60);
+INSERT INTO inventory(id,productID,size,stock) VALUES (115,16,40,46);
+INSERT INTO inventory(id,productID,size,stock) VALUES (116,16,41,85);
+INSERT INTO inventory(id,productID,size,stock) VALUES (117,16,42,57);
+INSERT INTO inventory(id,productID,size,stock) VALUES (118,16,43,69);
+INSERT INTO inventory(id,productID,size,stock) VALUES (119,16,44,71);
+INSERT INTO inventory(id,productID,size,stock) VALUES (120,17,38,30);
+INSERT INTO inventory(id,productID,size,stock) VALUES (121,17,39,3);
+INSERT INTO inventory(id,productID,size,stock) VALUES (122,17,40,3);
+INSERT INTO inventory(id,productID,size,stock) VALUES (123,17,41,14);
+INSERT INTO inventory(id,productID,size,stock) VALUES (124,17,42,83);
+INSERT INTO inventory(id,productID,size,stock) VALUES (125,17,43,58);
+INSERT INTO inventory(id,productID,size,stock) VALUES (126,17,44,82);
+INSERT INTO inventory(id,productID,size,stock) VALUES (127,18,38,48);
+INSERT INTO inventory(id,productID,size,stock) VALUES (128,18,39,15);
+INSERT INTO inventory(id,productID,size,stock) VALUES (129,18,40,21);
+INSERT INTO inventory(id,productID,size,stock) VALUES (130,18,41,81);
+INSERT INTO inventory(id,productID,size,stock) VALUES (131,18,42,46);
+INSERT INTO inventory(id,productID,size,stock) VALUES (132,18,43,46);
+INSERT INTO inventory(id,productID,size,stock) VALUES (133,18,44,64);
+INSERT INTO inventory(id,productID,size,stock) VALUES (134,19,38,4);
+INSERT INTO inventory(id,productID,size,stock) VALUES (135,19,39,62);
+INSERT INTO inventory(id,productID,size,stock) VALUES (136,19,40,66);
+INSERT INTO inventory(id,productID,size,stock) VALUES (137,19,41,41);
+INSERT INTO inventory(id,productID,size,stock) VALUES (138,19,42,5);
+INSERT INTO inventory(id,productID,size,stock) VALUES (139,19,43,97);
+INSERT INTO inventory(id,productID,size,stock) VALUES (140,19,44,84);
+INSERT INTO inventory(id,productID,size,stock) VALUES (141,20,38,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (142,20,39,16);
+INSERT INTO inventory(id,productID,size,stock) VALUES (143,20,40,20);
+INSERT INTO inventory(id,productID,size,stock) VALUES (144,20,41,94);
+INSERT INTO inventory(id,productID,size,stock) VALUES (145,20,42,3);
+INSERT INTO inventory(id,productID,size,stock) VALUES (146,20,43,15);
+INSERT INTO inventory(id,productID,size,stock) VALUES (147,20,44,9);
+INSERT INTO inventory(id,productID,size,stock) VALUES (148,21,38,28);
+INSERT INTO inventory(id,productID,size,stock) VALUES (149,21,39,75);
+INSERT INTO inventory(id,productID,size,stock) VALUES (150,21,40,36);
+INSERT INTO inventory(id,productID,size,stock) VALUES (151,21,41,22);
+INSERT INTO inventory(id,productID,size,stock) VALUES (152,21,42,11);
+INSERT INTO inventory(id,productID,size,stock) VALUES (153,21,43,80);
+INSERT INTO inventory(id,productID,size,stock) VALUES (154,21,44,93);
+INSERT INTO inventory(id,productID,size,stock) VALUES (155,22,38,31);
+INSERT INTO inventory(id,productID,size,stock) VALUES (156,22,39,22);
+INSERT INTO inventory(id,productID,size,stock) VALUES (157,22,40,18);
+INSERT INTO inventory(id,productID,size,stock) VALUES (158,22,41,5);
+INSERT INTO inventory(id,productID,size,stock) VALUES (159,22,42,47);
+INSERT INTO inventory(id,productID,size,stock) VALUES (160,22,43,53);
+INSERT INTO inventory(id,productID,size,stock) VALUES (161,22,44,41);
+INSERT INTO inventory(id,productID,size,stock) VALUES (162,23,38,65);
+INSERT INTO inventory(id,productID,size,stock) VALUES (163,23,39,91);
+INSERT INTO inventory(id,productID,size,stock) VALUES (164,23,40,90);
+INSERT INTO inventory(id,productID,size,stock) VALUES (165,23,41,27);
+INSERT INTO inventory(id,productID,size,stock) VALUES (166,23,42,4);
+INSERT INTO inventory(id,productID,size,stock) VALUES (167,23,43,39);
+INSERT INTO inventory(id,productID,size,stock) VALUES (168,23,44,46);
+INSERT INTO inventory(id,productID,size,stock) VALUES (169,24,38,54);
+INSERT INTO inventory(id,productID,size,stock) VALUES (170,24,39,34);
+INSERT INTO inventory(id,productID,size,stock) VALUES (171,24,40,18);
+INSERT INTO inventory(id,productID,size,stock) VALUES (172,24,41,57);
+INSERT INTO inventory(id,productID,size,stock) VALUES (173,24,42,88);
+INSERT INTO inventory(id,productID,size,stock) VALUES (174,24,43,7);
+INSERT INTO inventory(id,productID,size,stock) VALUES (175,24,44,95);
+INSERT INTO inventory(id,productID,size,stock) VALUES (176,25,38,47);
+INSERT INTO inventory(id,productID,size,stock) VALUES (177,25,39,34);
+INSERT INTO inventory(id,productID,size,stock) VALUES (178,25,40,30);
+INSERT INTO inventory(id,productID,size,stock) VALUES (179,25,41,91);
+INSERT INTO inventory(id,productID,size,stock) VALUES (180,25,42,76);
+INSERT INTO inventory(id,productID,size,stock) VALUES (181,25,43,70);
+INSERT INTO inventory(id,productID,size,stock) VALUES (182,25,44,100);
+INSERT INTO inventory(id,productID,size,stock) VALUES (183,26,38,11);
+INSERT INTO inventory(id,productID,size,stock) VALUES (184,26,39,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (185,26,40,3);
+INSERT INTO inventory(id,productID,size,stock) VALUES (186,26,41,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (187,26,42,31);
+INSERT INTO inventory(id,productID,size,stock) VALUES (188,26,43,13);
+INSERT INTO inventory(id,productID,size,stock) VALUES (189,26,44,12);
+INSERT INTO inventory(id,productID,size,stock) VALUES (190,27,38,2);
+INSERT INTO inventory(id,productID,size,stock) VALUES (191,27,39,21);
+INSERT INTO inventory(id,productID,size,stock) VALUES (192,27,40,99);
+INSERT INTO inventory(id,productID,size,stock) VALUES (193,27,41,75);
+INSERT INTO inventory(id,productID,size,stock) VALUES (194,27,42,81);
+INSERT INTO inventory(id,productID,size,stock) VALUES (195,27,43,18);
+INSERT INTO inventory(id,productID,size,stock) VALUES (196,27,44,56);
+
+INSERT INTO inventory(id,productID,size,stock) VALUES (197,28,36,77);
+INSERT INTO inventory(id,productID,size,stock) VALUES (198,28,37,29);
+INSERT INTO inventory(id,productID,size,stock) VALUES (199,28,38,42);
+INSERT INTO inventory(id,productID,size,stock) VALUES (200,28,39,14);
+INSERT INTO inventory(id,productID,size,stock) VALUES (201,28,40,21);
+INSERT INTO inventory(id,productID,size,stock) VALUES (202,28,41,47);
+INSERT INTO inventory(id,productID,size,stock) VALUES (203,28,42,53);
+INSERT INTO inventory(id,productID,size,stock) VALUES (204,29,36,31);
+INSERT INTO inventory(id,productID,size,stock) VALUES (205,29,37,70);
+INSERT INTO inventory(id,productID,size,stock) VALUES (206,29,38,36);
+INSERT INTO inventory(id,productID,size,stock) VALUES (207,29,39,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (208,29,40,53);
+INSERT INTO inventory(id,productID,size,stock) VALUES (209,29,41,91);
+INSERT INTO inventory(id,productID,size,stock) VALUES (210,29,42,73);
+INSERT INTO inventory(id,productID,size,stock) VALUES (211,30,36,12);
+INSERT INTO inventory(id,productID,size,stock) VALUES (212,30,37,74);
+INSERT INTO inventory(id,productID,size,stock) VALUES (213,30,38,99);
+INSERT INTO inventory(id,productID,size,stock) VALUES (214,30,39,20);
+INSERT INTO inventory(id,productID,size,stock) VALUES (215,30,40,67);
+INSERT INTO inventory(id,productID,size,stock) VALUES (216,30,41,1);
+INSERT INTO inventory(id,productID,size,stock) VALUES (217,30,42,37);
+INSERT INTO inventory(id,productID,size,stock) VALUES (218,31,36,72);
+INSERT INTO inventory(id,productID,size,stock) VALUES (219,31,37,36);
+INSERT INTO inventory(id,productID,size,stock) VALUES (220,31,38,94);
+INSERT INTO inventory(id,productID,size,stock) VALUES (221,31,39,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (222,31,40,36);
+INSERT INTO inventory(id,productID,size,stock) VALUES (223,31,41,53);
+INSERT INTO inventory(id,productID,size,stock) VALUES (224,31,42,27);
+INSERT INTO inventory(id,productID,size,stock) VALUES (225,32,36,18);
+INSERT INTO inventory(id,productID,size,stock) VALUES (226,32,37,22);
+INSERT INTO inventory(id,productID,size,stock) VALUES (227,32,38,16);
+INSERT INTO inventory(id,productID,size,stock) VALUES (228,32,39,86);
+INSERT INTO inventory(id,productID,size,stock) VALUES (229,32,40,7);
+INSERT INTO inventory(id,productID,size,stock) VALUES (230,32,41,28);
+INSERT INTO inventory(id,productID,size,stock) VALUES (231,32,42,36);
+INSERT INTO inventory(id,productID,size,stock) VALUES (232,33,36,88);
+INSERT INTO inventory(id,productID,size,stock) VALUES (233,33,37,41);
+INSERT INTO inventory(id,productID,size,stock) VALUES (234,33,38,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (235,33,39,43);
+INSERT INTO inventory(id,productID,size,stock) VALUES (236,33,40,57);
+INSERT INTO inventory(id,productID,size,stock) VALUES (237,33,41,60);
+INSERT INTO inventory(id,productID,size,stock) VALUES (238,33,42,85);
+INSERT INTO inventory(id,productID,size,stock) VALUES (239,34,36,33);
+INSERT INTO inventory(id,productID,size,stock) VALUES (240,34,37,93);
+INSERT INTO inventory(id,productID,size,stock) VALUES (241,34,38,83);
+INSERT INTO inventory(id,productID,size,stock) VALUES (242,34,39,76);
+INSERT INTO inventory(id,productID,size,stock) VALUES (243,34,40,56);
+INSERT INTO inventory(id,productID,size,stock) VALUES (244,34,41,88);
+INSERT INTO inventory(id,productID,size,stock) VALUES (245,34,42,73);
+INSERT INTO inventory(id,productID,size,stock) VALUES (246,35,36,80);
+INSERT INTO inventory(id,productID,size,stock) VALUES (247,35,37,15);
+INSERT INTO inventory(id,productID,size,stock) VALUES (248,35,38,43);
+INSERT INTO inventory(id,productID,size,stock) VALUES (249,35,39,24);
+INSERT INTO inventory(id,productID,size,stock) VALUES (250,35,40,78);
+INSERT INTO inventory(id,productID,size,stock) VALUES (251,35,41,55);
+INSERT INTO inventory(id,productID,size,stock) VALUES (252,35,42,15);
+INSERT INTO inventory(id,productID,size,stock) VALUES (253,36,36,67);
+INSERT INTO inventory(id,productID,size,stock) VALUES (254,36,37,78);
+INSERT INTO inventory(id,productID,size,stock) VALUES (255,36,38,21);
+INSERT INTO inventory(id,productID,size,stock) VALUES (256,36,39,86);
+INSERT INTO inventory(id,productID,size,stock) VALUES (257,36,40,35);
+INSERT INTO inventory(id,productID,size,stock) VALUES (258,36,41,33);
+INSERT INTO inventory(id,productID,size,stock) VALUES (259,36,42,29);
+INSERT INTO inventory(id,productID,size,stock) VALUES (260,37,36,91);
+INSERT INTO inventory(id,productID,size,stock) VALUES (261,37,37,9);
+INSERT INTO inventory(id,productID,size,stock) VALUES (262,37,38,93);
+INSERT INTO inventory(id,productID,size,stock) VALUES (263,37,39,79);
+INSERT INTO inventory(id,productID,size,stock) VALUES (264,37,40,49);
+INSERT INTO inventory(id,productID,size,stock) VALUES (265,37,41,2);
+INSERT INTO inventory(id,productID,size,stock) VALUES (266,37,42,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (267,38,36,46);
+INSERT INTO inventory(id,productID,size,stock) VALUES (268,38,37,48);
+INSERT INTO inventory(id,productID,size,stock) VALUES (269,38,38,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (270,38,39,69);
+INSERT INTO inventory(id,productID,size,stock) VALUES (271,38,40,39);
+INSERT INTO inventory(id,productID,size,stock) VALUES (272,38,41,7);
+INSERT INTO inventory(id,productID,size,stock) VALUES (273,38,42,1);
+INSERT INTO inventory(id,productID,size,stock) VALUES (274,39,36,49);
+INSERT INTO inventory(id,productID,size,stock) VALUES (275,39,37,32);
+INSERT INTO inventory(id,productID,size,stock) VALUES (276,39,38,60);
+INSERT INTO inventory(id,productID,size,stock) VALUES (277,39,39,45);
+INSERT INTO inventory(id,productID,size,stock) VALUES (278,39,40,80);
+INSERT INTO inventory(id,productID,size,stock) VALUES (279,39,41,52);
+INSERT INTO inventory(id,productID,size,stock) VALUES (280,39,42,76);
+INSERT INTO inventory(id,productID,size,stock) VALUES (281,40,36,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (282,40,37,73);
+INSERT INTO inventory(id,productID,size,stock) VALUES (283,40,38,97);
+INSERT INTO inventory(id,productID,size,stock) VALUES (284,40,39,69);
+INSERT INTO inventory(id,productID,size,stock) VALUES (285,40,40,48);
+INSERT INTO inventory(id,productID,size,stock) VALUES (286,40,41,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (287,40,42,42);
+INSERT INTO inventory(id,productID,size,stock) VALUES (288,41,36,19);
+INSERT INTO inventory(id,productID,size,stock) VALUES (289,41,37,32);
+INSERT INTO inventory(id,productID,size,stock) VALUES (290,41,38,69);
+INSERT INTO inventory(id,productID,size,stock) VALUES (291,41,39,80);
+INSERT INTO inventory(id,productID,size,stock) VALUES (292,41,40,63);
+INSERT INTO inventory(id,productID,size,stock) VALUES (293,41,41,74);
+INSERT INTO inventory(id,productID,size,stock) VALUES (294,41,42,62);
+INSERT INTO inventory(id,productID,size,stock) VALUES (295,42,36,61);
+INSERT INTO inventory(id,productID,size,stock) VALUES (296,42,37,53);
+INSERT INTO inventory(id,productID,size,stock) VALUES (297,42,38,63);
+INSERT INTO inventory(id,productID,size,stock) VALUES (298,42,39,58);
+INSERT INTO inventory(id,productID,size,stock) VALUES (299,42,40,20);
+INSERT INTO inventory(id,productID,size,stock) VALUES (300,42,41,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (301,42,42,57);
+INSERT INTO inventory(id,productID,size,stock) VALUES (302,43,36,6);
+INSERT INTO inventory(id,productID,size,stock) VALUES (303,43,37,76);
+INSERT INTO inventory(id,productID,size,stock) VALUES (304,43,38,75);
+INSERT INTO inventory(id,productID,size,stock) VALUES (305,43,39,94);
+INSERT INTO inventory(id,productID,size,stock) VALUES (306,43,40,63);
+INSERT INTO inventory(id,productID,size,stock) VALUES (307,43,41,87);
+INSERT INTO inventory(id,productID,size,stock) VALUES (308,43,42,62);
+INSERT INTO inventory(id,productID,size,stock) VALUES (309,44,36,71);
+INSERT INTO inventory(id,productID,size,stock) VALUES (310,44,37,65);
+INSERT INTO inventory(id,productID,size,stock) VALUES (311,44,38,64);
+INSERT INTO inventory(id,productID,size,stock) VALUES (312,44,39,96);
+INSERT INTO inventory(id,productID,size,stock) VALUES (313,44,40,39);
+INSERT INTO inventory(id,productID,size,stock) VALUES (314,44,41,25);
+INSERT INTO inventory(id,productID,size,stock) VALUES (315,44,42,35);
+INSERT INTO inventory(id,productID,size,stock) VALUES (316,45,36,71);
+INSERT INTO inventory(id,productID,size,stock) VALUES (317,45,37,16);
+INSERT INTO inventory(id,productID,size,stock) VALUES (318,45,38,12);
+INSERT INTO inventory(id,productID,size,stock) VALUES (319,45,39,5);
+INSERT INTO inventory(id,productID,size,stock) VALUES (320,45,40,94);
+INSERT INTO inventory(id,productID,size,stock) VALUES (321,45,41,79);
+INSERT INTO inventory(id,productID,size,stock) VALUES (322,45,42,90);
+INSERT INTO inventory(id,productID,size,stock) VALUES (323,46,36,62);
+INSERT INTO inventory(id,productID,size,stock) VALUES (324,46,37,34);
+INSERT INTO inventory(id,productID,size,stock) VALUES (325,46,38,16);
+INSERT INTO inventory(id,productID,size,stock) VALUES (326,46,39,59);
+INSERT INTO inventory(id,productID,size,stock) VALUES (327,46,40,60);
+INSERT INTO inventory(id,productID,size,stock) VALUES (328,46,41,51);
+INSERT INTO inventory(id,productID,size,stock) VALUES (329,46,42,52);
+INSERT INTO inventory(id,productID,size,stock) VALUES (330,47,36,35);
+INSERT INTO inventory(id,productID,size,stock) VALUES (331,47,37,100);
+INSERT INTO inventory(id,productID,size,stock) VALUES (332,47,38,44);
+INSERT INTO inventory(id,productID,size,stock) VALUES (333,47,39,82);
+INSERT INTO inventory(id,productID,size,stock) VALUES (334,47,40,45);
+INSERT INTO inventory(id,productID,size,stock) VALUES (335,47,41,97);
+INSERT INTO inventory(id,productID,size,stock) VALUES (336,47,42,32);
+INSERT INTO inventory(id,productID,size,stock) VALUES (337,48,36,83);
+INSERT INTO inventory(id,productID,size,stock) VALUES (338,48,37,39);
+INSERT INTO inventory(id,productID,size,stock) VALUES (339,48,38,37);
+INSERT INTO inventory(id,productID,size,stock) VALUES (340,48,39,14);
+INSERT INTO inventory(id,productID,size,stock) VALUES (341,48,40,54);
+INSERT INTO inventory(id,productID,size,stock) VALUES (342,48,41,67);
+INSERT INTO inventory(id,productID,size,stock) VALUES (343,48,42,89);
+INSERT INTO inventory(id,productID,size,stock) VALUES (344,49,36,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (345,49,37,64);
+INSERT INTO inventory(id,productID,size,stock) VALUES (346,49,38,52);
+INSERT INTO inventory(id,productID,size,stock) VALUES (347,49,39,5);
+INSERT INTO inventory(id,productID,size,stock) VALUES (348,49,40,71);
+INSERT INTO inventory(id,productID,size,stock) VALUES (349,49,41,10);
+INSERT INTO inventory(id,productID,size,stock) VALUES (350,49,42,69);
 
 
--- Initialize specifications table
 
-CREATE TABLE specifications (
-  `id` int(10) NOT NULL  AUTO_INCREMENT,
-  `productID` int(10) NOT NULL,
-  `specification` text NOT NULL,
-  CONSTRAINT
-    FOREIGN KEY (productID)
-    REFERENCES products(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  PRIMARY KEY (id)
-);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,1,'Genuine crazy horse leather');
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,2,'Genuine crazy horse leather');
@@ -1303,7 +1457,12 @@ INSERT INTO specifications(id,productID,specification) VALUES (NULL,48,'Goodyear
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,49,'Goodyear welt construction');
 
 
+<<<<<<< HEAD
 -- Initialize transactions table
+=======
+
+-- Initialize orders table
+>>>>>>> f52ef68d997d2dd8dd23c1cb15256eaf1de4a16d
 
 CREATE TABLE `transactions` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -1374,7 +1533,6 @@ INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,49,'Jones','Bartlett','127 Fleet Street #16-103, Singapore',826579,'81424273', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,50,'Valerie','Stanton','586 Malbone Street #36-172, Singapore',958144,'65718414', 100);
 
-
 CREATE TABLE orders (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `transactionID` INT(10) NOT NULL,
@@ -1396,7 +1554,6 @@ CREATE TABLE orders (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
-
 
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,1,46,'2018-06-12T08:39:27',3,42);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,2,10,'2018-09-24T09:24:30',12,39);
@@ -1448,111 +1605,3 @@ INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (N
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,48,40,'2018-07-01T10:19:08',11,40);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,49,6,'2018-09-02T03:57:41',4,42);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,50,25,'2018-09-22T08:41:12',12,40);
-
-
--- Initialize reviews table
-
-CREATE TABLE reviews (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `transactionID` int(10) NOT NULL,
-  `reviews` text NOT NULL,
-  PRIMARY KEY (id),
-  INDEX `FK_REVIEW_TRANSACTION_ID` (`transactionID` ASC),
-  CONSTRAINT `FK_REVIEW_TRANSACTION_ID`
-    FOREIGN KEY (transactionID)
-    REFERENCES transactions(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
-
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,1,'Reprehenderit sint occaecat fugiat eiusmod occaecat ea.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,2,'Et quis incididunt adipisicing veniam amet sunt Lorem ipsum.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,3,'Pariatur ex mollit proident culpa do culpa.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,4,'Culpa id ullamco Lorem amet labore nostrud dolor duis ex incididunt ad duis.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,5,'Est sunt eiusmod ex tempor adipisicing eu elit.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,6,'Nostrud reprehenderit est laborum veniam enim adipisicing voluptate.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,7,'Ad aliquip mollit labore consequat laborum culpa sunt culpa consequat minim ex aute.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,8,'Ut duis eiusmod minim culpa exercitation est dolor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,9,'Minim veniam minim nulla dolore do pariatur ad.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,10,'Cupidatat do deserunt anim excepteur esse excepteur occaecat.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,11,'Et irure laborum do proident dolor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,12,'Sint laboris culpa ad ad exercitation aliqua ut eiusmod.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,13,'Adipisicing nisi exercitation quis commodo commodo aliquip amet labore ea dolor dolor quis cillum.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,14,'Consectetur eiusmod adipisicing veniam eu sint exercitation dolor exercitation tempor minim consequat.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,15,'Est voluptate qui sint nostrud sunt cupidatat deserunt cillum id officia reprehenderit.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,16,'Commodo et esse culpa irure est exercitation officia laboris.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,17,'Est consequat aute esse labore exercitation fugiat et Lorem occaecat voluptate.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,18,'Sunt nulla aliquip nulla minim esse cillum aute velit aliqua.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,19,'Aute sunt voluptate veniam ullamco Lorem velit laborum ex occaecat.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,20,'Aute ea enim id nostrud est duis pariatur minim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,21,'Laborum enim non commodo consectetur aliquip.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,22,'Culpa excepteur tempor do do ad reprehenderit anim reprehenderit tempor in Lorem occaecat laborum eu.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,23,'Velit laborum pariatur proident enim elit esse exercitation exercitation non.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,24,'Magna ea labore exercitation aliqua Lorem dolor aliqua.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,25,'Laborum cupidatat ea sit quis labore sunt tempor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,26,'Officia esse aliquip excepteur ipsum duis irure eiusmod duis minim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,27,'Ad sint reprehenderit esse commodo excepteur reprehenderit sit.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,28,'Veniam dolor amet aliquip veniam irure.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,29,'Nulla aute sint exercitation aliquip deserunt dolore ex ea.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,30,'Laboris ullamco aliquip anim ad culpa do consectetur dolor qui.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,31,'Officia cupidatat ut in ipsum culpa in.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,32,'Ut laboris magna id cupidatat pariatur amet esse id ea deserunt labore dolor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,33,'Adipisicing tempor excepteur est nostrud minim aliquip.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,34,'Proident excepteur quis anim consectetur ea dolore.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,35,'Magna culpa nisi ut deserunt non culpa pariatur adipisicing officia nulla.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,36,'Laborum qui magna consequat voluptate nulla aliqua dolor culpa ex est proident sunt est.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,37,'Deserunt ex reprehenderit proident mollit nisi aliqua.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,38,'Et aliqua laborum esse tempor consectetur incididunt.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,39,'Est do duis laboris amet occaecat occaecat quis veniam velit amet voluptate enim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,40,'Exercitation anim laborum quis irure ut magna esse ullamco laborum nulla ea eu sunt tempor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,41,'Lorem proident voluptate qui labore amet duis culpa laboris enim qui officia ut laboris exercitation.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,42,'Minim ipsum Lorem qui cillum reprehenderit proident est officia fugiat non.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,43,'Ut velit ad Lorem do dolor fugiat cupidatat in sunt anim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,44,'Tempor consectetur ex adipisicing commodo qui pariatur dolore ad.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,45,'Excepteur officia incididunt culpa minim sit proident cillum esse incididunt.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,46,'Culpa eiusmod Lorem nostrud non eiusmod laborum.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,47,'Dolor ad sit aliqua id occaecat commodo consectetur voluptate qui laborum irure.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,48,'Sit proident ut Lorem minim in cupidatat velit duis et cupidatat tempor incididunt.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,49,'Incididunt consequat velit eu voluptate cupidatat eiusmod incididunt esse laboris non cupidatat consequat adipisicing minim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,50,'Magna deserunt cillum tempor sunt dolore ullamco ullamco.');
-
-
--- Initialize member table
-CREATE TABLE `members`(
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `customerID` int(10),
-  PRIMARY KEY(id),
-  INDEX `FK_MEMBER_CUSTOMER_ID` (`customerID` ASC),
-  CONSTRAINT `FK_MEMBER_CUSTOMER_ID`
-    FOREIGN KEY (customerID)
-    REFERENCES customers(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
-
-
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leliabeck@skinserve.com', sha1('password'), 1);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'joyprice@skinserve.com', sha1('password'), 2);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'gillespiearmstrong@skinserve.com', sha1('password'),3);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'nixonclark@skinserve.com', sha1('password'), 4);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'pollymcpherson@skinserve.com', sha1('password'), 5);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'michaelrivas@skinserve.com', sha1('password'), 6);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 7);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 8);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'marjoriecarlson@skinserve.com', sha1('password'), 9);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'frankiegutierrez@skinserve.com', sha1('password'), 10);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'grantmcfarland@skinserve.com', sha1('password'), 11);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leonardvance@skinserve.com', sha1('password'), 12);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'jessicafields@skinserve.com', sha1('password'), 13);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'yatesbailey@skinserve.com', sha1('password'), 14);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'eulaclayton@skinserve.com', sha1('password'), 15);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'penablankenship@skinserve.com', sha1('password'), 16);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'randolphbeard@skinserve.com', sha1('password'), 17);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'lakeishalevy@skinserve.com', sha1('password'), 18);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'chasitywooten@skinserve.com', sha1('password'), 19);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'elsabowers@skinserve.com', sha1('password'), 20);
-
-
-

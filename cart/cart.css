@@ -21,8 +21,10 @@
 .table-wrapper{
   text-align: center;
   width: 100%;
-  margin: auto;
+  margin-bottom: 20px;
+
 }
+
 img{
   vertical-align: middle;
   width: 60px;
@@ -30,11 +32,11 @@ img{
   align-content: center;
 }
 
-p {
+#emptyCart {
   vertical-align: middle;
   width: 100%;
-  padding: 3px 3px;
   text-align: center;
+
 }
 
 table{
@@ -69,6 +71,7 @@ input[type="number"] {
   cursor: pointer;
   margin-top:20px;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .btn-confirm:hover {
@@ -84,9 +87,6 @@ input[type="number"] {
   padding: 8px 15px;
   cursor: pointer;
 }
-#confirmBtn{
-  float: right;
-}
 
 #updateBtn, #editBtn{
   float: middle;
@@ -95,6 +95,13 @@ input[type="number"] {
 #trashBtn{
   width:15px;
   height: 20px;
+}
+
+#empty{
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 30px;
+  text-align: center;
 }
 
 

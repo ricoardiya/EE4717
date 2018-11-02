@@ -52,6 +52,9 @@
       <div class="cart-header">
         Shopping Cart
       </div>
+      <?php
+      if (!empty($_SESSION['cart'])){
+      ?>
       <div class="cart-content">
         <table class="table-wrapper" border="1">
           <thead>
@@ -67,6 +70,7 @@
             </tr>
           </thead>
           <tbody>
+            <!-- <form action="../cart/submitOrder.php" method="POST"> -->
                 <?php
                   $total = 0;
                   if (isset($_SESSION['cart'])){
@@ -112,41 +116,54 @@
                             echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
                             echo "</td>";
                           }
-
                           echo "</tr>";
-
                     }
                     echo '<input type="hidden" name="total" value='.$arr_length.'>';
                   }
                 ?>
+                <!-- </form> -->
               </tbody>
             </table>
-          <button class="btn-confirm" id="confirmBtn" type="submit">Confirm</button>
+            <div class= "row" style="float:right;">
+              <a href="../men-catalog/index.php"><button class="btn-confirm">Continue Shopping</button></a>
+              <a href="../checkout/index.php"><button type="submit" class="btn-confirm">Checkout</button></a>
+            </div>
+            <br><br><br><br><br><br>
             <div>
-              <p>
+              <p id="emptyCart">
                 <a href="../men-catalog/index.php">Continue Shopping</a> or
                 <a href="emptying-cart.php"> Empty your cart </a>
               </p>
             </div>
         </div>
       </div>
+      <?php
+      }else {
+      ?>
+        <div class= "row" id="empty">
+          <p style="font-size:30px;">Your Cart is Empty!</p>
+        </div>
+        <div class= "row">
+          <p>
+            <a href="../men-catalog/index.php">Continue Shopping</a>
+          </p>
+        </div>
+      <?php
+      }
+      ?>
     </div>
     <script>
-    <?php
-      $arr_length = empty($_SESSION['cart']) ? $arr_length=0: count($_SESSION['cart'])
-    ?>
-    function getQuantity(elem){
-      var inputquantity = document.getElementById(elem.id).value;
-      return inputquantity;
-    }
-    function getSize(elem){
-      var inputsize = document.getElementById(elem.id).value;
-      return inputsize;
-    }
-    function setMaxQuantity(elem){
-      var str= elem.id;
-      var quantity_field= "quantity-"+str.split("-")[1];
-      var inputsize = document.getElementById(elem.id).value;
+      <?php
+        $arr_length = empty($_SESSION['cart']) ? $arr_length=0: count($_SESSION['cart'])
+      ?>
+      function getQuantity(elem){
+        var inputquantity = document.getElementById(elem.id).value;
+        return inputquantity;
+      }
+      function getSize(elem){
+        var inputsize = document.getElementById(elem.id).value;
+        return inputsize;
+      }
       function getQuantityMax(input, key) {
         for (var i=0; i < input.length ; ++i){
           if(input[i]['size'] == key){
@@ -155,56 +172,66 @@
         }
         return 1;
       }
-      var max_quantity_val = getQuantityMax(js_stock, inputsize);
-      document.getElementById(quantity_field).max = max_quantity_val;
-      getSize();
-
-    }
-    function startUp() {
-      for (i=0; i< <?php echo $arr_length; ?>; i++){
-            let q_field = "quantity-" + i;
-            let s_field = "size-" + i;
-            let inputsize = document.getElementById(s_field).value;
-            function getQuantityMax(row, input, key) {
-              for (var i=0; i < input.length ; ++i){
-                if(input[i]['size'] == key && input[i]['row'] == row){
-                  return input[i]['quantity'];
-                }
-              }
-              return 1;
-            }
-            function getSizeMax(row, input) {
-              let max = 0;
-              for (var i=0; i < input.length ; ++i){
-                if(input[i]['size'] > max && input[i]['row'] == row){
-                  max = input[i]['size'];
-                }
-              }
-              return max;
-            }
-            function getSizeMin(row, input) {
-              let min= 45;
-              for (var i=0; i < input.length ; ++i){
-                if(input[i]['size'] < min && input[i]['row'] == row){
-                  min = input[i]['size'];
-                }
-              }
-              return min;
-            }
-            var max_quantity_val = getQuantityMax(i,js_stock, inputsize);
-            var max_size_val = getSizeMax(i,js_stock);
-            var min_size_val = getSizeMin(i,js_stock);
-            document.getElementById(q_field).max = max_quantity_val;
-            document.getElementById(s_field).min = min_size_val;
-            document.getElementById(s_field).max = max_size_val;
+      function setMaxQuantity(elem){
+        let str= elem.id;
+        console.log("elem.id", id);
+        let inputsize = document.getElementById(str).value;
+        let max_quantity_val = getQuantityMax(js_stock, inputsize);
+        let quantity_field= "quantity-"+str.split("-")[1];
+        let current_quantity = document.getElementById(quantity_field).value;
+        let new_quantity = current_quantity >  max_quantity_val ? max_quantity_val : current_quantity;
+        document.getElementById(quantity_field).value = new_quantity;
+        document.getElementById(quantity_field).max = max_quantity_val;
+        getSize(elem);
       }
-    }
-    window.onload=startUp();
-    function updateCart(){
-      let message = document.getElementById("updateCartMessage");
-      message.className="show";
-      setTimeout(function(){ message.className = message.className.replace("show",""); }, 3000);
-    }
+      // function startUp() {
+      //   for (i=0; i< <?php echo $arr_length; ?>; i++){
+      //         let q_field = "quantity-" + i;
+      //         let s_field = "size-" + i;
+      //         console.log("size: ", s_field);
+      //         if(!!document.getElementById(s_field)){
+      //           let inputsize = document.getElementById(s_field).value;
+      //         }
+      //         function getQuantityMax(row, input, key) {
+      //           for (var i=0; i < input.length ; ++i){
+      //             if(input[i]['size'] == key && input[i]['row'] == row){
+      //               return input[i]['quantity'];
+      //             }
+      //           }
+      //           return 1;
+      //         }
+      //         function getSizeMax(row, input) {
+      //           let max = 0;
+      //           for (var i=0; i < input.length ; ++i){
+      //             if(input[i]['size'] > max && input[i]['row'] == row){
+      //               max = input[i]['size'];
+      //             }
+      //           }
+      //           return max;
+      //         }
+      //         function getSizeMin(row, input) {
+      //           let min= 45;
+      //           for (var i=0; i < input.length ; ++i){
+      //             if(input[i]['size'] < min && input[i]['row'] == row){
+      //               min = input[i]['size'];
+      //             }
+      //           }
+      //           return min;
+      //         }
+      //         var max_quantity_val = getQuantityMax(i,js_stock, inputsize);
+      //         var max_size_val = getSizeMax(i,js_stock);
+      //         var min_size_val = getSizeMin(i,js_stock);
+      //         document.getElementById(q_field).max = max_quantity_val;
+      //         document.getElementById(s_field).min = min_size_val;
+      //         document.getElementById(s_field).max = max_size_val;
+      //   }
+      // }
+      function updateCart(){
+        startUp();
+        let message = document.getElementById("updateCartMessage");
+        message.className="show";
+        setTimeout(function(){ message.className = message.className.replace("show",""); }, 3000);
+      }
     </script>
     <?php include '../common/footer.php'?>
   </body>

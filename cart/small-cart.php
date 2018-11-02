@@ -33,6 +33,8 @@
       }
     ?>
     <a href="../cart"><button class="btn-addcart">GO TO CART</button></a>
-    <button class="btn-addcart">CHECKOUT</button>
+    <?php if(!empty($_SESSION['cart'])){ ?>
+      <a href="../checkout"><button class="btn-addcart">CHECKOUT</button></a>
+    <?php }?>
   </div>
 </div>

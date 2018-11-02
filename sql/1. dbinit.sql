@@ -108,7 +108,8 @@ CREATE TABLE `transactions` (
   `lastname` varchar(20) NOT NULL,
   `address` text NOT NULL,
   `zipCode` int(6),
-  `phone` varchar(20),
+  `phone` varchar(20) NOT NULL,
+  `totalPrice` int(255) NOT NULL
   PRIMARY KEY (id),
   INDEX `FK_CUSTOMER_ID` (`customerID` ASC),
   CONSTRAINT `FK_CUSTOMER_ID`

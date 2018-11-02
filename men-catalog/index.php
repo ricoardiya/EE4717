@@ -196,7 +196,6 @@
                 console.log( js_shoes[i]['id'] ,'avail size : ', js_shoes[i]['size']);
               }
             }
-            getSize(elem.id);
             modal.style.display = "block";
           }
         }

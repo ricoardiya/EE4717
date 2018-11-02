@@ -21,19 +21,35 @@
 .table-wrapper{
   text-align: center;
   width: 100%;
-  margin: auto;
+  margin-bottom: 20px;
+
 }
+
 img{
-  width: 90%;
   vertical-align: middle;
+  width: 60px;
+  height: 100px;
   align-content: center;
 }
 
-p, table{
+#emptyCart {
   vertical-align: middle;
   width: 100%;
+  text-align: center;
+
+}
+
+table{
+  vertical-align: middle;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
   padding: 3px 3px;
   text-align: center;
+  border-radius:10px;
+  border:1px solid #ccc;
+  border-bottom:2px solid #bbb;
+  border-top:1px solid #ddd;
+  border-collapse: collapse;
 }
 
 input[type="number"] {
@@ -53,9 +69,9 @@ input[type="number"] {
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
-  float: right;
   margin-top:20px;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .btn-confirm:hover {
@@ -71,6 +87,23 @@ input[type="number"] {
   padding: 8px 15px;
   cursor: pointer;
 }
+
+#updateBtn, #editBtn{
+  float: middle;
+}
+
+#trashBtn{
+  width:15px;
+  height: 20px;
+}
+
+#empty{
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 30px;
+  text-align: center;
+}
+
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #updateCartMessage {

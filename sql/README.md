@@ -19,9 +19,14 @@ Then execute these sql file in sequence
 10. seed_reviews.sql
 11. seed_members.sql
 ```
-You can also choose to execute all of the sql file above with
+You can also choose to execute all of the sql file above by copying all files
 ```
-1. all_files.sql
+Step to generate all files:
+1. If you are on Windows: Open CMD, navigate to /ee4717/sql/ folder and type the following command:
+> copy /b *.sql all_files.sql
+
+2. If you are on Mac/Linux: Open terminal, navigate to /ee4717/sql/ folder and type the following command:
+$ cat *.sql > all_files.sql
 ```
 
 ### contacts

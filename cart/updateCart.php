@@ -10,23 +10,19 @@
     public $quantity;
     public $size;
   }
-  $total=$_POST['total'];
-  for($i = 0 ; $i<$total; $i++){
-    $q_string = "quantity-".$i;
-    $s_string = "size-".$i;
+  $id=$_POST['productID'];
+  $q_string = "quantity-".$id;
+  $s_string = "size-".$id;
 
-    $quantity = $_POST[$q_string];
-    $size = $_POST[$s_string];
+  $quantity = $_POST[$q_string];
+  $size = $_POST[$s_string];
 
-    if($_SESSION['cart'][$i]->size != $size){
-      $_SESSION['cart'][$i]->size = $size;
-    }
-
-    if($_SESSION['cart'][$i]->quantity != $quantity){
-      $_SESSION['cart'][$i]->quantity = $quantity;
-    }
-
+  if($_SESSION['cart'][$id]->size != $size){
+    $_SESSION['cart'][$id]->size = $size;
   }
-  header('location: ' . $_SESSION['history']);
+  if($_SESSION['cart'][$id]->quantity != $quantity){
+    $_SESSION['cart'][$id]->quantity = $quantity;
+  }
+  header('location: ../cart/index.php');
   exit();
 ?>

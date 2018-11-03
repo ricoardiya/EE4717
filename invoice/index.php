@@ -128,7 +128,11 @@
                     $size = $row["size"];
                     $quantity = $row["quantity"];
                     $name=$row["name"];
-                    $price=$row["price"];
+                    if(!(isset($_SESSION['firstname'])&& isset($_SESSION['lastname'])&& isset($_SESSION['email']))){
+                      $price=$row["price"];
+                    }else{
+                      $price=$row["price"] * 0.8;
+                    }
                     $picture=$row["picture"];
                     $totalPrice = $quantity * $price;
                     $total += $totalPrice;

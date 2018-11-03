@@ -127,8 +127,14 @@
                     $products_row = mysqli_fetch_assoc($products_result);
                     echo "<td><img src=\"../".$products_row['pictureURL']."\" alt='shoes' width='50%' height='50%'></td>";
                     echo "<td>".ucwords($products_row['name'])."</td>";
-                    echo "<td>".$products_row['price']."</td>";
-                    $totalPrice = $products_row['price'] * $_SESSION['cart'][$i]->quantity;
+                    if(!(isset($_SESSION['firstname'])&& isset($_SESSION['lastname'])&& isset($_SESSION['email']))){
+                      echo "<td>".$products_row['price']."</td>";
+                      $totalPrice = $products_row['price'] * $_SESSION['cart'][$i]->quantity;
+                    }else{
+                      echo "<td>".(0.8)* $products_row['price']."</td>";
+                      $totalPrice = (0.8)* $products_row['price'] * $_SESSION['cart'][$i]->quantity;
+                    }
+
                     $total += $totalPrice;
                   }
                   echo "<td>" ;

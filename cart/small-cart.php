@@ -38,7 +38,7 @@
           echo '</span>';
         }
       } else {
-        echo '<span class="spanCenter">';
+        echo '<span class="spanCenter"><br><br>';
         echo 'Your cart is empty';
         echo '</span>';
       }
@@ -49,7 +49,7 @@
         <a href="../checkout"><button class="btn-addSmallCart">CHECKOUT</button></a>
       </div>
     <?php } else { ?>
-      <a href="../cart">
+      <a href="../cart/">
         <br><br><br><br>
         <div class="btnCenter">
           <button class="btn-addSmallCart">GO TO CART</button>

@@ -4,12 +4,12 @@
   include '../dbconn.php';
 
   $salutation = $_POST['salutation'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
+  $firstname = trim($_POST['firstname']);
+  $lastname = trim($_POST['lastname']);
   $name = $firstname . ' ' . $lastname;
-  $phone = $_POST['phone'];
-  $address = $_POST['address'];
-  $email = $_POST['email'];
+  $phone = trim($_POST['phone']);
+  $address = trim($_POST['address']);
+  $email = trim($_POST['email']);
   $password = sha1($_POST['password']);
 
   // Check if member already exists

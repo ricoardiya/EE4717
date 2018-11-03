@@ -1,0 +1,334 @@
+h2 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Admin index css */
+
+.content-wrapper {
+  min-height: 100vh;
+}
+
+.admin-content {
+  margin-right: 15px;
+  padding-right: 100px;
+  padding-top: 75px;
+}
+
+/* Admin navigation */
+
+.admin-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  position: fixed;
+  overflow: auto;
+  height: 100vh;
+  width: 150px;
+}
+
+.admin-nav li a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.admin-nav li a.active {
+  background-color: black;
+  color: white;
+}
+
+.admin-nav li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Inventory */
+#inventory {
+  margin-top: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  border-collapse: collapse;
+  z-index: -1;
+  width: 800px;
+}
+
+#inventory table, td, th {
+  text-align: center;
+  border: 1px solid black !important;
+  padding: 8px;
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.form-autocomplete input {
+  border: 1px solid transparent;
+  background-color: #fff;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-autocomplete input[type=text] {
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 500px;
+}
+
+.form-autocomplete .autocomplete-items {
+  width: 500px;
+  position: relative;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.form-autocomplete .autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.form-autocomplete .autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+
+.form-autocomplete .autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: black !important;
+  color: #ffffff;
+}
+
+.form-autocomplete .btn-submit {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 180px;
+}
+
+.form-autocomplete .btn-submit:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 180px;
+}
+
+/* Modal */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid #888;
+  width: 500px;
+}
+
+.form-content {
+  padding-top: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 50px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.font-modal{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 220;
+}
+
+#modal_price{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#modal_name{
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  color: black;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#modal_quantity{
+  margin-bottom: 20px;
+}
+
+#modal_size {
+  margin-bottom: 10px;
+}
+
+.table-modal {
+  border-collapse: collapse;
+}
+
+.table-modal table, td, th {
+  border: 0px #fff  ;
+}
+
+.modal input[type=number] {
+  width: 100px;
+}
+
+.modal .btn-update {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.modal .btn-update:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 100px;
+}
+
+/* Admin login css */
+
+.admin-signin-wrapper {
+  padding-top: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+form {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+input{
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 250px;
+  text-align: center;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.btn-signin {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #000000;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 290px;
+}
+
+.btn-sigin:hover {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: 290px;
+}
+
+.login-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 280;
+  letter-spacing: 0.8px;
+}
+
+.login-link {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.8px;
+}

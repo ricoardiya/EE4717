@@ -1,6 +1,6 @@
 function checkFirstName(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var pos = myName.value.search(/^[A-Za-z\s]+$/);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('firstname-message').style.color = 'red';
@@ -29,7 +29,7 @@ function checkFirstName(event) {
 
 function checkLastName(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var pos = myName.value.search(/^[A-Za-z\s]+$/);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('lastname-message').style.color = 'red';

@@ -32,14 +32,21 @@
           $item->size = $_POST['size'];
           $item->quantity = $_POST['quantity'];
           array_push($_SESSION['cart'], $item);
-          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          if($_POST['action'] == 'BUY NOW'){
+            header('location: /ee4717/cart/index.php');
+          }else if($_POST['action'] == 'ADD TO CART'){
+            header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          }
           exit();
         }else{
-          for($i=0; $i<count($_SESSION['cart']) ; $i++){ // the cart still empty
+          for($i=0; $i<count($_SESSION['cart']) ; $i++){
             if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
-              // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
-              header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              if($_POST['action'] == 'BUY NOW'){
+                header('location: /ee4717/cart/index.php');
+              }else if($_POST['action'] == 'ADD TO CART'){
+                header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              }
               exit();
             }
           }
@@ -49,7 +56,11 @@
         $item->size = $_POST['size'];
         $item->quantity = $_POST['quantity'];
         array_push($_SESSION['cart'], $item);
-        header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        if($_POST['action'] == 'BUY NOW'){
+          header('location: /ee4717/cart/index.php');
+        }else if($_POST['action'] == 'ADD TO CART'){
+          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        }
         exit();
       }
     ?>
@@ -128,7 +139,7 @@
             <input type="hidden" name="productID" value=<?php echo $productID; ?>>
             <div class="size">
               Choose your size:
-              <select name="size" id="size" onload="getSize();" onchange="getSize();">
+              <select name="size" id="size" onchange="getSize();">
                 <?php
                   // query inventory of the product
                   $inventory_query = "SELECT * FROM inventory WHERE productID = $productID AND stock <> 0";
@@ -164,33 +175,14 @@
                   }
                   echo "<script>";
                   echo " var js_stock = ".json_encode($stock) . ";";
+                  echo " console.log('var js_stock = ',".json_encode($stock) . ");";
                   echo "</script>";
                   ?>
                 <input type="number" name="quantity" min=1 value=1 id="quantity" onchange="getQuantity();">
-                <script>
-                  var inv = js_stock[0]['quantity'];
-                  var quantity = 1;
-                  var inputsize= js_stock[0]['size'];
-                  function getSize(){
-                    var inputsize = document.getElementById('size').value;
-                    function getVal(input, key) {
-                        for (var i=0; i < input.length ; ++i){
-                            if(input[i]['size'] == key){
-                              return input[i]['quantity'];
-                            }
-                        }
-                    }
-                    var inv = getVal(js_stock, inputsize);
-                    document.getElementById("quantity").max = inv;
-                  }
-                  function getQuantity(){
-                    var quantity= document.getElementById("quantity").value;
-                  }
-                </script>
             </div>
             <hr>
-            <button type="submit" class="btn-addcart">BUY NOW</button>
-            <button type="submit" class="btn-addcart">ADD TO CART</button>
+            <input type="submit" name="action" value="BUY NOW" class="btn-addcart"/>
+            <input type="submit" name="action" value="ADD TO CART" class="btn-addcart"/>
             <hr>
             <div class="specs">
               <div class="header">
@@ -267,7 +259,6 @@
             </div>
           </div>
           </form>
-
           <div class="col-1">
             <div class="cart">
               <?php
@@ -310,6 +301,10 @@
         </div>
       </div>
     </div>
-    <?php include  '../common/footer.php'?>
+    <?php
+      include  '../common/footer.php';
+      $men_shoe_handler = "/ee4717/men-shoe/setMaxStock.js";
+      echo '<script type="text/javascript" src="'.$men_shoe_handler.'"></script>';
+    ?>
   </body>
 </html>

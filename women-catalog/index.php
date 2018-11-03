@@ -20,7 +20,7 @@
       public $quantity;
       public $price;
     }
-    $query = "SELECT products.id, products.name, products.price, inventory.size, inventory.stock,  pictures.pictureURL FROM inventory  INNER JOIN products ON products.id=inventory.productID INNER JOIN pictures ON products.id=pictures.productID WHERE products.gender='W'";
+    $query = "SELECT products.id, products.name, products.price, inventory.size, inventory.stock,  (SELECT pictures.pictureURL FROM pictures WHERE  products.id=pictures.productID LIMIT 1) as pictureURL FROM inventory  INNER JOIN products ON products.id=inventory.productID WHERE products.gender='W'";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
       while($row = mysqli_fetch_assoc($result)){
@@ -36,7 +36,7 @@
     }
     echo "<script>";
     echo " var js_shoes = ".json_encode($shoes) . ";";
-    // echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
+    echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
     echo "</script>";
   ?>
   <body>
@@ -123,8 +123,8 @@
                       <div id="modal_price"></div>
                       <form action="./addToCart.php" method="POST">
                         <div id="modal_productID"></div>
-                        <div id="modal_size">Select your size: <select name="selected_size" id="selected_size"></select></div>
-                        <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity"></div>
+                        <div id="modal_size">Select your size: <select name="selected_size" id="selected_size" onchange="getSize();"></select></div>
+                        <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity" onchange="getQuantity();"></div>
                         <div id="modal_button"><button class="btn-addcart" onclick="addToCart()">ADD TO CART</button></div>
                       </form>
                     </div>
@@ -183,62 +183,42 @@
         </div>
       </div>
     </div>
-      <script type="text/javascript">
-        var modal = document.getElementById("pop-up");
-        var span = document.getElementsByClassName("close")[0];
-        function popup(elem){
-          document.getElementById("selected_size").innerHTML = "";
-          console.log('elem.id: ', elem.id);
-          let btn = document.getElementById(elem.id);
-          console.log('btn.id: ', btn.id);
-          if(elem.id && btn.id && document.getElementById("modal_name") && document.getElementById("modal_price")){
-            document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' value="+ elem.id +">";
-            for (var i=1; i < js_shoes.length ; i++){
-              if(js_shoes[i]['id'] == btn.id){
-                document.getElementById("modal_name").innerHTML = js_shoes[i]['name'] + "<br>";
-                document.getElementById("modal_picture").innerHTML = "<img src=\"../" + js_shoes[i]['picture'] + "\" alt='shoes' width=50% style='margin:auto;'><br>";
-                document.getElementById("modal_price").innerHTML = "PRICE $ " + js_shoes[i]['price']+ "<br>";
-                document.getElementById("selected_size").innerHTML += "<option value=\"" + js_shoes[i]['size'] + "\">" + js_shoes[i]['size'] + "</option>";
-                console.log( js_shoes[i]['id'] ,'avail size : ', js_shoes[i]['size']);
-              }
-            }
-            getSize(elem.id);
-            modal.style.display = "block";
-          }
-        }
-        function close() {
-            modal.style.display = "none";
-        }
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-            }
-        }
+    <script type="text/javascript">
+      var modal = document.getElementById("pop-up");
+      var span = document.getElementsByClassName("close")[0];
 
-        function getSize(productID){
-          var inputsize = document.getElementById('selected_size').value;
-          console.log("productID: ", productID," inputsize ", inputsize);
-          function getVal(input, key) {
-              for (var i=0; i < input.length ; ++i){
-                  if(input[i]['size'] == key && input[i]['id'] == productID){
-                    return input[i]['quantity'];
-                  }
-              }
-              return 0;
+      function popup(elem){
+        document.getElementById("selected_size").innerHTML = "";
+        console.log('elem.id: ', elem.id);
+        let prodID = elem.id;
+        let btn = document.getElementById(elem.id);
+        console.log('btn.id: ', btn.id);
+        if(elem.id && btn.id && document.getElementById("modal_name") && document.getElementById("modal_price")){
+          document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' id='selected_productID' value="+ prodID +">";
+          for (var i=0; i < js_shoes.length ; i++){
+            if(js_shoes[i]['id'] == btn.id){
+              document.getElementById("modal_name").innerHTML = js_shoes[i]['name'] + "<br>";
+              document.getElementById("modal_picture").innerHTML = "<img src=\"../" + js_shoes[i]['picture'] + "\" alt='shoes' width=50% style='margin:auto;'><br>";
+              document.getElementById("modal_price").innerHTML = "PRICE $ " + js_shoes[i]['price']+ "<br>";
+              document.getElementById("selected_size").innerHTML += "<option value=\"" + js_shoes[i]['size'] + "\">" + js_shoes[i]['size'] + "</option>";
+              console.log( js_shoes[i]['id'] ,'avail size : ', js_shoes[i]['size']);
+            }
           }
-          var inv = getVal(js_shoes, inputsize);
-          console.log("max of: ", inputsize," is ", inv);
-          document.getElementById("selected_quantity").max = inv;
+          modal.style.display = "block";
         }
-
-        function addToCart(){
-          var inputsize = document.getElementById('selected_size').value;
-          var inputsize = document.getElementById('selected_quantity').value;
-        }
-      </script>
-    <?php include  '../common/footer.php'?>
+        getSize();
+      }
+      function addToCart(){
+        var inputsize = document.getElementById('selected_size').value;
+        var inputsize = document.getElementById('selected_quantity').value;
+      }
+    </script>
+    <?php
+      include  '../common/footer.php';
+      $women_shoe_catalog_handler = "/ee4717/women-catalog/setMaxStock.js";
+      $women_shoe_catalog_function = "/ee4717/women-catalog/women-catalog.js";
+      echo '<script type="text/javascript" src="'.$women_shoe_catalog_handler.'"></script>';
+      echo '<script type="text/javascript" src="'.$women_shoe_catalog_function.'"></script>';
+    ?>
   </body>
 </html>

@@ -242,3 +242,7 @@ textarea:focus, input:focus {
   text-decoration: none;
   cursor: pointer;
 }
+
+select{
+  border: none;
+}

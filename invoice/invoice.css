@@ -1,11 +1,11 @@
-.checkout-wrapper {
+.invoice-wrapper {
   padding-top: 100px;
   padding-right: 10px;
   margin-left: 200px;
   margin-right: 200px;
 }
 
-.checkout-header {
+.invoice-header {
   width: 100%;
   text-align: center;
   font-size: 25px;
@@ -14,16 +14,21 @@
   margin-bottom: 40px;
 }
 
-.checkout-content {
+.invoice-content {
+  font-family: "Montserrat", sans-serif;
   margin-bottom: 100px;
+
 }
-.checkout-content-header {
-  width: 100%;
+.invoice-content-header {
   text-align: center;
   font-size: 20px;
   letter-spacing: 0.8px;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 40px;
+  padding: 15px 15px;
+  width: 300px;
+  text-align: center;
+  margin: auto;
 }
 
 .left {
@@ -37,12 +42,25 @@
 
 .right {
   padding-left: 20px;
+  letter-spacing: 0.8px;
+  font-family: "Montserrat", sans-serif;
 }
 
 form {
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
+  letter-spacing: 0.8px;
 }
+
+.details{
+  letter-spacing: 0.8px;
+  padding: 15px 15px;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  /* font-family: "Montserrat", sans-serif; */
+}
+
 
 textarea,input{
   font-family: "Montserrat", sans-serif;
@@ -96,7 +114,7 @@ textarea:focus, input:focus {
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
-  margin: 20px 0px 20px 10px;
+  margin: 20px 0px 200px 10px;
 
 }
 .btn-confirm-wrapper:hover {

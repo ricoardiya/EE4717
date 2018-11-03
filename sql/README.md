@@ -7,21 +7,23 @@ Make sure the db name written correctly in dbinit.sql file
 
 Then execute these sql file in sequence
 ```
-1. dbinit.sql
-2. seed_contacts.sql
-3. seed_customers.sql
-4. seed_products.sql
-5. seed_pictures.sql
-6. seed_inventory.sql
-7. seed_specifications.sql
-8. seed_transactions.sql
-9. seed_orders.sql
-10. seed_reviews.sql
-11. seed_members.sql
+1. a_dbinit.sql
+2. b_seed_contacts.sql
+3. c_seed_customers.sql
+4. d_seed_products.sql
+5. e_seed_pictures.sql
+6. f_seed_inventory.sql
+7. g_seed_specifications.sql
+8. h_seed_transactions.sql
+9. i_seed_orders.sql
+10. j_seed_reviews.sql
+11. k_seed_members.sql
 ```
 You can also choose to execute all of the sql file above by copying all files
 ```
 Step to generate all files:
+0. Make sure you have deleted the 'all_files.sql' before running this command, to prevent copy of all_files.sql to the new all_files.sql
+
 1. If you are on Windows: Open CMD, navigate to /ee4717/sql/ folder and type the following command:
 > copy /b *.sql all_files.sql
 

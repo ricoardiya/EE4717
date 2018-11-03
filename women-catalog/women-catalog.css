@@ -79,6 +79,8 @@
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
+  margin-top: 40px;
+  margin-right:10px;
 }
 
 .btn-addcart:hover {
@@ -173,3 +175,14 @@
   margin-bottom: 10px;
 }
 
+select{
+  border: none;
+}
+
+input[type=number]{
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+}

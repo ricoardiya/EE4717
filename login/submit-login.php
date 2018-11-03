@@ -18,9 +18,12 @@
 
       // Set session variables
       $name = explode(" ", $customer_row['name']);
+      $_SESSION['salutation'] = $customer_row['salutation'];
       $_SESSION['firstname'] = $name[0];
-      $_SESSION['lastname'] = $name[0];
+      $_SESSION['lastname'] = $name[1];
       $_SESSION['email'] = $customer_row['email'];
+      $_SESSION['address'] = $customer_row['address'];
+      $_SESSION['phone'] = $customer_row['phone'];
 
       header('Location: ' . $_SESSION['history'] . '');
     }

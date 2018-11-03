@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <?php
-      include '../head.php';
-      include '../dbconn.php';
-      $checkout_css = "/ee4717/checkout/checkout.css";
-      $checkout_js = "/ee4717/checkout/checkout.js";
-      echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $checkout_css . '  />';
-      echo '<script type="text/javascript" src="'. $checkout_js .'"></script>';
-    ?>
+  <?php
+    include '../head.php';
+    include '../dbconn.php';
+    $checkout_css = "/ee4717/checkout/checkout.css";
+    $checkout_js = "/ee4717/checkout/checkout.js";
+    echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $checkout_css . '  />';
+    echo '<script type="text/javascript" src="'. $checkout_js .'"></script>';
+  ?>
+
+
 <body>
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
@@ -33,9 +35,11 @@
             </div>
             <div>
                 <label for="salutation">*Salutation</label><br>
-                <input class="salution-radio" type="radio" name="salutation" value="mr" checked>Mr.
-                <input class="salution-radio" type="radio" name="salutation" value="ms">Ms.
-                <input class="salution-radio" type="radio" name="salutation" value="mrs">Mrs.
+                <span id="salutation_contact">
+                  <input class="salution-radio" type="radio" name="salutation" value="mr" checked>Mr.
+                  <input class="salution-radio" type="radio" name="salutation" value="ms">Ms.
+                  <input class="salution-radio" type="radio" name="salutation" value="mrs">Mrs.
+                </span>
                 <br><br>
                 <label for="fname_contact">*First Name</label><br>
                 <input type="text" required id="fname_contact" name="firstname_contact" placeholder="John">
@@ -183,9 +187,20 @@
     </div>
   </div>
   <?php
-          $checkout_handler = "/ee4717/checkout/checkout-handler.js";
-          echo '<script type="text/javascript" src="'.$checkout_handler.'"></script>';
-          ?>
+  $checkout_handler = "/ee4717/checkout/checkout-handler.js";
+  echo '<script type="text/javascript" src="'.$checkout_handler.'"></script>';
+  if(isset($_SESSION['firstname']) && isset($_SESSION['lastname']) && isset($_SESSION['address']) && isset($_SESSION['email']) && isset($_SESSION['phone'])){
+    echo '<script>';
+    echo "document.getElementById('salutation_contact').value =". $_SESSION['salutation'].";";
+    echo "document.getElementById('fname_contact').value ='". $_SESSION['firstname']."';";
+    echo "document.getElementById('lname_contact').value ='". $_SESSION['lastname']."';";
+    echo "document.getElementById('email_contact').value ='". $_SESSION['email']."';";
+    echo "document.getElementById('address_contact').value ='". $_SESSION['address']."';";
+    echo "document.getElementById('phone_contact').value ='". $_SESSION['phone']."';";
+    echo '</script>';
+
+  }
+  ?>
         </div>
       </div>
     </div>

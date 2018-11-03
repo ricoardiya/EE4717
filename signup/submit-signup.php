@@ -30,9 +30,12 @@
       $member_insert_query = "INSERT INTO members(customerID, email, password) VALUES ($customer_id,\"$email\",\"$password\")";
       if (mysqli_query($conn, $member_insert_query)) {
         // set session variables
+        $_SESSION['salutation'] = $_POST['salutation'];
         $_SESSION['firstname'] = $_POST['firstname'];
         $_SESSION['lastname'] = $_POST['lastname'];
         $_SESSION['email'] = $_POST['email'];
+        $_SESSION['address'] = $_POST['address'];
+        $_SESSION['phone'] = $_POST['phone'];
         header('Location: ' . $_SESSION['history'] . '');
       } else {
         header('Location: /ee4717/signup/');

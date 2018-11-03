@@ -203,3 +203,7 @@ textarea:focus, input:focus {
   top: 140px;
   right: 50px;
 }
+
+select{
+  border: none;
+}

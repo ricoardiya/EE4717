@@ -47,7 +47,9 @@
       echo " var js_stock = ".json_encode($stock) . ";";
       echo " console.log('var js_stock = ',".json_encode($stock) . ");";
       echo "</script>";
-    ?>
+      ?>
+
+
   <body>
     <div class="content-wrapper">
       <div class="cart-header">
@@ -97,7 +99,7 @@
                         echo '<input id="size-'.$i.'" name="size-'.$i.'" step=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="setMaxQuantity(this);">';
                         echo "</td>";
                         echo "<td>";
-                        echo '<input  id="quantity-'.$i.'" name="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
+                        echo '<input min=1 id="quantity-'.$i.'" name="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
                         echo "</td>";
                         echo "<td>";
                         echo '<button class="btn-confirm" type="submit" id="updateBtn">Update</button>';
@@ -106,6 +108,88 @@
                         echo "<td>";
                         echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
                         echo "</td>";
+                        $_COOKIES['editCart']= $i
+                      ?>
+                      <script>
+                        function getMaxMinSize(input, prodID) {
+                          min = 101;
+                          max = 0;
+                          // console.log('prodID ', prodID, 'type: ', typeof(prodID));
+                          for (var i=0; i < input.length ; i++){
+                            // console.log('itteration ', i, 'input prodID: ',  parseInt(input[i]['prodID'],10), 'PRODUCT ID REAL: ', );
+                            if( parseInt(input[i]['prodID'],10) == parseInt(prodID,10)){
+                              // console.log('prodID ', prodID, 'JS_STOCK: ', input[i]['prodID']);
+                              if(parseInt(input[i]['size'],10) < min ){
+                                min= parseInt(input[i]['size'],10);
+                                // console.log("found min ", min);
+                              }
+                              if (parseInt(input[i]['size'],10) > max ){
+                                max = parseInt(input[i]['size'],10);
+                                // console.log("found max: ", max);
+                              }
+                            }
+                          }
+                          return [min, max];
+                        }
+                        function editCart(cartRow){
+                          console.log('cartRow ' , cartRow);
+                          // let str= elem.id;
+                          // console.log('str', str);
+                          // let row = parseInt(str.split("-")[1],10);
+                          let row = cartRow;
+                          let prodID = js_stock[row]['prodID'];
+                          // console.log('prodID', prodID);
+                          let minSizeVal = getMaxMinSize(js_stock,prodID)[0];
+                          console.log('minSizeVal', minSizeVal);
+                          let maxSizeVal = getMaxMinSize(js_stock,prodID)[1];
+                          console.log('maxSizeVal', maxSizeVal);
+                          // let size_field= "size-"+str.split("-")[1];
+                          let size_field= "size-"+cartRow;
+                          let current_size_field= document.getElementById(size_field).value;
+                          console.log('size_field', size_field, typeof(size_field));
+                          document.getElementById(size_field).min = minSizeVal;
+                          document.getElementById(size_field).max = maxSizeVal;
+                          if(current_size_field > maxSizeVal){
+                            document.getElementById(size_field).value = maxSizeVal;
+                          }
+                          if(current_size_field < minSizeVal){
+                            document.getElementById(size_field).value = minSizeVal;
+                          }
+                        }
+
+                        editCart(<?php echo $_COOKIES['editCart']; ?>);
+
+                        function getQuantityMaxWithProductID(input, size, productID) {
+                          for (var i=0; i < input.length ; ++i){
+                            if(parseInt(input[i]['size'],10) == parseInt(size,10) && parseInt(input[i]['row'],10) == parseInt(productID,10)){
+                              console.log("found match!");
+                              return input[i]['quantity'];
+                            }
+                          }
+                          console.log("NOT found match!");
+                          return 1;
+                        }
+                        function setMaxQuantityFirstLoad(cartRow){
+                          let row = cartRow;
+                          let prodID = parseInt(js_stock[row]['prodID'],10);
+                          console.log('row first load', row, 'prodID ', prodID);
+                          let size_field= "size-"+prodID;
+                          console.log('size field first load ', size_field);
+                          let inputsize = parseInt(document.getElementById(size_field).value,10);
+                          console.log('inputsize first load ', inputsize);
+                          let maxVal = parseInt(getQuantityMaxWithProductID(js_stock, inputsize, prodID),10);
+                          console.log('maxVal first load', maxVal);
+                          let quantity_field= "quantity-"+prodID;
+                          console.log('quantity_field ', quantity_field);
+                          let current_quantity = parseInt(document.getElementById(quantity_field).value,10);
+                          console.log('current_quantity ', current_quantity);
+                          let new_quantity = current_quantity >  maxVal ? maxVal : current_quantity;
+                          document.getElementById(quantity_field).value = new_quantity;
+                          document.getElementById(quantity_field).max = maxVal;
+                        }
+                        setMaxQuantityFirstLoad(<?php echo $_COOKIES['editCart']; ?>);
+                      </script>
+                      <?php
                       } else {
                         echo "<td>" ;
                         echo $_SESSION['cart'][$i]->size;
@@ -156,7 +240,7 @@
     </div>
     <script>
       <?php
-        $arr_length = empty($_SESSION['cart']) ? $arr_length=0: count($_SESSION['cart'])
+        $arr_length = empty($_SESSION['cart']) ? $arr_length=0: count($_SESSION['cart']);
       ?>
       function getQuantity(elem){
         var inputquantity = document.getElementById(elem.id).value;
@@ -174,19 +258,36 @@
         }
         return 1;
       }
+      function getQuantityMaxWithProductID(input, size, productID) {
+        for (var i=0; i < input.length ; ++i){
+          if(parseInt(input[i]['size'],10) == parseInt(size,10) && parseInt(input[i]['row'],10) == parseInt(productID,10)){
+            console.log("found match!");
+            return input[i]['quantity'];
+          }
+        }
+        console.log("NOT found match!");
+        return 1;
+      }
       function setMaxQuantity(elem){
         let str= elem.id;
-        console.log('str ', str);
-        let inputsize = document.getElementById(str).value;
-        let max_quantity_val = getQuantityMax(js_stock, inputsize);
+        let prodID = parseInt(str.split("-")[1],10);
+        console.log('str ', str, 'prodID', prodID);
+        let inputsize = parseInt(document.getElementById(str).value,10);
+        console.log('inputsize ', inputsize);
+        let maxVal = parseInt(getQuantityMaxWithProductID(js_stock, inputsize, prodID),10);
+        console.log('maxVal ', maxVal);
         let quantity_field= "quantity-"+str.split("-")[1];
-        let current_quantity = document.getElementById(quantity_field).value;
-        let new_quantity = current_quantity >  max_quantity_val ? max_quantity_val : current_quantity;
+        console.log('quantity_field ', quantity_field);
+        let current_quantity = parseInt(document.getElementById(quantity_field).value,10);
+        console.log('current_quantity ', current_quantity);
+        let new_quantity = current_quantity >  maxVal ? maxVal : current_quantity;
         document.getElementById(quantity_field).value = new_quantity;
-        document.getElementById(quantity_field).max = max_quantity_val;
+        document.getElementById(quantity_field).max = maxVal;
         // getSize(elem);
       }
     </script>
-    <?php include '../common/footer.php'?>
+    <?php
+      include '../common/footer.php';
+    ?>
   </body>
 </html>

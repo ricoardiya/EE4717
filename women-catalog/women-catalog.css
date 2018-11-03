@@ -175,3 +175,6 @@
   margin-bottom: 10px;
 }
 
+select{
+  border: none;
+}

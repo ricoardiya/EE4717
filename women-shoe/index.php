@@ -32,14 +32,22 @@
           $item->size = $_POST['size'];
           $item->quantity = $_POST['quantity'];
           array_push($_SESSION['cart'], $item);
-          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          if($_POST['action'] == 'BUY NOW'){
+            header('location: /ee4717/cart/index.php');
+          }else if($_POST['action'] == 'ADD TO CART'){
+            header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+          }
           exit();
         }else{
           for($i=0; $i<count($_SESSION['cart']) ; $i++){
             if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
               // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
-              header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              if($_POST['action'] == 'BUY NOW'){
+                header('location: /ee4717/cart/index.php');
+              }else if($_POST['action'] == 'ADD TO CART'){
+                header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+              }
               exit();
             }
           }
@@ -49,7 +57,11 @@
         $item->size = $_POST['size'];
         $item->quantity = $_POST['quantity'];
         array_push($_SESSION['cart'], $item);
-        header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        if($_POST['action'] == 'BUY NOW'){
+          header('location: /ee4717/cart/index.php');
+        }else if($_POST['action'] == 'ADD TO CART'){
+          header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
+        }
         exit();
       }
     ?>
@@ -168,8 +180,8 @@
                 <input type="number" name="quantity" min=1 value=1 id="quantity" onchange="getQuantity();">
             </div>
             <hr>
-            <button type="submit" class="btn-addcart">BUY NOW</button>
-            <button type="submit" class="btn-addcart">ADD TO CART</button>
+            <input type="submit" name="action" value="BUY NOW" class="btn-addcart"/>
+            <input type="submit" name="action" value="ADD TO CART" class="btn-addcart"/>
             <hr>
             <div class="specs">
               <div class="header">

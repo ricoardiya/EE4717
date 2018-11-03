@@ -114,8 +114,9 @@
                     <div class="col-6 font-modal">
                       <div id="modal_name"></div>
                       <div id="modal_price"></div>
-                      <form action="./addToCart.php" method="POST">
+                      <form class="modal-form" action="./addToCart.php" method="POST">
                         <div id="modal_productID"></div>
+                        <br>
                         <div id="modal_size">Select your size: <select name="selected_size" id="selected_size" onchange="getSize();"></select></div>
                         <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity" onchange="getQuantity();"></div>
                         <div id="modal_button"><button class="btn-addcart" onclick="addToCart()">ADD TO CART</button></div>

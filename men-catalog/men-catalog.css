@@ -175,3 +175,16 @@
 #modal_size{
   margin-bottom: 10px;
 }
+
+input[type=number]{
+  font-family: "Montserrat", sans-serif;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+select{
+  border: none;
+
+}

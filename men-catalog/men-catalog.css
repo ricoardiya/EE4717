@@ -79,6 +79,8 @@
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
+  margin-top: 40px;
+  margin-right:10px;
 }
 
 .btn-addcart:hover {

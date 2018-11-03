@@ -188,7 +188,7 @@
           console.log('btn.id: ', btn.id);
           if(elem.id && btn.id && document.getElementById("modal_name") && document.getElementById("modal_price")){
             document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' value="+ elem.id +">";
-            for (var i=1; i < js_shoes.length ; i++){
+            for (var i=0; i < js_shoes.length ; i++){
               if(js_shoes[i]['id'] == btn.id){
                 document.getElementById("modal_name").innerHTML = js_shoes[i]['name'] + "<br>";
                 document.getElementById("modal_picture").innerHTML = "<img src=\"../" + js_shoes[i]['picture'] + "\" alt='shoes' width=50% style='margin:auto;'><br>";

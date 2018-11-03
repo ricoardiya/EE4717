@@ -71,7 +71,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- <form action="../cart/submitOrder.php" method="POST"> -->
                 <?php
                   $total = 0;
                   if (isset($_SESSION['cart'])){
@@ -88,45 +87,43 @@
                       }
 
                       if(isset($_GET['editCart']) && $_GET['editCart'] == $i){
-                            echo '<form action="./updateCart.php" method="POST">';
-                            echo '<input type="hidden" name="productID" value='.$i.'>';
-                            echo "<td>" ;
-                            echo '<input id="size-'.$i.'" name="size-'.$i.'" step=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="setMaxQuantity(this)">';
-                            echo "</td>";
-                            echo "<td>";
-                            echo '<input  id="quantity-'.$i.'" name="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
-                            echo "</td>";
-                            echo "<td>";
-                            echo '<button class="btn-confirm" type="submit" id="updateBtn" onclick="updateCart();">Update</button>';
-                            echo "</td>";
-                            echo '</form>';
-                            echo "<td>";
-                            echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
-                            echo "</td>";
-                          } else {
-                            echo "<td>" ;
-                            echo $_SESSION['cart'][$i]->size;
-                            echo "</td>";
-                            echo "<td>";
-                            echo $_SESSION['cart'][$i]->quantity;
-                            echo "</td>";
-                            echo "<td>";
-                            echo '<a href="/ee4717/cart/?editCart='.$i.'"><button class="btn-confirm" id="editBtn" >Edit</button></a>';
-                            echo "</td>";
-                            echo "<td>";
-                            echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
-                            echo "</td>";
-                          }
-                          echo "</tr>";
+                        echo '<form action="./updateCart.php" method="POST">';
+                        echo '<input type="hidden" name="productID" value='.$i.'>';
+                        echo "<td>" ;
+                        echo '<input id="size-'.$i.'" name="size-'.$i.'" step=1 type="number" value='.$_SESSION['cart'][$i]->size.' onchange="setMaxQuantity(this);">';
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<input  id="quantity-'.$i.'" name="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<button class="btn-confirm" type="submit" id="updateBtn">Update</button>';
+                        echo "</td>";
+                        echo '</form>';
+                        echo "<td>";
+                        echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
+                        echo "</td>";
+                      } else {
+                        echo "<td>" ;
+                        echo $_SESSION['cart'][$i]->size;
+                        echo "</td>";
+                        echo "<td>";
+                        echo $_SESSION['cart'][$i]->quantity;
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<a href="/ee4717/cart/?editCart='.$i.'"><button class="btn-confirm" id="editBtn" >Edit</button></a>';
+                        echo "</td>";
+                        echo "<td>";
+                        echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
+                        echo "</td>";
+                      }
+                      echo "</tr>";
                     }
                     echo '<input type="hidden" name="total" value='.$arr_length.'>';
                   }
                 ?>
-                <!-- </form> -->
               </tbody>
             </table>
             <div class= "row" style="float:right;">
-              <!-- <a href="../men-catalog/index.php"><button class="btn-confirm">Continue Shopping</button></a> -->
               <a href="../checkout/index.php"><button type="submit" class="btn-confirm">Checkout</button></a>
             </div>
             <br><br><br><br><br><br>
@@ -175,7 +172,7 @@
       }
       function setMaxQuantity(elem){
         let str= elem.id;
-        console.log("elem.id", id);
+        console.log('str ', str);
         let inputsize = document.getElementById(str).value;
         let max_quantity_val = getQuantityMax(js_stock, inputsize);
         let quantity_field= "quantity-"+str.split("-")[1];
@@ -183,55 +180,7 @@
         let new_quantity = current_quantity >  max_quantity_val ? max_quantity_val : current_quantity;
         document.getElementById(quantity_field).value = new_quantity;
         document.getElementById(quantity_field).max = max_quantity_val;
-        getSize(elem);
-      }
-      // function startUp() {
-      //   for (i=0; i< <?php echo $arr_length; ?>; i++){
-      //         let q_field = "quantity-" + i;
-      //         let s_field = "size-" + i;
-      //         console.log("size: ", s_field);
-      //         if(!!document.getElementById(s_field)){
-      //           let inputsize = document.getElementById(s_field).value;
-      //         }
-      //         function getQuantityMax(row, input, key) {
-      //           for (var i=0; i < input.length ; ++i){
-      //             if(input[i]['size'] == key && input[i]['row'] == row){
-      //               return input[i]['quantity'];
-      //             }
-      //           }
-      //           return 1;
-      //         }
-      //         function getSizeMax(row, input) {
-      //           let max = 0;
-      //           for (var i=0; i < input.length ; ++i){
-      //             if(input[i]['size'] > max && input[i]['row'] == row){
-      //               max = input[i]['size'];
-      //             }
-      //           }
-      //           return max;
-      //         }
-      //         function getSizeMin(row, input) {
-      //           let min= 45;
-      //           for (var i=0; i < input.length ; ++i){
-      //             if(input[i]['size'] < min && input[i]['row'] == row){
-      //               min = input[i]['size'];
-      //             }
-      //           }
-      //           return min;
-      //         }
-      //         var max_quantity_val = getQuantityMax(i,js_stock, inputsize);
-      //         var max_size_val = getSizeMax(i,js_stock);
-      //         var min_size_val = getSizeMin(i,js_stock);
-      //         document.getElementById(q_field).max = max_quantity_val;
-      //         document.getElementById(s_field).min = min_size_val;
-      //         document.getElementById(s_field).max = max_size_val;
-      //   }
-      // }
-      function updateCart(){
-        startUp();
-        let message = document.getElementById("updateCartMessage");
-        message.className="show";
-        setTimeout(function(){ message.className = message.className.replace("show",""); }, 3000);
+        // getSize(elem);
       }
     </script>
     <?php include '../common/footer.php'?>

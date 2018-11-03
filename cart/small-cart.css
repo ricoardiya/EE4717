@@ -31,10 +31,16 @@
 }
 
 .small-shopping-cart-header {
-  padding-top: 20px;
-  margin-left: 20px;
+  /* padding-top: 20px;
+  margin-left: 20px; */
   display: inline;
   font-family: "Montserrat", sans-serif;
+}
+
+.spanCenter{
+  text-align: center;
+  display: block;
+
 }
 
 img {
@@ -42,7 +48,7 @@ img {
   margin-top: 10px;
 }
 
-.btn-addcart {
+.btn-addSmallCart {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.5px;
   background-color: #000000;
@@ -50,13 +56,15 @@ img {
   color: white;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
+  /* display: inline; */
+  margin-top: 10px;
 }
 
-.btn-addcart:hover {
+.btn-addSmallCart:hover {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.5px;
   background-color: white;
@@ -68,4 +76,14 @@ img {
   font-size: 13px;
   padding: 8px 15px;
   cursor: pointer;
+}
+
+table{
+  text-align: center;
+  margin: auto;
+  width: 80%;
+}
+
+.btnCenter{
+  text-align: center;
 }

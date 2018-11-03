@@ -139,7 +139,7 @@
             <input type="hidden" name="productID" value=<?php echo $productID; ?>>
             <div class="size">
               Choose your size:
-              <select name="size" id="size" onload="getSize();" onchange="getSize();">
+              <select name="size" id="size" onchange="getSize();">
                 <?php
                   // query inventory of the product
                   $inventory_query = "SELECT * FROM inventory WHERE productID = $productID AND stock <> 0";
@@ -175,29 +175,10 @@
                   }
                   echo "<script>";
                   echo " var js_stock = ".json_encode($stock) . ";";
+                  echo " console.log('var js_stock = ',".json_encode($stock) . ");";
                   echo "</script>";
                   ?>
                 <input type="number" name="quantity" min=1 value=1 id="quantity" onchange="getQuantity();">
-                <script>
-                  var inv = js_stock[0]['quantity'];
-                  var quantity = 1;
-                  var inputsize= js_stock[0]['size'];
-                  function getSize(){
-                    var inputsize = document.getElementById('size').value;
-                    function getVal(input, key) {
-                        for (var i=0; i < input.length ; ++i){
-                            if(input[i]['size'] == key){
-                              return input[i]['quantity'];
-                            }
-                        }
-                    }
-                    var inv = getVal(js_stock, inputsize);
-                    document.getElementById("quantity").max = inv;
-                  }
-                  function getQuantity(){
-                    var quantity= document.getElementById("quantity").value;
-                  }
-                </script>
             </div>
             <hr>
             <a href="../men-shoe/index.php?buyNow=1"><button type="submit" class="btn-addcart" >BUY NOW</button></a>
@@ -278,7 +259,6 @@
             </div>
           </div>
           </form>
-
           <div class="col-1">
             <div class="cart">
               <?php
@@ -321,6 +301,10 @@
         </div>
       </div>
     </div>
-    <?php include  '../common/footer.php'?>
+    <?php
+      include  '../common/footer.php';
+      $men_shoe_handler = "/ee4717/men-shoe/setMaxStock.js";
+      echo '<script type="text/javascript" src="'.$men_shoe_handler.'"></script>';
+    ?>
   </body>
 </html>

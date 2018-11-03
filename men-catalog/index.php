@@ -36,7 +36,7 @@
     }
     echo "<script>";
     echo " var js_shoes = ".json_encode($shoes) . ";";
-    // echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
+    echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
     echo "</script>";
   ?>
   <body>
@@ -116,8 +116,8 @@
                       <div id="modal_price"></div>
                       <form action="./addToCart.php" method="POST">
                         <div id="modal_productID"></div>
-                        <div id="modal_size">Select your size: <select name="selected_size" id="selected_size"></select></div>
-                        <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity"></div>
+                        <div id="modal_size">Select your size: <select name="selected_size" id="selected_size" onchange="getSize();"></select></div>
+                        <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity" onchange="getQuantity();"></div>
                         <div id="modal_button"><button class="btn-addcart" onclick="addToCart()">ADD TO CART</button></div>
                       </form>
                     </div>
@@ -136,7 +136,6 @@
                 $color_sql[] = 'color LIKE \'%'.$color.'%\'';
               }
               $color_sql = implode(" OR ", $color_sql);
-
               $products_query = "SELECT * FROM products WHERE gender = 'M' AND ( $type_sql ) AND ( $color_sql )";
               $products_result = mysqli_query($conn, $products_query);
               if (mysqli_num_rows($products_result) > 0) {
@@ -184,10 +183,11 @@
         function popup(elem){
           document.getElementById("selected_size").innerHTML = "";
           console.log('elem.id: ', elem.id);
+          let prodID = elem.id;
           let btn = document.getElementById(elem.id);
           console.log('btn.id: ', btn.id);
           if(elem.id && btn.id && document.getElementById("modal_name") && document.getElementById("modal_price")){
-            document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' value="+ elem.id +">";
+            document.getElementById("modal_productID").innerHTML = "<input type='hidden' name='productID' id='selected_productID' value="+ prodID +">";
             for (var i=0; i < js_shoes.length ; i++){
               if(js_shoes[i]['id'] == btn.id){
                 document.getElementById("modal_name").innerHTML = js_shoes[i]['name'] + "<br>";
@@ -199,40 +199,19 @@
             }
             modal.style.display = "block";
           }
+          getSize();
         }
-        function close() {
-            modal.style.display = "none";
-        }
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-            }
-        }
-
-        function getSize(productID){
-          var inputsize = document.getElementById('selected_size').value;
-          console.log("productID: ", productID," inputsize ", inputsize);
-          function getVal(input, key) {
-              for (var i=0; i < input.length ; ++i){
-                  if(input[i]['size'] == key && input[i]['id'] == productID){
-                    return input[i]['quantity'];
-                  }
-              }
-              return 0;
-          }
-          var inv = getVal(js_shoes, inputsize);
-          console.log("max of: ", inputsize," is ", inv);
-          document.getElementById("selected_quantity").max = inv;
-        }
-
         function addToCart(){
           var inputsize = document.getElementById('selected_size').value;
           var inputsize = document.getElementById('selected_quantity').value;
         }
       </script>
-    <?php include  '../common/footer.php'?>
+    <?php
+      include  '../common/footer.php';
+      $men_shoe_catalog_handler = "/ee4717/men-catalog/setMaxStock.js";
+      $men_shoe_catalog_function = "/ee4717/men-catalog/men-catalog.js";
+      echo '<script type="text/javascript" src="'.$men_shoe_catalog_handler.'"></script>';
+      echo '<script type="text/javascript" src="'.$men_shoe_catalog_function.'"></script>';
+    ?>
   </body>
 </html>

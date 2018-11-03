@@ -119,7 +119,7 @@
                 ';
               }
               else {
-                  echo "An error has occured. The item was not retrieved";
+                  echo "An error has occurred. The item was not retrieved";
               }
             ?>
           <form action="" method="POST">

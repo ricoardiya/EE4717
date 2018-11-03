@@ -63,7 +63,7 @@
           ?>
           <form method="get" action="index.php">
             FILTERS
-            <hr>
+            <hr><br>
             Type
             <br>
             <input type="checkbox" name="type[]" id="boots" value="boots"> Boots<br>
@@ -71,14 +71,17 @@
             <input type="checkbox" name="type[]" id="derby" value="derby"> Derby<br>
             <input type="checkbox" name="type[]" id="loafers" value="loafers"> Loafers<br>
             <input type="checkbox" name="type[]" id="longwing" value="longwing"> Longwing<br>
-            <hr>
+            <br><br>
             Color
             <br>
             <input type="checkbox" name="color[]" id="black" value="black"> Black<br>
             <input type="checkbox" name="color[]" id="brown" value="brown"> Brown<br>
+            <input type="checkbox" name="color[]" id="grey" value="grey"> Grey<br>
             <input type="checkbox" name="color[]" id="tan" value="tan"> Tan<br>
+            <input type="checkbox" name="color[]" id="espresso" value="espresso"> Espresso<br>
             <input type="checkbox" name="color[]" id="whiskey" value="whiskey"> Whiskey<br>
             <input type="checkbox" name="color[]" id="oxblood" value="oxblood"> Oxblood<br>
+            <br><br>
             <button type="submit" class="btn-addcart">SEARCH</button>
             <button type="reset" class="btn-addcart">CLEAR FILTER</button>
           </form>

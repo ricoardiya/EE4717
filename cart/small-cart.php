@@ -6,7 +6,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;
         YOUR CART
     </b>
     <?php
@@ -50,6 +50,7 @@
       </div>
     <?php } else { ?>
       <a href="../cart">
+        <br><br><br><br>
         <div class="btnCenter">
           <button class="btn-addSmallCart">GO TO CART</button>
         </div>

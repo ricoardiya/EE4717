@@ -67,11 +67,22 @@
 
               echo '</table>';
 
+              $total_quantity_query = "SELECT SUM(orders.quantity) AS total_quantity
+                                        FROM orders
+                                        JOIN products ON orders.productID = products.id";
+
+              $total_quantity_result = mysqli_query($conn, $total_quantity_query);
+
+              echo '<br><br>';
+
+              if(mysqli_num_rows($total_quantity_result) > 0) {
+                $total_quantity_row = mysqli_fetch_assoc($total_quantity_result);
+              }
+              echo '<h2>Total pairs sold : ' . $total_quantity_row['total_quantity'] . '</h2>';
+
               $total_revenue_query = "SELECT SUM(totalPrice) AS total_revenue FROM transactions";
 
               $total_revenue_result = mysqli_query($conn, $total_revenue_query);
-
-              echo '<br><br>';
 
               if(mysqli_num_rows($total_revenue_result) > 0) {
                 $total_revenue_row = mysqli_fetch_assoc($total_revenue_result);

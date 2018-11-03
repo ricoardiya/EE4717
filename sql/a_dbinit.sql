@@ -173,6 +173,8 @@ CREATE TABLE `members`(
     ON UPDATE CASCADE
 );
 
+-- Intialize admin table
+
 CREATE TABLE `admin` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,

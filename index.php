@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <?php include './head.php' ?>
+  <?php
+    include './head.php';
+    include './path.php';
+    ?>
   </head>
   <body>
     <section>
       <header class="header-center">
         <div class="index-topnav-centered">
-          <a href="/ee4717" class="index-logo">SE PA TU</a>
+          <a href=<?php echo $root_path ?> class="index-logo">SE PA TU</a>
         </div>
         <?php
           session_start();
 
           $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-          if ($actual_link != 'http://localhost/ee4717/login/') {
+          if ($actual_link != "http://localhost" . $root_path .  "/login") {
             $_SESSION['history'] = $actual_link;
           }
 
@@ -20,14 +23,14 @@
             echo '
             <div class="index-topnav-right">
               Hi, ' . $_SESSION['firstname'] . ' !
-              <a class="login" href="/ee4717/common/signout.php">SIGN OUT</a>
+              <a class="login" href="' . $root_path . '/common/signout.php">SIGN OUT</a>
             </div>
             ';
           } else {
             echo '
             <div class="index-topnav-right">
-              <a href="/ee4717/signup">Become a member</a>
-              <a class="login" href="/ee4717/login">LOG IN</a>
+              <a href="' . $root_path .  '/signup">Become a member</a>
+              <a class="login" href="' . $root_path . '/login">LOG IN</a>
             </div>
             ';
           }
@@ -37,15 +40,15 @@
     <div class="index-content-wrapper">
       <div class="index-content">
         <div class="landing-row">
-          <a href="/ee4717/men-catalog/">
+          <a href=<?php echo $root_path . '/men-catalog' ?>>
             <div class="column">
-              <img src="/ee4717/assets/pictures/men/men.png" alt="men" height="460" width="460">
+              <img src=<?php echo $root_path . '/assets/pictures/men/men.png' ?> alt="men" height="460" width="460">
               <p id="tag">MEN</p>
             </div>
           </a>
-          <a href="/ee4717/women-catalog/">
+          <a href=<?php echo $root_path . '/women-catalog' ?>>
             <div class="column">
-              <img src="/ee4717/assets/pictures/women/women.png" alt="women" height="460" width="460">
+              <img src=<?php echo $root_path . '/assets/pictures/women/women.png' ?> alt="women" height="460" width="460">
               <p id="tag">WOMEN</p>
             </div>
           </a>

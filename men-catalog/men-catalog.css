@@ -143,3 +143,33 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.font-modal{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 220;
+}
+
+#modal_price{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#modal_name{
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  color: black;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#modal_quantity{
+  margin-bottom: 20px;
+}
+
+#modal_size{
+  margin-bottom: 10px;
+}

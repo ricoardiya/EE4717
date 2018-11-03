@@ -3,14 +3,16 @@
 <body>
   <?php
     include '../head.php';
+    include '../path.php';
     include '../dbconn.php';
   ?>
   <link rel="stylesheet" type="text/css" href="men-shoe.css">
+  <link rel="stylesheet" type="text/css" href="../cart/small-cart.css">
   <body>
     <!-- Include navbar -->
     <?php
       $path = $_SERVER['DOCUMENT_ROOT'];
-      $path .= "/ee4717/common/nav.php";
+      $path .= $root_path . "/common/nav.php";
       include $path;
     ?>
     <!-- GET productID from URL -->
@@ -24,7 +26,7 @@
         $_SESSION['cart'] = array();
       }
       if (isset($_POST['productID']) && isset($_POST['size']) && isset($_POST['quantity'])) {
-        if(empty($_SESSION['cart'])){
+        if(empty($_SESSION['cart'])){ //if the cart still empty
           $item = new buy_item();
           $item->productID = $_POST['productID'];
           $item->size = $_POST['size'];
@@ -33,7 +35,7 @@
           header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
           exit();
         }else{
-          for($i=0; $i<count($_SESSION['cart']) ; $i++){
+          for($i=0; $i<count($_SESSION['cart']) ; $i++){ // the cart still empty
             if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
               // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
@@ -50,19 +52,11 @@
         header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
         exit();
       }
-
     ?>
     <div class="content-wrapper">
       <div class="content-item">
-        <div id="myModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-          </div>
-        </div>
         <div class="row">
-          <a href="/ee4717/men-catalog/">< GO BACK TO MEN CATALOG</a>
+          <a href=<?php echo $root_path . '/men-catalog' ?>>< GO BACK TO MEN CATALOG</a>
         </div>
         <div class="row">
           <div class="col-6">
@@ -103,7 +97,7 @@
               <script type="text/javascript" src="./display_image.js"></script>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <!-- Product description -->
             <?php
               $products_query = "SELECT * FROM products WHERE id = $productID";
@@ -273,8 +267,14 @@
             </div>
           </div>
           </form>
-            <button class="btn-addcart" id="myBtn">MODAL</button>
-          <?php var_dump($_SESSION);?>
+
+          <div class="col-1">
+            <div class="cart">
+              <?php
+                include '../cart/small-cart.php';
+              ?>
+            </div>
+          </div>
         </div>
         <div class="row recommendation-wrapper">
           <div class="recommendation-header">
@@ -310,22 +310,6 @@
         </div>
       </div>
     </div>
-      <script type="text/javascript">
-          var modal = document.getElementById('myModal');
-          var btn = document.getElementById("myBtn");
-          var span = document.getElementsByClassName("close")[0];
-          btn.onclick = function() {
-              modal.style.display = "block";
-          }
-          span.onclick = function() {
-              modal.style.display = "none";
-          }
-          window.onclick = function(event) {
-              if (event.target == modal) {
-                  modal.style.display = "none";
-              }
-          }
-      </script>
     <?php include  '../common/footer.php'?>
   </body>
 </html>

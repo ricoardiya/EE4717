@@ -9,7 +9,7 @@
 
 .small-shopping-cart:hover {
   width: 400px;
-  height: 200px;
+  height: 250px;
   border-radius: 0px;
   border: 1.5px solid #d6d6d6;
   background-color: white;
@@ -38,7 +38,6 @@
 }
 
 img {
-  display: block;
   margin-left: 8px;
   margin-top: 10px;
 }

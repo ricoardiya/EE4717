@@ -411,12 +411,12 @@ C:.
 |                   veronica-bootie-tan.jpg
 |                   
 +---cart
-|       calculateInvoice.php
 |       cart.css
 |       catalog.php
 |       delete-item.php
 |       emptying-cart.php
 |       index.php
+|       setMaxStock.js
 |       small-cart.css
 |       small-cart.php
 |       submitOrder.php
@@ -443,6 +443,11 @@ C:.
 |       index.php
 |       submit_contact_form.php
 |       
++---invoice
+|       index.php
+|       invoice.css
+|       test.php
+|       
 +---login
 |       index.php
 |       login.css
@@ -452,11 +457,14 @@ C:.
 |       addToCart.php
 |       index.php
 |       men-catalog.css
+|       men-catalog.js
+|       setMaxStock.js
 |       
 +---men-shoe
 |       display_image.js
 |       index.php
 |       men-shoe.css
+|       setMaxStock.js
 |       submit-review.php
 |       
 +---signup
@@ -467,29 +475,32 @@ C:.
 |       submit-signup.php
 |       
 +---sql
-|       01_dbinit.sql
-|       02_seed_contacts.sql
-|       03_seed_customers.sql
-|       04_seed_products.sql
-|       05_seed_pictures.sql
-|       06_seed_inventory.sql
-|       07_seed_specifications.sql
-|       08_seed_transactions.sql
-|       09_seed_orders.sql
-|       10_seed_reviews.sql
-|       11_seed_members.sql
 |       all_files.sql
+|       a_dbinit.sql
+|       b_seed_contacts.sql
+|       c_seed_customers.sql
+|       d_seed_products.sql
+|       e_seed_pictures.sql
+|       f_seed_inventory.sql
+|       g_seed_specifications.sql
+|       h_seed_transactions.sql
+|       i_seed_orders.sql
+|       j_seed_reviews.sql
+|       k_seed_members.sql
 |       README.md
 |       seed_admin.sql
 |       
 +---women-catalog
 |       addToCart.php
 |       index.php
+|       setMaxStock.js
 |       women-catalog.css
+|       women-catalog.js
 |       
 \---women-shoe
         display_image.js
         index.php
+        setMaxStock.js
         submit-review.php
         women-shoe.css
         

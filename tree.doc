@@ -446,7 +446,6 @@ C:.
 +---invoice
 |       index.php
 |       invoice.css
-|       test.php
 |       
 +---login
 |       index.php
@@ -487,8 +486,8 @@ C:.
 |       i_seed_orders.sql
 |       j_seed_reviews.sql
 |       k_seed_members.sql
+|       l_seed_admin.sql
 |       README.md
-|       seed_admin.sql
 |       
 +---women-catalog
 |       addToCart.php

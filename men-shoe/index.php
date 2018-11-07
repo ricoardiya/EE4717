@@ -33,7 +33,7 @@
           $item->quantity = $_POST['quantity'];
           array_push($_SESSION['cart'], $item);
           if($_POST['action'] == 'BUY NOW'){
-            header('location: /ee4717/cart/index.php');
+            header('location: /f37ee/cart/index.php');
           }else if($_POST['action'] == 'ADD TO CART'){
             header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
           }
@@ -43,7 +43,7 @@
             if($_SESSION['cart'][$i]->productID == $_POST['productID'] &&  $_SESSION['cart'][$i]->size == $_POST['size'] ){
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
               if($_POST['action'] == 'BUY NOW'){
-                header('location: /ee4717/cart/index.php');
+                header('location: /f37ee/cart/index.php');
               }else if($_POST['action'] == 'ADD TO CART'){
                 header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
               }
@@ -57,7 +57,7 @@
         $item->quantity = $_POST['quantity'];
         array_push($_SESSION['cart'], $item);
         if($_POST['action'] == 'BUY NOW'){
-          header('location: /ee4717/cart/index.php');
+          header('location: /f37ee/cart/index.php');
         }else if($_POST['action'] == 'ADD TO CART'){
           header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
         }
@@ -303,7 +303,7 @@
     </div>
     <?php
       include  '../common/footer.php';
-      $men_shoe_handler = "/ee4717/men-shoe/setMaxStock.js";
+      $men_shoe_handler = "/f37ee/men-shoe/setMaxStock.js";
       echo '<script type="text/javascript" src="'.$men_shoe_handler.'"></script>';
     ?>
   </body>

@@ -7,7 +7,7 @@ Run this file to intialize database
 
 -- Drop tables if exists
 
-use sepatu;
+use f37ee;
 
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS reviews;
@@ -173,76 +173,14 @@ CREATE TABLE `members`(
     ON UPDATE CASCADE
 );
 
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,1,'Reprehenderit sint occaecat fugiat eiusmod occaecat ea.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,2,'Et quis incididunt adipisicing veniam amet sunt Lorem ipsum.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,3,'Pariatur ex mollit proident culpa do culpa.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,4,'Culpa id ullamco Lorem amet labore nostrud dolor duis ex incididunt ad duis.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,5,'Est sunt eiusmod ex tempor adipisicing eu elit.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,6,'Nostrud reprehenderit est laborum veniam enim adipisicing voluptate.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,7,'Ad aliquip mollit labore consequat laborum culpa sunt culpa consequat minim ex aute.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,8,'Ut duis eiusmod minim culpa exercitation est dolor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,9,'Minim veniam minim nulla dolore do pariatur ad.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,10,'Cupidatat do deserunt anim excepteur esse excepteur occaecat.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,11,'Et irure laborum do proident dolor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,12,'Sint laboris culpa ad ad exercitation aliqua ut eiusmod.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,13,'Adipisicing nisi exercitation quis commodo commodo aliquip amet labore ea dolor dolor quis cillum.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,14,'Consectetur eiusmod adipisicing veniam eu sint exercitation dolor exercitation tempor minim consequat.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,15,'Est voluptate qui sint nostrud sunt cupidatat deserunt cillum id officia reprehenderit.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,16,'Commodo et esse culpa irure est exercitation officia laboris.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,17,'Est consequat aute esse labore exercitation fugiat et Lorem occaecat voluptate.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,18,'Sunt nulla aliquip nulla minim esse cillum aute velit aliqua.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,19,'Aute sunt voluptate veniam ullamco Lorem velit laborum ex occaecat.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,20,'Aute ea enim id nostrud est duis pariatur minim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,21,'Laborum enim non commodo consectetur aliquip.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,22,'Culpa excepteur tempor do do ad reprehenderit anim reprehenderit tempor in Lorem occaecat laborum eu.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,23,'Velit laborum pariatur proident enim elit esse exercitation exercitation non.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,24,'Magna ea labore exercitation aliqua Lorem dolor aliqua.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,25,'Laborum cupidatat ea sit quis labore sunt tempor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,26,'Officia esse aliquip excepteur ipsum duis irure eiusmod duis minim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,27,'Ad sint reprehenderit esse commodo excepteur reprehenderit sit.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,28,'Veniam dolor amet aliquip veniam irure.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,29,'Nulla aute sint exercitation aliquip deserunt dolore ex ea.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,30,'Laboris ullamco aliquip anim ad culpa do consectetur dolor qui.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,31,'Officia cupidatat ut in ipsum culpa in.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,32,'Ut laboris magna id cupidatat pariatur amet esse id ea deserunt labore dolor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,33,'Adipisicing tempor excepteur est nostrud minim aliquip.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,34,'Proident excepteur quis anim consectetur ea dolore.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,35,'Magna culpa nisi ut deserunt non culpa pariatur adipisicing officia nulla.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,36,'Laborum qui magna consequat voluptate nulla aliqua dolor culpa ex est proident sunt est.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,37,'Deserunt ex reprehenderit proident mollit nisi aliqua.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,38,'Et aliqua laborum esse tempor consectetur incididunt.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,39,'Est do duis laboris amet occaecat occaecat quis veniam velit amet voluptate enim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,40,'Exercitation anim laborum quis irure ut magna esse ullamco laborum nulla ea eu sunt tempor.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,41,'Lorem proident voluptate qui labore amet duis culpa laboris enim qui officia ut laboris exercitation.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,42,'Minim ipsum Lorem qui cillum reprehenderit proident est officia fugiat non.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,43,'Ut velit ad Lorem do dolor fugiat cupidatat in sunt anim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,44,'Tempor consectetur ex adipisicing commodo qui pariatur dolore ad.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,45,'Excepteur officia incididunt culpa minim sit proident cillum esse incididunt.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,46,'Culpa eiusmod Lorem nostrud non eiusmod laborum.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,47,'Dolor ad sit aliqua id occaecat commodo consectetur voluptate qui laborum irure.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,48,'Sit proident ut Lorem minim in cupidatat velit duis et cupidatat tempor incididunt.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,49,'Incididunt consequat velit eu voluptate cupidatat eiusmod incididunt esse laboris non cupidatat consequat adipisicing minim.');
-INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,50,'Magna deserunt cillum tempor sunt dolore ullamco ullamco.');
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leliabeck@skinserve.com', sha1('password'), 1);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'joyprice@skinserve.com', sha1('password'), 2);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'gillespiearmstrong@skinserve.com', sha1('password'),3);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'nixonclark@skinserve.com', sha1('password'), 4);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'pollymcpherson@skinserve.com', sha1('password'), 5);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'michaelrivas@skinserve.com', sha1('password'), 6);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 7);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 8);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'marjoriecarlson@skinserve.com', sha1('password'), 9);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'frankiegutierrez@skinserve.com', sha1('password'), 10);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'grantmcfarland@skinserve.com', sha1('password'), 11);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leonardvance@skinserve.com', sha1('password'), 12);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'jessicafields@skinserve.com', sha1('password'), 13);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'yatesbailey@skinserve.com', sha1('password'), 14);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'eulaclayton@skinserve.com', sha1('password'), 15);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'penablankenship@skinserve.com', sha1('password'), 16);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'randolphbeard@skinserve.com', sha1('password'), 17);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'lakeishalevy@skinserve.com', sha1('password'), 18);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'chasitywooten@skinserve.com', sha1('password'), 19);
-INSERT INTO members(id,email,password,customerId) VALUES (NULL,'elsabowers@skinserve.com', sha1('password'), 20);
+-- Intialize admin table
+
+CREATE TABLE `admin` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY(id)
+);
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Mcdowell','Mayo','mcdowellmayo@exospeed.com','Velit id reprehenderit velit adipisicing adipisicing in dolor id.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Angelia','Castro','angeliacastro@exospeed.com','Sit elit occaecat consectetur exercitation enim.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Rogers','Sanchez','rogerssanchez@exospeed.com','Fugiat est cillum sunt officia laboris qui occaecat nostrud laboris consequat Lorem reprehenderit aute.');
@@ -1457,31 +1395,6 @@ INSERT INTO specifications(id,productID,specification) VALUES (NULL,48,'Goodyear
 INSERT INTO specifications(id,productID,specification) VALUES (NULL,49,'Goodyear welt construction');
 
 
-<<<<<<< HEAD
--- Initialize transactions table
-=======
-
--- Initialize orders table
->>>>>>> f52ef68d997d2dd8dd23c1cb15256eaf1de4a16d
-
-CREATE TABLE `transactions` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `customerID` INT(10) NOT NULL,
-  `firstname` varchar(20) NOT NULL,
-  `lastname` varchar(20) NOT NULL,
-  `address` text NOT NULL,
-  `zipCode` int(6),
-  `phone` varchar(20) NOT NULL,
-  `totalPrice` int(255) NOT NULL,
-  PRIMARY KEY (id),
-  INDEX `FK_CUSTOMER_ID` (`customerID` ASC),
-  CONSTRAINT `FK_CUSTOMER_ID`
-    FOREIGN KEY (customerID)
-    REFERENCES customers(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
-
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,1,'Lucy','Fleming','930 Pitkin Avenue #8-105, Singapore',937662,'94874223', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,2,'Hart','Kerr','359 Engert Avenue #19-186, Singapore',235461,'49474219', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,3,'Mara','Potter','391 Hubbard Place #6-166, Singapore',327591,'61983059', 100);
@@ -1532,29 +1445,6 @@ INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,48,'Thornton','Frye','997 Times Placez #28-121, Singapore',261224,'37309048', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,49,'Jones','Bartlett','127 Fleet Street #16-103, Singapore',826579,'81424273', 100);
 INSERT INTO transactions(id,customerID,firstname,lastname,address,zipCode,phone,totalPrice) VALUES (NULL,50,'Valerie','Stanton','586 Malbone Street #36-172, Singapore',958144,'65718414', 100);
-
-CREATE TABLE orders (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `transactionID` INT(10) NOT NULL,
-  `productID` int(10) NOT NULL,
-  `dateOrder` DATE NOT NULL,
-  `quantity` int(10) NOT NULL,
-  `size` int(2) NOT NULL,
-  PRIMARY KEY (id),
-  INDEX `FK_TRANSACTION_ID` (`transactionID` ASC),
-  INDEX `FK_PRODUCT_ID` (`productID` ASC),
-  CONSTRAINT `FK_TRANSACTION_ID`
-    FOREIGN KEY (transactionID)
-    REFERENCES transactions(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `FK_PRODUCT_ID`
-    FOREIGN KEY (productID)
-    REFERENCES products(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
-
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,1,46,'2018-06-12T08:39:27',3,42);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,2,10,'2018-09-24T09:24:30',12,39);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,3,29,'2018-04-17T05:41:23',4,39);
@@ -1605,3 +1495,74 @@ INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (N
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,48,40,'2018-07-01T10:19:08',11,40);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,49,6,'2018-09-02T03:57:41',4,42);
 INSERT INTO orders(id,transactionID,productID,dateOrder,quantity,size) VALUES (NULL,50,25,'2018-09-22T08:41:12',12,40);
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,1,'Reprehenderit sint occaecat fugiat eiusmod occaecat ea.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,2,'Et quis incididunt adipisicing veniam amet sunt Lorem ipsum.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,3,'Pariatur ex mollit proident culpa do culpa.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,4,'Culpa id ullamco Lorem amet labore nostrud dolor duis ex incididunt ad duis.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,5,'Est sunt eiusmod ex tempor adipisicing eu elit.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,6,'Nostrud reprehenderit est laborum veniam enim adipisicing voluptate.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,7,'Ad aliquip mollit labore consequat laborum culpa sunt culpa consequat minim ex aute.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,8,'Ut duis eiusmod minim culpa exercitation est dolor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,9,'Minim veniam minim nulla dolore do pariatur ad.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,10,'Cupidatat do deserunt anim excepteur esse excepteur occaecat.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,11,'Et irure laborum do proident dolor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,12,'Sint laboris culpa ad ad exercitation aliqua ut eiusmod.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,13,'Adipisicing nisi exercitation quis commodo commodo aliquip amet labore ea dolor dolor quis cillum.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,14,'Consectetur eiusmod adipisicing veniam eu sint exercitation dolor exercitation tempor minim consequat.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,15,'Est voluptate qui sint nostrud sunt cupidatat deserunt cillum id officia reprehenderit.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,16,'Commodo et esse culpa irure est exercitation officia laboris.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,17,'Est consequat aute esse labore exercitation fugiat et Lorem occaecat voluptate.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,18,'Sunt nulla aliquip nulla minim esse cillum aute velit aliqua.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,19,'Aute sunt voluptate veniam ullamco Lorem velit laborum ex occaecat.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,20,'Aute ea enim id nostrud est duis pariatur minim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,21,'Laborum enim non commodo consectetur aliquip.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,22,'Culpa excepteur tempor do do ad reprehenderit anim reprehenderit tempor in Lorem occaecat laborum eu.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,23,'Velit laborum pariatur proident enim elit esse exercitation exercitation non.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,24,'Magna ea labore exercitation aliqua Lorem dolor aliqua.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,25,'Laborum cupidatat ea sit quis labore sunt tempor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,26,'Officia esse aliquip excepteur ipsum duis irure eiusmod duis minim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,27,'Ad sint reprehenderit esse commodo excepteur reprehenderit sit.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,28,'Veniam dolor amet aliquip veniam irure.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,29,'Nulla aute sint exercitation aliquip deserunt dolore ex ea.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,30,'Laboris ullamco aliquip anim ad culpa do consectetur dolor qui.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,31,'Officia cupidatat ut in ipsum culpa in.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,32,'Ut laboris magna id cupidatat pariatur amet esse id ea deserunt labore dolor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,33,'Adipisicing tempor excepteur est nostrud minim aliquip.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,34,'Proident excepteur quis anim consectetur ea dolore.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,35,'Magna culpa nisi ut deserunt non culpa pariatur adipisicing officia nulla.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,36,'Laborum qui magna consequat voluptate nulla aliqua dolor culpa ex est proident sunt est.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,37,'Deserunt ex reprehenderit proident mollit nisi aliqua.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,38,'Et aliqua laborum esse tempor consectetur incididunt.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,39,'Est do duis laboris amet occaecat occaecat quis veniam velit amet voluptate enim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,40,'Exercitation anim laborum quis irure ut magna esse ullamco laborum nulla ea eu sunt tempor.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,41,'Lorem proident voluptate qui labore amet duis culpa laboris enim qui officia ut laboris exercitation.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,42,'Minim ipsum Lorem qui cillum reprehenderit proident est officia fugiat non.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,43,'Ut velit ad Lorem do dolor fugiat cupidatat in sunt anim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,44,'Tempor consectetur ex adipisicing commodo qui pariatur dolore ad.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,45,'Excepteur officia incididunt culpa minim sit proident cillum esse incididunt.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,46,'Culpa eiusmod Lorem nostrud non eiusmod laborum.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,47,'Dolor ad sit aliqua id occaecat commodo consectetur voluptate qui laborum irure.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,48,'Sit proident ut Lorem minim in cupidatat velit duis et cupidatat tempor incididunt.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,49,'Incididunt consequat velit eu voluptate cupidatat eiusmod incididunt esse laboris non cupidatat consequat adipisicing minim.');
+INSERT INTO reviews(id,transactionID,reviews) VALUES (NULL,50,'Magna deserunt cillum tempor sunt dolore ullamco ullamco.');
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leliabeck@skinserve.com', sha1('password'), 1);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'joyprice@skinserve.com', sha1('password'), 2);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'gillespiearmstrong@skinserve.com', sha1('password'),3);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'nixonclark@skinserve.com', sha1('password'), 4);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'pollymcpherson@skinserve.com', sha1('password'), 5);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'michaelrivas@skinserve.com', sha1('password'), 6);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 7);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'rhondaroy@skinserve.com', sha1('password'), 8);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'marjoriecarlson@skinserve.com', sha1('password'), 9);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'frankiegutierrez@skinserve.com', sha1('password'), 10);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'grantmcfarland@skinserve.com', sha1('password'), 11);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'leonardvance@skinserve.com', sha1('password'), 12);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'jessicafields@skinserve.com', sha1('password'), 13);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'yatesbailey@skinserve.com', sha1('password'), 14);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'eulaclayton@skinserve.com', sha1('password'), 15);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'penablankenship@skinserve.com', sha1('password'), 16);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'randolphbeard@skinserve.com', sha1('password'), 17);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'lakeishalevy@skinserve.com', sha1('password'), 18);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'chasitywooten@skinserve.com', sha1('password'), 19);
+INSERT INTO members(id,email,password,customerId) VALUES (NULL,'elsabowers@skinserve.com', sha1('password'), 20);
+INSERT INTO admin(id,username,password) VALUES (NULL,'admin', sha1('admin'));

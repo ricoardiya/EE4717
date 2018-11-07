@@ -24,10 +24,10 @@ You can also choose to execute all of the sql file above by copying all files
 Step to generate all files:
 0. Make sure you have deleted the 'all_files.sql' before running this command, to prevent copy of all_files.sql to the new all_files.sql
 
-1. If you are on Windows: Open CMD, navigate to /ee4717/sql/ folder and type the following command:
+1. If you are on Windows: Open CMD, navigate to /f37ee/sql/ folder and type the following command:
 > copy /b *.sql all_files.sql
 
-2. If you are on Mac/Linux: Open terminal, navigate to /ee4717/sql/ folder and type the following command:
+2. If you are on Mac/Linux: Open terminal, navigate to /f37ee/sql/ folder and type the following command:
 $ cat *.sql > all_files.sql
 ```
 

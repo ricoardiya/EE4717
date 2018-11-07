@@ -33,7 +33,7 @@
           $item->quantity = $_POST['quantity'];
           array_push($_SESSION['cart'], $item);
           if($_POST['action'] == 'BUY NOW'){
-            header('location: /ee4717/cart/index.php');
+            header('location: /f37ee/cart/index.php');
           }else if($_POST['action'] == 'ADD TO CART'){
             header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
           }
@@ -44,7 +44,7 @@
               // echo '<script> console.log("sum: '.(int)$_POST['quantity'] + (int)$_SESSION['cart'][$i]->quantity.'");</script>';
               $_SESSION['cart'][$i]->quantity = (string)((int)$_SESSION['cart'][$i]->quantity + $_POST['quantity']);
               if($_POST['action'] == 'BUY NOW'){
-                header('location: /ee4717/cart/index.php');
+                header('location: /f37ee/cart/index.php');
               }else if($_POST['action'] == 'ADD TO CART'){
                 header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
               }
@@ -58,7 +58,7 @@
         $item->quantity = $_POST['quantity'];
         array_push($_SESSION['cart'], $item);
         if($_POST['action'] == 'BUY NOW'){
-          header('location: /ee4717/cart/index.php');
+          header('location: /f37ee/cart/index.php');
         }else if($_POST['action'] == 'ADD TO CART'){
           header('location: ' . $_SERVER['PHP_SELF']. '?productID=' . $productID);
         }
@@ -302,7 +302,7 @@
     </div>
     <?php
       include  '../common/footer.php';
-      $women_shoe_handler = "/ee4717/women-shoe/setMaxStock.js";
+      $women_shoe_handler = "/f37ee/women-shoe/setMaxStock.js";
       echo '<script type="text/javascript" src="'.$women_shoe_handler.'"></script>';
     ?>
   </body>

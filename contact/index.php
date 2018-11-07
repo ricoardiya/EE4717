@@ -2,15 +2,15 @@
 <html>
     <?php
       include '../head.php';
-      $contact_css = "/ee4717/contact/contact.css";
-      $contact_js = "/ee4717/contact/contact.js";
+      $contact_css = "/f37ee/contact/contact.css";
+      $contact_js = "/f37ee/contact/contact.js";
       echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $contact_css . '  />';
       echo '<script type="text/javascript" src="'. $contact_js .'"></script>';
     ?>
 <body>
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/ee4717/common/nav.php";
+    $path .= "/f37ee/common/nav.php";
     include $path;
   ?>
   <div class="content-wrapper">
@@ -30,7 +30,7 @@
           <br>
         </div>
         <div class="col right">
-          <form action="/ee4717/contact/submit_contact_form.php" class="contact-form">
+          <form action="/f37ee/contact/submit_contact_form.php" class="contact-form">
             <label for="fname">*First Name: </label><br>
             <?php
               if (isset($_SESSION['firstname'])) {
@@ -75,7 +75,7 @@
             <input type="submit" value="Send" class="btn-contact">
           </form>
           <?php
-            $contact_js_handler = "/ee4717/contact/contact-handler.js";
+            $contact_js_handler = "/f37ee/contact/contact-handler.js";
             echo '<script type="text/javascript" src="'.$contact_js_handler.'"></script>';
           ?>
         </div>

@@ -212,8 +212,8 @@
       </script>
     <?php
       include  '../common/footer.php';
-      $men_shoe_catalog_handler = "/ee4717/men-catalog/setMaxStock.js";
-      $men_shoe_catalog_function = "/ee4717/men-catalog/men-catalog.js";
+      $men_shoe_catalog_handler = "/f37ee/men-catalog/setMaxStock.js";
+      $men_shoe_catalog_function = "/f37ee/men-catalog/men-catalog.js";
       echo '<script type="text/javascript" src="'.$men_shoe_catalog_handler.'"></script>';
       echo '<script type="text/javascript" src="'.$men_shoe_catalog_function.'"></script>';
     ?>

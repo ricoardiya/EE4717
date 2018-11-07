@@ -33,6 +33,6 @@
         Invalid email or password <br><br><br>
       </div>
     ';
-    header('Location: /ee4717/login/');
+    header('Location: /f37ee/login/');
   }
 ?>

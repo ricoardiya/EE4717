@@ -22,7 +22,7 @@
         Account already exists<br><br><br>
       </div>
       ';
-    header('Location: /ee4717/signup/');
+    header('Location: /f37ee/signup/');
   } else {
     $customer_insert_query = "INSERT INTO customers(salutation,name,address,email,phone) VALUES (\"$salutation\",\"$name\",\"$address\",\"$email\",\"$phone\")";
     if (mysqli_query($conn, $customer_insert_query)) {
@@ -38,7 +38,7 @@
         $_SESSION['phone'] = $_POST['phone'];
         header('Location: ' . $_SESSION['history'] . '');
       } else {
-        header('Location: /ee4717/signup/');
+        header('Location: /f37ee/signup/');
       }
     }
   }

@@ -3,8 +3,8 @@
   <?php
     include '../head.php';
     include '../dbconn.php';
-    $checkout_css = "/ee4717/checkout/checkout.css";
-    $checkout_js = "/ee4717/checkout/checkout.js";
+    $checkout_css = "/f37ee/checkout/checkout.css";
+    $checkout_js = "/f37ee/checkout/checkout.js";
     echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $checkout_css . '  />';
     echo '<script type="text/javascript" src="'. $checkout_js .'"></script>';
   ?>
@@ -13,13 +13,13 @@
 <body>
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/ee4717/common/nav.php";
+    $path .= "/f37ee/common/nav.php";
     include $path;
     if(!isset($_SESSION['cart'])){
       $_SESSION['cart']= array();
     }
     if(empty($_SESSION['cart'])){
-      header('Location: /ee4717/cart/index.php');
+      header('Location: /f37ee/cart/index.php');
     }
   ?>
   <div class="content-wrapper">
@@ -103,7 +103,7 @@
             </div>
           </div>
           <div class="checkout-header">
-            Cart Summary
+            Order Summary
           </div>
           <div class="row" style="margin-bottom:20px;">
             <table class="table-wrapper" border="1">
@@ -187,7 +187,7 @@
     </div>
   </div>
   <?php
-  $checkout_handler = "/ee4717/checkout/checkout-handler.js";
+  $checkout_handler = "/f37ee/checkout/checkout-handler.js";
   echo '<script type="text/javascript" src="'.$checkout_handler.'"></script>';
   if(isset($_SESSION['firstname']) && isset($_SESSION['lastname']) && isset($_SESSION['address']) && isset($_SESSION['email']) && isset($_SESSION['phone'])){
     echo '<script>';

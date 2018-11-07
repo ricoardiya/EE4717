@@ -4,8 +4,8 @@
   if(!isset($_SESSION['cart'])){
     $_SESSION['cart']= array();
   }
-  if(empty($_SESSION['cart']) && $_SESSION['history'] != 'http://localhost/ee4717/checkout/submitOrder.php' ){
-    header('Location: /ee4717/cart/index.php');
+  if(empty($_SESSION['cart']) && $_SESSION['history'] != 'http://localhost/f37ee/checkout/submitOrder.php' ){
+    header('Location: /f37ee/cart/index.php');
   }
   if(!isset($_SESSION['transactionID'])){
     $_SESSION['transactionID'] = 52;
@@ -34,13 +34,13 @@
 <html>
     <?php
       include '../head.php';
-      $invoice_css = "/ee4717/invoice/invoice.css";
+      $invoice_css = "/f37ee/invoice/invoice.css";
       echo '<link rel="stylesheet" type="text/css" media="screen" href=' . $invoice_css . '  />';
     ?>
 <body>
   <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/ee4717/common/nav.php";
+    $path .= "/f37ee/common/nav.php";
     include $path;
   ?>
   <div class="content-wrapper">
@@ -100,7 +100,7 @@
           </div>
         </div>
         <div class="invoice-content-header">
-          Order Items
+          Ordered Items
         </div>
         <div class="row" style="margin-bottom:20px;">
           <table class="table-wrapper" border="1">

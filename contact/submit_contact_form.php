@@ -13,7 +13,7 @@
   if (mysqli_query($conn, $query)) {
     $message = "Message has been sent!";
     echo "<script type='text/javascript'>alert('$message');
-    window.location.href='/ee4717/contact/index.php';
+    window.location.href='/f37ee/contact/index.php';
       </script>";
   } else {
       echo "Error: " . $query . "<br>" . mysqli_error($conn);

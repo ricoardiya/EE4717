@@ -215,8 +215,8 @@
     </script>
     <?php
       include  '../common/footer.php';
-      $women_shoe_catalog_handler = "/ee4717/women-catalog/setMaxStock.js";
-      $women_shoe_catalog_function = "/ee4717/women-catalog/women-catalog.js";
+      $women_shoe_catalog_handler = "/f37ee/women-catalog/setMaxStock.js";
+      $women_shoe_catalog_function = "/f37ee/women-catalog/women-catalog.js";
       echo '<script type="text/javascript" src="'.$women_shoe_catalog_handler.'"></script>';
       echo '<script type="text/javascript" src="'.$women_shoe_catalog_function.'"></script>';
     ?>

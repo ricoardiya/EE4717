@@ -198,7 +198,7 @@
                         echo $_SESSION['cart'][$i]->quantity;
                         echo "</td>";
                         echo "<td>";
-                        echo '<a href="/ee4717/cart/?editCart='.$i.'"><button class="btn-confirm" id="editBtn" >Edit</button></a>';
+                        echo '<a href="/f37ee/cart/?editCart='.$i.'"><button class="btn-confirm" id="editBtn" >Edit</button></a>';
                         echo "</td>";
                         echo "<td>";
                         echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';

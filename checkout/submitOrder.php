@@ -2,7 +2,7 @@
   session_start();
 
   $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  if ($actual_link != 'http://localhost/ee4717/login/' && $actual_link != 'http://localhost/ee4717/signup/') {
+  if ($actual_link != 'http://localhost/f37ee/login/' && $actual_link != 'http://localhost/f37ee/signup/') {
     $_SESSION['history'] = $actual_link;
   }
   class buy_item {
@@ -14,7 +14,7 @@
     $_SESSION['cart']= array();
   }
   if(empty($_SESSION['cart'])){
-    header('Location: /ee4717/cart/index.php');
+    header('Location: /f37ee/cart/index.php');
   }
   include('../dbconn.php');
 
@@ -47,7 +47,7 @@
       echo "Error: " . $query . "<br>" . mysqli_error($conn);
       $message = "Error in Inserting Contact Detail!";
       echo "<script type='text/javascript'>alert('$message');
-      window.location.href='/ee4717/men-catalog/index.php';
+      window.location.href='/f37ee/men-catalog/index.php';
       </script>";
     }
   }
@@ -60,7 +60,7 @@
     echo "Error: " . $query . "<br>" . mysqli_error($conn);
     $message = "Error in Inserting Shipping Detail!";
     echo "<script type='text/javascript'>alert('$message');
-    window.location.href='/ee4717/men-catalog/index.php';
+    window.location.href='/f37ee/men-catalog/index.php';
     </script>";
   }
 
@@ -86,17 +86,17 @@
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
         $message = "Error in updating stock!";
         echo "<script type='text/javascript'>alert('$message');
-        window.location.href='/ee4717/men-catalog/index.php';
+        window.location.href='/f37ee/men-catalog/index.php';
         </script>";
       }
     }else{
       echo "Error: " . $query . "<br>" . mysqli_error($conn);
       $message = "Error in insert to orders!";
       echo "<script type='text/javascript'>alert('$message');
-      window.location.href='/ee4717/men-catalog/index.php';
+      window.location.href='/f37ee/men-catalog/index.php';
       </script>";
     }
   }
   unset($_SESSION['cart']);
-  header('Location: /ee4717/invoice/index.php');
+  header('Location: /f37ee/invoice/index.php');
 ?>

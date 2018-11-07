@@ -173,7 +173,7 @@
         </div>
         <br><br><br><br>
         <div style="text-align:center;">
-          <a href="../index.php"><button type="submit" class="btn-confirm-wrapper">Go Back Shopping</button></a>
+          <a href="../index.php"><button type="submit" class="btn-confirm-wrapper">GO BACK SHOPPING</button></a>
         </div>
       </div>
     </div>

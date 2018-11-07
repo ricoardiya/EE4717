@@ -1,6 +1,6 @@
 function checkFirstNameShipping(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var testFirstName = /^[A-Za-z\s]+$/.test(myName.value);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('firstname-message-shipping').style.color = 'red';
@@ -12,7 +12,7 @@ function checkFirstNameShipping(event) {
     myName.select();
     return false;
   }
-  if (pos == -1) {
+  if (testFirstName == false) {
     document.getElementById('firstname-message-shipping').style.color = 'red';
     document.getElementById('firstname-message-shipping').innerHTML = 'wrong format';
     document.getElementById('fname_shipping').placeholder = '';
@@ -29,7 +29,7 @@ function checkFirstNameShipping(event) {
 
 function checkLastNameShipping(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var testLastName = /^[A-Za-z\s]+$/.test(myName.value);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('lastname-message-shipping').style.color = 'red';
@@ -42,7 +42,7 @@ function checkLastNameShipping(event) {
     return false;
   }
 
-  if (pos == -1) {
+  if (testLastName == false) {
     document.getElementById('lastname-message-shipping').style.color = 'red';
     document.getElementById('lastname-message-shipping').innerHTML = 'wrong format';
     document.getElementById('lname_shipping').placeholder = '';
@@ -59,7 +59,7 @@ function checkLastNameShipping(event) {
 
 function checkEmailShipping(event) {
   var myEmail = event.currentTarget;
-  var pos = myEmail.value.search(/^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/);
+  var testEmail = /^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/.test(myEmail.value);
 
   if (!myEmail.value. replace(/\s/g, '').length) {
     document.getElementById('email-message-shipping').style.color = 'red';
@@ -71,7 +71,7 @@ function checkEmailShipping(event) {
     return false;
   }
 
-  if (pos == -1) {
+  if (testEmail == false) {
     document.getElementById('email-message-shipping').style.color = 'red';
     document.getElementById('email-message-shipping').innerHTML = 'wrong format';
     document.getElementById('email_shipping').placeholder = '';
@@ -154,7 +154,7 @@ function checkZipCodeShipping(event) {
 
 function checkFirstNameContact(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var testFirstName = /^[A-Za-z\s]+$/.test(myName.value);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('firstname-message-contact').style.color = 'red';
@@ -166,7 +166,7 @@ function checkFirstNameContact(event) {
     myName.select();
     return false;
   }
-  if (pos == -1) {
+  if (testFirstName == -1) {
     document.getElementById('firstname-message-contact').style.color = 'red';
     document.getElementById('firstname-message-contact').innerHTML = 'wrong format';
     document.getElementById('fname_contact').placeholder = '';
@@ -183,7 +183,7 @@ function checkFirstNameContact(event) {
 
 function checkLastNameContact(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var testLastName = /^[A-Za-z\s]+$/.test(myName.value);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('lastname-message-contact').style.color = 'red';
@@ -196,7 +196,7 @@ function checkLastNameContact(event) {
     return false;
   }
 
-  if (pos == -1) {
+  if (testLastName == false) {
     document.getElementById('lastname-message-contact').style.color = 'red';
     document.getElementById('lastname-message-contact').innerHTML = 'wrong format';
     document.getElementById('lname_contact').placeholder = '';
@@ -213,7 +213,7 @@ function checkLastNameContact(event) {
 
 function checkEmailContact(event) {
   var myEmail = event.currentTarget;
-  var pos = myEmail.value.search(/^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/);
+  var testEmail = /^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/.test(myEmail.value);
 
   if (!myEmail.value. replace(/\s/g, '').length) {
     document.getElementById('email-message-contact').style.color = 'red';
@@ -225,7 +225,7 @@ function checkEmailContact(event) {
     return false;
   }
 
-  if (pos == -1) {
+  if (testEmail == false) {
     document.getElementById('email-message-contact').style.color = 'red';
     document.getElementById('email-message-contact').innerHTML = 'wrong format';
     document.getElementById('email_contact').placeholder = '';

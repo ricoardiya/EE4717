@@ -1,6 +1,6 @@
 function checkFirstName(event) {
     var myName = event.currentTarget;
-    var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+    var testFirstName = /^[A-Za-z\s]+$/.test(myName.value);
 
     if (!myName.value. replace(/\s/g, '').length) {
       document.getElementById('firstname-message').style.color = 'red';
@@ -11,7 +11,7 @@ function checkFirstName(event) {
       myName.select();
       return false;
     }
-    if (pos == -1) {
+    if (testFirstName == false) {
       document.getElementById('firstname-message').style.color = 'red';
       document.getElementById('firstname-message').innerHTML = 'wrong format';
       document.getElementById('fname').placeholder = '';
@@ -26,7 +26,7 @@ function checkFirstName(event) {
 
 function checkLastName(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var testLastName = /^[A-Za-z\s]+$/.test(myName.value);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('lastname-message').style.color = 'red';
@@ -39,7 +39,7 @@ function checkLastName(event) {
     return false;
   }
 
-  if (pos == -1) {
+  if (testLastName == false) {
     document.getElementById('lastname-message').style.color = 'red';
     document.getElementById('lastname-message').innerHTML = 'wrong format';
     document.getElementById('lname').placeholder = '';
@@ -56,7 +56,7 @@ function checkLastName(event) {
 
 function checkEmail(event) {
   var myEmail = event.currentTarget;
-  var pos = myEmail.value.search(/^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/);
+  var testEmail = /^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/.test(myEmail.value);
 
   if (!myEmail.value. replace(/\s/g, '').length) {
     document.getElementById('email-message').style.color = 'red';
@@ -68,7 +68,7 @@ function checkEmail(event) {
     return false;
   }
 
-  if (pos == -1) {
+  if (testEmail == false) {
     document.getElementById('email-message').style.color = 'red';
     document.getElementById('email-message').innerHTML = 'wrong format';
     document.getElementById('email').placeholder = '';

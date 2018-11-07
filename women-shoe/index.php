@@ -304,7 +304,6 @@
       include  '../common/footer.php';
       $women_shoe_handler = "/ee4717/women-shoe/setMaxStock.js";
       echo '<script type="text/javascript" src="'.$women_shoe_handler.'"></script>';
-
     ?>
   </body>
 </html>

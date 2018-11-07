@@ -61,7 +61,6 @@ form {
   /* font-family: "Montserrat", sans-serif; */
 }
 
-
 textarea,input{
   font-family: "Montserrat", sans-serif;
   padding: 6px 20px;
@@ -117,6 +116,7 @@ textarea:focus, input:focus {
   margin: 20px 0px 200px 10px;
 
 }
+
 .btn-confirm-wrapper:hover {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.5px;
@@ -130,6 +130,7 @@ textarea:focus, input:focus {
   padding: 8px 15px;
   cursor: pointer;
 }
+
 input {
   font-family: "Montserrat", sans-serif;
   padding: 6px 20px;

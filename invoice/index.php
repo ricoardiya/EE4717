@@ -100,7 +100,7 @@
           </div>
         </div>
         <div class="invoice-content-header">
-          Order Items
+          Ordered Items
         </div>
         <div class="row" style="margin-bottom:20px;">
           <table class="table-wrapper" border="1">

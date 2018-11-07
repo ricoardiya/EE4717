@@ -99,7 +99,7 @@
             </div>
           </div>
           <div class="checkout-header">
-            Cart Summary
+            Order Summary
           </div>
           <div class="row" style="margin-bottom:20px;">
             <table class="table-wrapper" border="1">

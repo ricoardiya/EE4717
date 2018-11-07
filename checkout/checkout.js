@@ -1,6 +1,6 @@
 function checkFirstNameShipping(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var pos = myName.value.search(/^[A-Za-z\s]+$/);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('firstname-message-shipping').style.color = 'red';
@@ -97,7 +97,7 @@ function checkPhoneShipping(event) {
     phone.select();
     return false;
   }
-  let regex = /^\d{4}(?:[\s]*\d{4})$/; //allowed pattern (9123 2323) or (91232323) only
+  let regex = /^\d{4}(?:[\s-]*\d{4})$/; //allowed pattern (9123 2323) or (91232323) only
   if (regex.test(phone.value)){
     document.getElementById('phone-message-shipping').style.color = 'green';
     document.getElementById('phone-message-shipping').innerHTML = 'correct';
@@ -154,7 +154,7 @@ function checkZipCodeShipping(event) {
 
 function checkFirstNameContact(event) {
   var myName = event.currentTarget;
-  var pos = myName.value.search(/^[A-Za-z\s][A-Za-z\s]*$/);
+  var pos = myName.value.search(/^[A-Za-z\s]+$/);
 
   if (!myName.value. replace(/\s/g, '').length) {
     document.getElementById('firstname-message-contact').style.color = 'red';

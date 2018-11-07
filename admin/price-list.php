@@ -52,7 +52,7 @@
                   <tr>
                     <td>Price</td>
                     <td>:</td>
-                    <td><input type="number" value=' . $_GET['price']. ' min=1 name="price" id="price"></td>
+                    <td><input type="number" value=' . $_GET['price']. ' required min=1 name="price" id="price"></td>
                   </tr>
                 </table>
                 <div>

@@ -4,7 +4,7 @@
   }
   // Setting history on all pages except login page and signup page
   $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  if ($actual_link != 'http://localhost/f37ee/login/' && $actual_link != 'http://localhost/f37ee/signup/') {
+  if ($actual_link != 'http://192.168.56.2/f37ee/login/' && $actual_link != 'http://192.168.56.2/f37ee/signup/') {
     $_SESSION['history'] = $actual_link;
   }
   //for cart

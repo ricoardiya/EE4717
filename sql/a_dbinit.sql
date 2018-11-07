@@ -9,6 +9,7 @@ Run this file to intialize database
 
 use sepatu;
 
+DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS orders;

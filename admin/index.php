@@ -58,7 +58,7 @@
                   <tr>
                     <td>Stock</td>
                     <td>:</td>
-                    <td><input type="number" value=' . $_GET['stock']. ' min=1 name="stock" id="stock"></td>
+                    <td><input type="number" value=' . $_GET['stock']. ' min=0 name="stock" id="stock"></td>
                   </tr>
                 </table>
                 <div>

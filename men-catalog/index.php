@@ -36,7 +36,6 @@
     }
     echo "<script>";
     echo " var js_shoes = ".json_encode($shoes) . ";";
-    echo " console.log('var js_shoes = ',".json_encode($shoes) . ");";
     echo "</script>";
   ?>
   <body>
@@ -121,7 +120,7 @@
                         <div id="modal_productID"></div>
                         <br>
                         <div id="modal_size">Select your size: <select name="selected_size" id="selected_size" onchange="getSize();"></select></div>
-                        <div id="modal_quantity">Quantity: <input type="number" value=1 min=1 name="selected_quantity" id="selected_quantity" onchange="getQuantity();"></div>
+                        <div id="modal_quantity">Quantity: <input required type="number" value=1 min=1 name="selected_quantity" id="selected_quantity" onchange="getQuantity();"></div>
                         <div id="modal_button"><button class="btn-addcart" onclick="addToCart()">ADD TO CART</button></div>
                       </form>
                     </div>
@@ -156,8 +155,6 @@
                         <div id="price"><strike>$ ' . $products_row['price'] . '</strike></div>
                         <div id="price">$ ' . ceil($products_row['price'] * 0.8) . '</div>';
                     }
-
-                    // <button id="'. $products_row['id'].'" class="btn-addcart" onclick="myFunction(this)">ADD TO CART</button> -- dibawah $render.price
                     echo '
                       <div class="col-3">
                         <div class="card">
@@ -198,7 +195,6 @@
                 document.getElementById("modal_picture").innerHTML = "<img src=\"../" + js_shoes[i]['picture'] + "\" alt='shoes' width=50% style='margin:auto;'><br>";
                 document.getElementById("modal_price").innerHTML = "PRICE $ " + js_shoes[i]['price']+ "<br>";
                 document.getElementById("selected_size").innerHTML += "<option value=\"" + js_shoes[i]['size'] + "\">" + js_shoes[i]['size'] + "</option>";
-                console.log( js_shoes[i]['id'] ,'avail size : ', js_shoes[i]['size']);
               }
             }
             modal.style.display = "block";

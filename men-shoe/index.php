@@ -175,10 +175,9 @@
                   }
                   echo "<script>";
                   echo " var js_stock = ".json_encode($stock) . ";";
-                  echo " console.log('var js_stock = ',".json_encode($stock) . ");";
                   echo "</script>";
                   ?>
-                <input type="number" name="quantity" min=1 value=1 id="quantity" onchange="getQuantity();">
+                <input type="number" required name="quantity" min=1 value=1 id="quantity" onchange="getQuantity();">
             </div>
             <hr>
             <input type="submit" name="action" value="BUY NOW" class="btn-addcart"/>

@@ -179,7 +179,7 @@
             </div>
           </div>
         <div class="row" style="float:right;">
-          <a href="../cart/index.php"><button type="submit" class="btn-confirm-wrapper">Go Back To Cart</button></a>
+          <a href="../cart/index.php"><button class="btn-confirm-wrapper">Go Back To Cart</button></a>
           <a href="#"><button type="submit" class="btn-confirm-wrapper">Confirm</button></a>
         </div>
         </form>

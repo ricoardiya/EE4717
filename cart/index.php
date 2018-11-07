@@ -102,7 +102,7 @@
                         echo '<input min=1 required id="quantity-'.$i.'" name="quantity-'.$i.'" min=1 step=1 type="number" value='.$_SESSION['cart'][$i]->quantity.' onchange="getQuantity(this)">';
                         echo "</td>";
                         echo "<td>";
-                        echo '<button class="btn-confirm" type="submit" id="updateBtn">Update</button>';
+                        echo '<button class="btn-confirm" type="submit" id="updateBtn">UPDATE</button>';
                         echo "</td>";
                         echo '</form>';
                         echo "<td>";
@@ -176,7 +176,7 @@
                         echo $_SESSION['cart'][$i]->quantity;
                         echo "</td>";
                         echo "<td>";
-                        echo '<a href="/ee4717/cart/?editCart='.$i.'"><button class="btn-confirm" id="editBtn" >Edit</button></a>';
+                        echo '<a href="/ee4717/cart/?editCart='.$i.'"><button class="btn-confirm" id="editBtn" >EDIT</button></a>';
                         echo "</td>";
                         echo "<td>";
                         echo '<a href="delete-item.php?delete='.$i.'"><img src="../assets/pictures/trash/trash-can.png" id="trashBtn" alt="trash">';
@@ -190,13 +190,13 @@
               </tbody>
             </table>
             <div class= "row" style="float:right;">
-              <a href="../checkout/index.php"><button type="submit" class="btn-confirm">Checkout</button></a>
+              <a href="../checkout/index.php"><button type="submit" class="btn-confirm">CHECKOUT</button></a>
             </div>
             <br><br><br><br><br><br>
             <div>
               <p id="emptyCart">
-                <a href="../index.php">Continue Shopping</a> or
-                <a href="emptying-cart.php"> Empty your cart </a>
+                <a href="../index.php">Continue Shopping</a>&nbsp;or&nbsp;
+                <a href="emptying-cart.php"> Empty Your Cart </a>
               </p>
             </div>
         </div>

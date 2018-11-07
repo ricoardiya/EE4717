@@ -175,8 +175,8 @@
             </div>
           </div>
         <div class="row" style="float:right;">
-          <a href="../cart/index.php"><button type="submit" class="btn-confirm-wrapper">Go Back To Cart</button></a>
-          <a href="#"><button type="submit" class="btn-confirm-wrapper">Confirm</button></a>
+          <a href="../cart/index.php">GO BACK TO CART</a>
+          <button type="submit" class="btn-confirm-wrapper">CONFIRM</button>
         </div>
         </form>
       </div>

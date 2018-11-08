@@ -39,7 +39,7 @@ CREATE TABLE products (
   `color` char(10) NOT NULL,
   `desc` text NOT NULL,
   `gender` char(4) NOT NULL,
-  `price` int(10) NOT NULL,
+  `price` float(10,2) NOT NULL,
   PRIMARY KEY (id)
 );
 

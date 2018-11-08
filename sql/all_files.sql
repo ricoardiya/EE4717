@@ -30,6 +30,7 @@ CREATE TABLE contact (
   `message` text NOT NULL,
   PRIMARY KEY (id)
 );
+
 -- Initialize products table
 
 CREATE TABLE products (
@@ -38,7 +39,7 @@ CREATE TABLE products (
   `color` char(10) NOT NULL,
   `desc` text NOT NULL,
   `gender` char(4) NOT NULL,
-  `price` int(10) NOT NULL,
+  `price` float(10,2) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -96,8 +97,6 @@ CREATE TABLE specifications (
     ON UPDATE CASCADE,
   PRIMARY KEY (id)
 );
-
-
 
 -- Initialize orders table
 
@@ -181,6 +180,7 @@ CREATE TABLE `admin` (
   `password` varchar(50) NOT NULL,
   PRIMARY KEY(id)
 );
+
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Mcdowell','Mayo','mcdowellmayo@exospeed.com','Velit id reprehenderit velit adipisicing adipisicing in dolor id.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Angelia','Castro','angeliacastro@exospeed.com','Sit elit occaecat consectetur exercitation enim.');
 INSERT INTO contact(id,firstname,lastname,email,message) VALUES (NULL,'Rogers','Sanchez','rogerssanchez@exospeed.com','Fugiat est cillum sunt officia laboris qui occaecat nostrud laboris consequat Lorem reprehenderit aute.');
